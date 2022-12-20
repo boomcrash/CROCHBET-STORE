@@ -1,0 +1,64 @@
+<div style="width: 100%; height: 100vh; margin: 0; padding: 0;">
+    <div (click)="mostrarCarrito()" (mouseleave)="ocultarTextoCarrito()"  ><span class="carrito-text" [ngStyle]="{display: despliegue}">VER</span></div>
+    <div  class="carrito">
+        <img (click)="mostrarCarrito()" (mouseenter)="desplegarTextoCarrito()"  height="50px" src="../../../assets/pagina-inicio/carro.png" >
+    </div>
+    <header>
+        <div><img src="../../../assets/pagina-inicio/usuario.png" /> 
+            <div class="dropdown-menu">
+                <span>{{usuario}} ▼</span> 
+                <ul class="dropdown">
+                    <li (click)="cerrarSesion()">Mi cuenta</li>
+                    <li (click)="cerrarSesion()">Rastrear mi pedido</li>
+                    <li (click)="cerrarSesion()">Cerrar Sesion</li>
+                </ul>
+            </div>
+        </div>
+        <div class="buscador">
+            <div >
+                <div> 
+                    <p>Todo  ➤</p>
+                    
+                </div>
+                
+                <div  id="buscar" class="buscar"><input class="caja" type="text" placeholder="ESCRIBE EL NOMBRE DE LO QUE BUSCAS !"></div>
+                <div><img src="../../../assets/pagina-inicio/lupa.png" /></div>
+            </div>
+        </div>
+        <div class="dropdown-menu">
+            <h2 style="cursor: pointer;">CROCHBET ▼</h2> 
+            <ul class="dropdown">
+                <li (click)="cerrarSesion()">Mi cuenta</li>
+                <li (click)="cerrarSesion()">Rastrear mi pedido</li>
+                <li (click)="cerrarSesion()">Cerrar Sesion</li>
+            </ul>
+        </div>
+        
+    </header>
+    <body>
+        <div>
+            <div>
+                <img style="width: 100%; border-top-left-radius: 20px; border-top-right-radius: 20px; background-size:cover;" src="../../../assets/pagina-inicio/banner.png"  alt="">
+            </div>
+        </div>
+
+        <div>
+            <div class="productos">
+                <div>
+                    <div class="producto" id="producto" *ngFor="let objeto of ropaPlatzi ; index as indice" >
+                        <div class="item">
+                            <div (click)="verProducto(indice)">
+                                <img id="foto" [src]="objeto.image" alt="">
+                                <p>	{{objeto.title}}</p>
+                                <p class="precio">$ {{objeto.price}}</p>
+                            </div>
+                        </div>    
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer style="display: flex; justify-content: center; align-items: center; text-align: center; color: white;">
+        Copyrigth 2019 @ Derechos Reservados CROCHBET
+    </footer>
+</div>
