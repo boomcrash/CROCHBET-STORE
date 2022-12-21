@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
-import { ValidacionModule } from 'src/app/modulos/validacion/validacion.module';
 import Swal from 'sweetalert2';
 
 @Component({

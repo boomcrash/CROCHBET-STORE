@@ -11,4 +11,8 @@ export class ProductsService {
   getAllProducts(){
     return this.http.get<Product[]>('http://fakestoreapi.com/products');
   }
+
+  getProducts(){
+    return this.http.get('https://bot-app-j7lp5.ondigitalocean.app/products');
+  }
 }

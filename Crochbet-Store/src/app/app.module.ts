@@ -8,12 +8,16 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
 import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InsertarProductoComponent } from './pages/producto/insertar-producto/insertar-producto.component';
+import { ListarProductoComponent } from './pages/producto/listar-producto/listar-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioSesionComponent,
-    PaginaInicioComponent
+    PaginaInicioComponent,
+    InsertarProductoComponent,
+    ListarProductoComponent
   ],
   imports: [
     BrowserModule,

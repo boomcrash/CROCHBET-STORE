@@ -275,7 +275,7 @@ body :nth-child(2) :nth-child(1) :nth-child(1) .producto{
 
 
 body :nth-child(2) :nth-child(1) :nth-child(1) .producto > .item{
-    height: 400px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
