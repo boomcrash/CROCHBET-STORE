@@ -1,40 +1,3 @@
-header{
-    background-color: rgb(19, 19, 19);
-    border-bottom-right-radius: 60px;
-    border-bottom-left-radius: 60px;
-    width: 100%;
-    
-    position: sticky;
-    top: 0;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: 100%;
-    height: 55px;
-    margin: 0;
-    padding: 0;
-}
-
-header div{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    color: white;
-    
-    height: 100%;
-}
-
-header :nth-child(1) img{
-    display: flex;
-    justify-content: space-evenly;
-    color: white;
-    height: 45px;
-    background-color: white;
-    border-radius: 40px;
-    margin: 0;
-    padding: 0;
-    margin-left: 25%;
-}
 
 .carrito {
     display: flex;
@@ -76,124 +39,6 @@ header :nth-child(1) img{
 }
 
 
-
-
-
-
-.buscador{
-    width: 100%;
-    height: 100%;
-}
-.buscador div{
-    width: 75%;
-    height: 75%;
-    background-color: white;
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
-    grid-template-rows: 100%;
-}
-
-.buscador div :nth-child(1){
-    background-color: rgb(165, 165, 165);
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-}
-
-.buscador div :nth-child(2){
-    display: inline-block;
-    width: 100%;
-}
-.buscador div :nth-child(2) :nth-child(1){
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    font-size: 0.9rem;
-    border:none;
-    margin-left: 10px;
-}
-
-.buscador div :nth-child(2) :nth-child(1):focus{
-    border:none;
-    outline: none;
-}
-
-.buscador div :nth-child(3){
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    text-align: center;
-    padding-right: 5px;
-}
-
-.buscador div :nth-child(3) img{
-    width: 35%;
-    height: 90%;
-    cursor: pointer;
-}
-
-.dropdown-menu ul{
-    list-style: none;
-    font-size: 1rem;
-}
-.dropdown-menu{
-    position: relative;
-    display: inline-block;
-    height: 45px;
-    width: 70%;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    line-height: 45px;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    background-color: rgb(19, 19, 19);
-}
-
-.dropdown{
-    
-    margin-top: 100px;
-    position: absolute;
-    width: 50%;
-}
-
-.dropdown li{
-    display: none;
-    opacity: 0;
-    background-color:rgb(19, 19, 19);
-    color: white;
-    transition: color .3s;
-}
-
-.dropdown li:hover{
-    background-color:rgb(19, 19, 19);
-    color: white;
-}
-
-.dropdown-menu:hover .dropdown li{
-    display: block;
-    animation: menu1 .5s forwards;
-}
-
-@keyframes menu1{
-    0%{
-        opacity: 0;
-        transform: translateY(100px);
-    }
-    100%{
-        opacity: 1;
-        transform: translateY(60px);
-    }
-}
-
-
 body{
     margin: 0;
     padding: 0;
@@ -212,7 +57,7 @@ body :nth-child(1){
     justify-content: center;
 }
 body :nth-child(1) :nth-child(1){
-    width: 65%;
+    width: 50%;
     background-color: rgb(234, 234, 234);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -221,42 +66,74 @@ body :nth-child(1) :nth-child(1){
 }
 
 
-
 body :nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body :nth-child(2) > h1{
+    height: 40px;
+    margin-top: 30px;
+    border: 5px solid black;
+    padding:5px;
+    width: auto;
+    box-shadow: inset 0 0 px black, 0 0 15px black;
+    text-shadow: 0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255),0 0 5px rgb(255, 255, 255), 0 0 5px rgb(255, 255, 255);
+    color: black;
+    animation: shadow 2s infinite;
+}
+
+@keyframes shadow {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+    
+
+body :nth-child(2) .contener-categoria{
     margin: 0;
     padding: 0;
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     
 }
 
 
 
 
-body :nth-child(2) :nth-child(1) {
-    width: 50%;
+body :nth-child(2) .contener-categoria :nth-child(1) {
+    width: 90%;
     height: auto;
     background-color: rgba(255, 255, 255, 0);
     padding: 10px;
     margin: 0;
-    background-color: rgb(234, 234, 234);
-    border-radius: 40px;
-    box-shadow: 0 10px 10px 0 rgb(5, 5, 5);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 5px rgb(36, 36, 36);
+    
 }
 
-body :nth-child(2) :nth-child(1) :nth-child(1){
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
     border: none;
     box-shadow: none;
     width: 100%;
     height: 100%;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    
     display: grid;
-    grid-template-columns: 25% 25% 25%;
+    grid-template-columns: 13% 13% 13% 13% 13%;
     column-gap: 8%;
     row-gap: 10px;
     
@@ -266,15 +143,16 @@ body :nth-child(2) :nth-child(1) :nth-child(1){
 
 
 
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto{
+
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto{
     grid-template-columns:100%;
     margin:0;
     padding: 0;
-    
 }
 
 
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto > .item{
+
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto > .item{
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -287,24 +165,26 @@ body :nth-child(2) :nth-child(1) :nth-child(1) .producto > .item{
     padding: 0;
 }
 
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div{
-    background-color: white;
-    border-radius: 30px;
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto .item div{
+    background-color: #f4f4f4;
+    border:2px solid #dcdcdced;
+    border-radius: 40px;
     width: 100%;
     height: 100%;
     margin:0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: start; cursor: pointer;
 }
 
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div:hover{
-    box-shadow: 5px 10px 40px rgb(5, 5, 5);
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto .item div:hover{
+    box-shadow: 5px 5px 5px 5px rgb(38, 38, 38);
+    border: 2px solid black;
 }
 
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div img{
-    
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto .item div img{
+
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border:1px solid black;
@@ -314,75 +194,46 @@ body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div img{
     padding: 0;
     box-shadow: 0 10px 10px 0 rgb(5, 5, 5);
 }
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div p{
+
+
+
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto .item div p{
     margin: 2px;
     padding:5px;
 }
-body :nth-child(2) :nth-child(1) :nth-child(1) .producto .item div .precio{
+body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1) .producto .item div .precio{
     font-weight: bold;
     font-size: 1.4rem;
     margin: 0px;
     padding:0px;
 }
 
-footer{
-    background-color: rgb(5, 5, 5);
-    width: 100%;
-    height: 55px;
-    bottom: 0;
-    margin-top: 20px;
+#mas{
+    box-shadow: none; border-radius: 40px; border:1px #f4f4f4;background-image: url(../../../assets/pagina-inicio/mas-sign-bg.png) ; background-color: #ffffff00;
 }
 
+
 @media screen and (max-width: 1400px) {
-    header .buscador div :nth-child(3) img{
-        width: 35%;
-        height: 60%;
+    body  :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 15% 15% 15% 15%;
     }
 }
 
 
 @media screen and (max-width: 1200px) {
-    body :nth-child(2) :nth-child(1) :nth-child(1){
-        grid-template-columns: 45% 45%;
-    }
-    header :nth-child(3) h2 {
-        font-size: 1.0rem;
+    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 20% 20% 20% ;
     }
 }
 
 @media screen and (max-width: 900px) {
-    header .buscador div :nth-child(3) img{
-        width: 60%;
-        height: 60%;
-    }
-    header :nth-child(3) h2 {
-        font-size: 0.9rem;
+
+    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 25% 25% 25%;
     }
 }
 
-@media screen and (max-width: 700px) {
-    header{
-        grid-template-columns: 20% 50% 30%;
-    }
-   
-    header :nth-child(3){
-    justify-content: start;
-    }
 
-    header .buscador div :nth-child(1) ,:nth-child(3){
-        font-size: 0.8rem;
-    }
-
-    header .buscador div :nth-child(2) input{
-        font-size: 0.58rem;
-    }
-
-    header .buscador div :nth-child(3) img{
-        width: 60%;
-        height: 50%;
-    }
-   
-}
 @media screen and (max-width: 683px) {
     .dropdown{
         position: absolute;
@@ -391,28 +242,34 @@ footer{
     .dropdown li{
         font-size: 0.8rem;
     }
-    body :nth-child(2) :nth-child(1) :nth-child(1){
-        grid-template-columns:90%;
-    }
-    header :nth-child(3) h2 {
-        font-size: 0.75rem;
+    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 35% 35%;
     }
 }
 
-@media screen and (max-width: 350px) {
-    header{
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-        grid-template-columns: 30% 50% 20%;
+@media screen and (max-width: 600px) {
+    body :nth-child(1) :nth-child(1){
+        width: 90%;
     }
-    header :nth-child(2) div{
-        border-radius: 10px;
-    }
+}
 
-    header :nth-child(3) h2 {
-        font-size: 0.75rem;
+
+@media screen and (max-width: 450px) {
+    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 45% 45%;
+    }
+}
+@media screen and (max-width: 350px) {
+    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+        grid-template-columns: 70%;
+    }
+    body :nth-child(1) {
+        height: 80%;
+    }
+    body :nth-child(1) :nth-child(1){
+        width: 100%;
+        height: 80%;
     }
     
-
 }
 

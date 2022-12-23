@@ -1,0 +1,31 @@
+<header>
+    <div><img src="../../../assets/pagina-inicio/usuario.png" /> 
+        <div class="dropdown-menu">
+            <span>{{actualUser}} ▼</span> 
+            <ul class="dropdown">
+                <li (click)="verPerfil()">Mi cuenta</li>
+                <li (click)="cerrarSesion()">Cerrar Sesion</li>
+            </ul>
+        </div>
+    </div>
+    <div class="buscador">
+        <div >
+            <div> 
+                <p>Todo  ➤</p>
+                
+            </div>
+            
+            <div  id="buscar" class="buscar"><input class="caja" type="text" placeholder="ESCRIBE EL NOMBRE DE LO QUE BUSCAS !"></div>
+            <div><img src="../../../assets/pagina-inicio/lupa.png" /></div>
+        </div>
+    </div>
+    <div class="dropdown-menu">
+        <h2 style="cursor: pointer;">CROCHBET ▼</h2> 
+        <ul class="dropdown">
+            <li (click)="verProductos()">Productos</li>
+            <li (click)="verResenas()">Reseñas</li>
+            <li (click)="verAdministracion()">Administracion</li>
+        </ul>
+    </div>
+    
+</header>

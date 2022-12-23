@@ -46,9 +46,9 @@ export class PaginaInicioComponent {
       {id: 16, title: 'Falda pantalón' , price: 45, description: 'Pantalon blanco tipo falda, hechas de lana de algodón.', category: 'pantalones', image: 'https://i.ytimg.com/vi/b-S7okH57dk/maxresdefault.jpg'},
       {id: 17, title: 'Pantalon con basta ancha' , price: 54, description: 'Pantalon verde oscuro con basta ancha, tejidos con lana de oveja.', category: 'pantalones', image: 'https://i.pinimg.com/236x/14/61/72/1461728279faa40e75f309ec89ae6999.jpg'},
       {id: 18, title: 'Calentadores' , price: 43, description: 'Pantalon de tipo calentadores con bastas tubo, tejidos con lana de algodón', category: 'pantalones', image: 'https://i.pinimg.com/236x/a3/9f/ee/a39fee05b7c4d44abb30a479867ad6ed.jpg'},
-      {id: 19, title: 'Retro bikini' , price: 20, description: 'Traje baño tipo retro bikini, tejido con lana de lino', category: 'trajes de bano', image: 'https://i.pinimg.com/236x/f3/50/f9/f350f9397a072a8f5d47ca9ed83a7a81.jpg'},
-      {id: 20, title: 'Prenda de baño microkini ' , price: 15, description: 'Traje de baño tipo microkini, de lino.', category: 'trajes de baño', image: 'https://i.pinimg.com/236x/29/bd/83/29bd83a3ef78a5d6fa1bcfb6496e3016.jpg'},
-      {id: 21, title: 'Prenda de baño de una sola pieza' , price: 21, description: 'Traje de baño de una sola pieza, de algodón.', category: 'trajes de baño', image: 'https://i.pinimg.com/564x/1a/09/bf/1a09bfadc0dc9cdc4315ee1e4a62d949.jpg'},
+      {id: 19, title: 'Retro bikini' , price: 20, description: 'Traje baño tipo retro bikini, tejido con lana de lino', category: 'trajes', image: 'https://i.pinimg.com/236x/f3/50/f9/f350f9397a072a8f5d47ca9ed83a7a81.jpg'},
+      {id: 20, title: 'Prenda de baño microkini ' , price: 15, description: 'Traje de baño tipo microkini, de lino.', category: 'trajes', image: 'https://i.pinimg.com/236x/29/bd/83/29bd83a3ef78a5d6fa1bcfb6496e3016.jpg'},
+      {id: 21, title: 'Prenda de baño de una sola pieza' , price: 21, description: 'Traje de baño de una sola pieza, de algodón.', category: 'trajes', image: 'https://i.pinimg.com/564x/1a/09/bf/1a09bfadc0dc9cdc4315ee1e4a62d949.jpg'},
       {id: 22, title: 'Pareo tipo falda' , price: 11, description: 'Pareo blanco, tejidos con lana de alpaca.', category: 'pareos', image: 'https://i.pinimg.com/236x/00/26/4d/00264dcc5980c0a6f8353feb2ef55a90.jpg'},
       {id: 23, title: 'Pareo tipo pañuelo' , price: 12, description: 'Pareo en color blanco realizado con la técnica tejido crochet o ganchillo. Fresco e informal para temporadas de verano.', category: 'pareos', image: 'https://www.crochet.com.ar/Modelos/pareo.jpg'},
       {id: 24, title: 'Pareo tipo vestido' , price: 34, description: 'Pareo tipo vestido, tejido de lana de oveja.', category: 'pareos', image: 'https://i.pinimg.com/564x/fa/b1/f4/fab1f44038c1b2542bc9c0828873ad50.jpg'},
@@ -89,10 +89,6 @@ export class PaginaInicioComponent {
       {id: 59, title: 'Bolso Tricolor', price: 89, description: 'Bolso tejido a crochet tricolor', category: 'Bolsos', image: 'https://i.pinimg.com/564x/19/ee/63/19ee6369004eec9184139c0186d530d9.jpg'},
       {id: 60, title: 'Bolso Zanahoria', price: 75, description: 'Bolso tejido a crochet con figura de zanahoria incrustada', category: 'Bolsos', image: 'https://i.pinimg.com/564x/99/65/f4/9965f4a493dbd517c470f9fd0e5ffa68.jpg'},
     ]
-  }
-
-  cerrarSesion(){
-    this.router.navigate(['']);
   }
 
 
@@ -161,8 +157,8 @@ export class PaginaInicioComponent {
       imageHeight: 225,
       imageAlt: this.ropaCrochbet[indice].image,
       showCancelButton: true,
-      confirmButtonText: "SI",
-      cancelButtonText: "NO",
+      confirmButtonText: "AGREGAR",
+      cancelButtonText: "SALIR",
       confirmButtonColor: "black",
       cancelButtonColor: "red",
       reverseButtons: true
@@ -179,5 +175,17 @@ export class PaginaInicioComponent {
       })
   }
 
+
+  filtrarCategoria(categoria:string){
+    let arrayFiltrado:Product[]=[];
+    let contador=1;
+    for(let item of this.ropaCrochbet){
+      if(item.category.toLocaleLowerCase()==categoria.toLocaleLowerCase()&&contador<=4){
+        arrayFiltrado.push(item);
+        contador++;
+      }
+    }
+    return arrayFiltrado;
+  }
 
 }
