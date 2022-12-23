@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./insertar-cliente.component.css']
 })
 export class InsertarClienteComponent {
-
+  
+    constructor() { }
+  
+    
 }
