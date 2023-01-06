@@ -144,10 +144,11 @@ body .contener-categoria :nth-child(1) :nth-child(1){
 
 
 
-body .contener-categoria :nth-child(1) :nth-child(1) .producto{
+body .contener-categoria :nth-child(1) :nth-child(1) #producto{
     grid-template-columns:100%;
     margin:0;
     padding: 0;
+    width: 100%;
 }
 
 
@@ -214,21 +215,21 @@ body  .contener-categoria :nth-child(1) :nth-child(1) .producto .item div .preci
 
 
 @media screen and (max-width: 1400px) {
-    body  :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 15% 15% 15% 15%;
     }
 }
 
 
 @media screen and (max-width: 1200px) {
-    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 20% 20% 20% ;
     }
 }
 
 @media screen and (max-width: 900px) {
 
-    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 25% 25% 25%;
     }
 }
@@ -242,7 +243,7 @@ body  .contener-categoria :nth-child(1) :nth-child(1) .producto .item div .preci
     .dropdown li{
         font-size: 0.8rem;
     }
-    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 35% 35%;
     }
 }
@@ -255,12 +256,12 @@ body  .contener-categoria :nth-child(1) :nth-child(1) .producto .item div .preci
 
 
 @media screen and (max-width: 450px) {
-    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body  .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 45% 45%;
     }
 }
 @media screen and (max-width: 350px) {
-    body :nth-child(2) .contener-categoria :nth-child(1) :nth-child(1){
+    body  .contener-categoria :nth-child(1) :nth-child(1){
         grid-template-columns: 70%;
     }
     body :nth-child(1) {

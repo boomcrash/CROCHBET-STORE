@@ -4,7 +4,7 @@
         <img (click)="mostrarCarrito()" (mouseenter)="desplegarTextoCarrito()"  height="50px" src="../../../assets/pagina-inicio/carro.png" >
     </div>
    <app-header [actualUser]="usuario"></app-header>
-    <body>
+    <body id="cuerpo">
         <div>
             <div>
                 <img style="width: 100%; border-top-left-radius: 20px; border-top-right-radius: 20px; background-size:cover;" src="../../../assets/pagina-inicio/banner.png"  alt="">
@@ -12,7 +12,7 @@
         </div>
         <div *ngFor="let category of this.moduloProducto.categorias; index as indice">
             <h1>{{category}}</h1>
-            <div class="contener-categoria">
+            <div class="contener-categoria" id="contener-categoria">
                 <div class="productos">
                     <div class="contenedor-producto">
                         <div class="producto" id="producto" *ngFor="let objeto of filtrarCategoria(category) ; index as indice" >
