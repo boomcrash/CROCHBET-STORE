@@ -31,7 +31,8 @@ import { InsertarReseniaComponent } from './pages/resenia/insertar-resenia/inser
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { CarritoComponent } from './components/carrito/carrito.component';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { FooterComponent } from './components/footer/footer.component';
     EliminarReseniaComponent,
     PerfilComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CarritoComponent
     
   ],
   imports: [
@@ -63,7 +65,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     FormsModule,    //added here too
     ReactiveFormsModule ,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
