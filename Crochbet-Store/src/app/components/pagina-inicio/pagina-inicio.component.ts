@@ -60,9 +60,7 @@ export class PaginaInicioComponent {
   }
 
   mostrarCarrito(){
-    this.dialog.open(CarritoComponent,{
-      width: '810px'
-    })
+    this.dialog.open(CarritoComponent,{});
   }
   confirmation:any;
   verProducto(indice:number){

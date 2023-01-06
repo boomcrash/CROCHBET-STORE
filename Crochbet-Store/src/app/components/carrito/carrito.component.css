@@ -1,10 +1,20 @@
 #shopping-cart {
     font-family: Arial, sans-serif;
-    height: 900px;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    background-color: #ffffffc5;
 }
 
 .contenedor{
+    background-color: #ffffff;
     display: grid;
     grid-template-columns: 55% 40%;
     margin: 10px;
@@ -13,7 +23,8 @@
     border-radius: 5px;
     box-shadow:  3px 5px 5px 5px black;
     column-gap: 3%;
-    height: auto;
+    height: 580px;
+    width: 60%;
 }
 
 .items{

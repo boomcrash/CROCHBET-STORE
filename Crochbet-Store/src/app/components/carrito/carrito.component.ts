@@ -10,8 +10,12 @@ import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 })
 export class CarritoComponent {
   miCarrito=CarritoModule;
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<CarritoComponent>) { }
   ngOnInit(): void {
     console.log(this.miCarrito.geTotalCarrito());
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }
