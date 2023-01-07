@@ -1,7 +1,7 @@
 <header>
     <div><img src="../../../assets/pagina-inicio/usuario.png" /> 
         <div class="dropdown-menu">
-            <span>{{actualUser}} ▼</span> 
+            <span>{{user}} ▼</span> 
             <ul class="dropdown">
                 <li (click)="verPerfil()">Mi cuenta</li>
                 <li (click)="cerrarSesion()">Cerrar Sesion</li>
@@ -10,13 +10,13 @@
     </div>
     <div class="buscador">
         <div >
-            <div> 
+            <div id="todo" (click)="buscarTodos()"> 
                 <p>Todo  ➤</p>
                 
             </div>
             
-            <div  id="buscar" class="buscar"><input class="caja" type="text" placeholder="ESCRIBE EL NOMBRE DE LO QUE BUSCAS !"></div>
-            <div><img src="../../../assets/pagina-inicio/lupa.png" /></div>
+            <div  id="buscar" class="buscar"><input [(ngModel)]="filtro" class="caja" type="text" placeholder="ESCRIBE EL NOMBRE DE LO QUE BUSCAS !"></div>
+            <div><img (click)="buscar()" src="../../../assets/pagina-inicio/lupa.png" /></div>
         </div>
     </div>
     <div class="dropdown-menu">

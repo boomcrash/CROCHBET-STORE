@@ -96,6 +96,8 @@ export class ProductoModule {
     {id: 81, title: 'Bolso Animales', price: 95, description: 'Bolso tejido a crochet con formas de animales', category: 'Bolsos', image: 'https://i.pinimg.com/564x/d3/4f/3a/d34f3a080bcc247a48a5d72eb4836139.jpg'},
 
   ]
+
+  filtrpoTitulo:Product[] = [];
   categorias: string[] = ['BLUSAS', 'BRAZALETES','FALDAS','GORROS','SHORTS','PANTALONES','TRAJES','PAREOS','MEDIAS','TAPETES','ALFOMBRAS','COJINES','COBERTORES','ABRIGOS','CARDIGAN','BUFANDAS','GUANTES','ARETES','TURBANTES','BOLSOS'];
   constructor(){
     console.log('ProductoModule');

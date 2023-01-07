@@ -37,6 +37,10 @@ header :nth-child(1) img{
     margin-left: 25%;
 }
 
+#todo{
+    cursor: pointer;
+}
+
 .buscador{
     width: 100%;
     height: 100%;

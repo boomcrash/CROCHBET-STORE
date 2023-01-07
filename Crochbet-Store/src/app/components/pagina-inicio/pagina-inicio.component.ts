@@ -117,4 +117,12 @@ export class PaginaInicioComponent {
         confirmButtonText: 'OK'
       })
   }
+
+
+  buscar(filtro:string){
+
+    this.router.navigate(['busqueda',this.usuario,filtro]);
+    console.log(filtro);
+    
+  }
 }

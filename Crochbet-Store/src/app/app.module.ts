@@ -33,6 +33,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     PerfilComponent,
     HeaderComponent,
     FooterComponent,
-    CarritoComponent
+    CarritoComponent,
+    BusquedaComponent
     
   ],
   imports: [
