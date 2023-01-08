@@ -12,7 +12,7 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class ProductoModule { 
 
-  productos:Product[]=[
+  static productos:Product[]=[
     {id: 1, title: 'Blusa romina ' , price: 40, description: 'Blusa blanca con escote en la espalda, ideal para temporadas de verano.', category: 'blusas', image: 'https://1.bp.blogspot.com/-51nRaSdrM78/UfHMzPLYEEI/AAAAAAAAPx0/cUxUjilfeFI/s1600/crochetemodan0315.jpg'},
     {id: 2, title: 'Blusa a ganchillo' , price: 30, description: 'Prenda semiformal tejido con lana, sin cuello ni mangas largas.', category: 'blusas', image: 'https://www.handworkdiy.com/wp-content/uploads/2022/03/top-de-ganchillo-3.png'},
     {id: 3, title: 'Blusa glamurosa' , price: 45, description: 'Blusa glamurosa tejido a crochet , de tipo formal e ideal para épocas de verano.', category: 'blusas', image: 'https://i.pinimg.com/originals/3b/2e/a0/3b2ea0de8b9b1a6004f757ad23c70b70.png'},
@@ -97,8 +97,10 @@ export class ProductoModule {
 
   ]
 
+
+
   filtrpoTitulo:Product[] = [];
-  categorias: string[] = ['BLUSAS', 'BRAZALETES','FALDAS','GORROS','SHORTS','PANTALONES','TRAJES','PAREOS','MEDIAS','TAPETES','ALFOMBRAS','COJINES','COBERTORES','ABRIGOS','CARDIGAN','BUFANDAS','GUANTES','ARETES','TURBANTES','BOLSOS'];
+  static categorias: string[] = ['BLUSAS', 'BRAZALETES','FALDAS','GORROS','SHORTS','PANTALONES','TRAJES','PAREOS','MEDIAS','TAPETES','ALFOMBRAS','COJINES','COBERTORES','ABRIGOS','CARDIGAN','BUFANDAS','GUANTES','ARETES','TURBANTES','BOLSOS'];
   constructor(){
     console.log('ProductoModule');
   }

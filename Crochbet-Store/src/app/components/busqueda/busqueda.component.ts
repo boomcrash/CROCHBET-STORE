@@ -18,7 +18,7 @@ export class BusquedaComponent {
 
     }
   
-    moduloProducto:ProductoModule=new ProductoModule();
+    moduloProducto=ProductoModule.productos;
 
 
 
@@ -37,12 +37,12 @@ export class BusquedaComponent {
       console.log(filtrado)
       var regex = new RegExp(filtrado,'gi');
       console.log(regex);
-      arrayProductos=this.moduloProducto.productos.filter(producto => producto.title.search(regex)!=-1 );
+      arrayProductos=this.moduloProducto.filter(producto => producto.title.search(regex)!=-1 );
       if(arrayProductos.length==0){
-        arrayProductos=this.moduloProducto.productos.filter(producto => producto.category.search(regex)!=-1 );
+        arrayProductos=this.moduloProducto.filter(producto => producto.category.search(regex)!=-1 );
       }
       if(filtrado=='todos'){
-        return this.moduloProducto.productos;
+        return this.moduloProducto;
       }else{
         return arrayProductos;
       }

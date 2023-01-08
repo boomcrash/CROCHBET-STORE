@@ -21,9 +21,9 @@ export class PaginaInicioComponent {
     //private productsService:ProductsService,
     public dialog:MatDialog){}
 
-  moduloProducto:ProductoModule=new ProductoModule();
+  moduloProducto=ProductoModule.productos;
 
-  categorias:string[]=['blusas','brazaletes','faldas','vestidos','zapatos'];
+  categorias=ProductoModule.categorias;
 
   usuario:string='';
 
@@ -66,14 +66,14 @@ export class PaginaInicioComponent {
   verProducto(indice:number){
     indice=indice-1;
     this.confirmation=Swal.fire({
-      title: this.moduloProducto.productos[indice].title,
+      title: this.moduloProducto[indice].title,
       text: "Quieres agregar este producto al carrito?",
-      html: "<p>"+this.moduloProducto.productos[indice].description+"</p>"
-      +"<p>Precio: $"+this.moduloProducto.productos[indice].price+"</p>",
-      imageUrl: this.moduloProducto.productos[indice].image,
+      html: "<p>"+this.moduloProducto[indice].description+"</p>"
+      +"<p>Precio: $"+this.moduloProducto[indice].price+"</p>",
+      imageUrl: this.moduloProducto[indice].image,
       imageWidth: 250,
       imageHeight: 225,
-      imageAlt: this.moduloProducto.productos[indice].image,
+      imageAlt: this.moduloProducto[indice].image,
       showCancelButton: true,
       confirmButtonText: "AGREGAR",
       cancelButtonText: "SALIR",
@@ -82,14 +82,14 @@ export class PaginaInicioComponent {
       reverseButtons: true
     }).then ((result) => {
       if(result.isConfirmed){
-        CarritoModule.addOnCarrito(this.moduloProducto.productos[indice]);
+        CarritoModule.addOnCarrito(this.moduloProducto[indice]);
         Swal.fire(
           'Producto agregado',
           'El producto ha sido agregado al carrito',
           'success'
         )
         }
-        this.carrito.push(this.moduloProducto.productos[indice]);
+        this.carrito.push(this.moduloProducto[indice]);
         console.log(this.carrito);
       })
   }
@@ -98,7 +98,7 @@ export class PaginaInicioComponent {
   filtrarCategoria(categoria:string){
     let arrayFiltrado:Product[]=[];
     let contador=1;
-    for(let item of this.moduloProducto.productos){
+    for(let item of this.moduloProducto){
       if(item.category.toLocaleLowerCase()==categoria.toLocaleLowerCase()&&contador<=4){
         arrayFiltrado.push(item);
         contador++;

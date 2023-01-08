@@ -1,0 +1,35 @@
+.contenedor-admin{ 
+    margin-top: 50px; width: 100%; height: auto; background-color: rgb(255, 255, 255);
+    display: flex; justify-content: center; align-items: center; text-align: center;
+}
+
+.subcontenedor-admin{
+    background-color: rgb(255, 255, 255); width: 100%; height: auto;
+    display: flex; justify-content: center; align-items: center;
+     text-align: center;  flex-direction: column;
+}
+
+.caja{
+    background-color: rgb(255, 255, 255); width: 100%; height: auto;
+    display: flex; justify-content: center; align-items: center;
+     text-align: center;  flex-direction: column;
+}
+
+.modulo{
+    width: 90%; height: auto; background-color: white; color: black; 
+    display: flex; flex-direction: column;
+    overflow-x: auto;
+    margin-top: 20px;
+    
+    box-shadow: 1px 1px 20px 20px rgba(0,0,0,0.5);
+}
+
+.boton{
+    padding: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
+    border-radius: 2px;
+}
+
+input{
+    width: fit-content;
+}

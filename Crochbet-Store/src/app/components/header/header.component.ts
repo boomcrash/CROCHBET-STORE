@@ -17,7 +17,7 @@ export class HeaderComponent {
 
     this.router.navigate(['busqueda',this.user,this.filtro]);
     console.log(this.filtro);
-    
+
   }
 
   buscarTodos(){
@@ -62,11 +62,14 @@ export class HeaderComponent {
 
   verAdministracion(){
     // opcion deshabilitada por el momento
-    Swal.fire({
+   /* Swal.fire({
       title: 'Opcion deshabilitada',
       text: 'Esta opcion se habilitara en un futuro',
       icon: 'warning',
       confirmButtonText: 'OK'
-    })
+    })*/
+
+    
+    this.router.navigate(['administracion',this.user]);
   }
 }

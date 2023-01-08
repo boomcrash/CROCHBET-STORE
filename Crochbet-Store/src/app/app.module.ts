@@ -34,6 +34,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { AdministracionComponent } from './components/administracion/administracion.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
     HeaderComponent,
     FooterComponent,
     CarritoComponent,
-    BusquedaComponent
+    BusquedaComponent,
+    AdministracionComponent
     
   ],
   imports: [
@@ -69,7 +72,8 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
     FormsModule,    //added here too
     ReactiveFormsModule ,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
