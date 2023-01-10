@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
+import { ProductsService } from 'src/app/services/product/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -42,7 +44,7 @@ export class InicioSesionComponent implements OnInit{
 
   formReactive:FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private router:Router) { 
+  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) { 
     this.formReactive=this.formBuilder.group(
       {
         user:['',[Validators.required,Validators.minLength(4),Validators.pattern(/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/i)]],
@@ -90,7 +92,11 @@ export class InicioSesionComponent implements OnInit{
     
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {let productos=new ProductsService(this.http)
+    productos.getProducts().subscribe((data:any)=>{
+      console.log(data);
+    });
+    }
   OnChanges() {}
   OnDestroy() {}
   OnAfterViewInit() {}

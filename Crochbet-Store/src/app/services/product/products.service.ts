@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/interfaces/product';
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class ProductsService {
   }
 
   getProducts(){
-    return this.http.get('https://bot-app-j7lp5.ondigitalocean.app/products');
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    return this.http.get('https://bot-app-j7lp5.ondigitalocean.app/products',{ headers, responseType: 'text'});
   }
 }
