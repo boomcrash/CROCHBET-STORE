@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
+import { BotService } from 'src/app/services/bot/bot.service';
 import { ProductsService } from 'src/app/services/product/products.service';
 import Swal from 'sweetalert2';
 
@@ -92,8 +93,13 @@ export class InicioSesionComponent implements OnInit{
     
   }
 
-  ngOnInit(): void {let productos=new ProductsService(this.http)
+  ngOnInit(): void {let productos=new ProductsService(this.http);
     productos.getProducts().subscribe((data:any)=>{
+      console.log(data);
+    });
+
+    let respuesta=new BotService(this.http);
+    respuesta.getResponse('hola como estas').subscribe((data:any)=>{
       console.log(data);
     });
     }
