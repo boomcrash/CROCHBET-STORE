@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./editar-cliente.component.css']
 })
 export class EditarClienteComponent {
-
+  @Input() id=0;
 }

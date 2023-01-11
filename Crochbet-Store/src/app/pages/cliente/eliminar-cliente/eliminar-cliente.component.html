@@ -1,4 +1,7 @@
-<app-header></app-header>
-<p>eliminar-cliente works!</p>
-<div style="height: 90vh;"></div>
-<app-footer></app-footer>
+<div class="eliminar-contenedor">
+    <h1 style="color:red;">ESTAS SEGURO QUE DESEAS ELIMINARLO?</h1>
+    <div class="botones">
+        <button (click)="eliminarProducto()" style="border-radius: 10px; width :fit-content; padding: 5px;" class="boton">SI</button>
+        <button (click)="salir()" style="border-radius: 10px; width :fit-content; padding: 5px; " class="boton">NO</button>
+    </div>
+</div>

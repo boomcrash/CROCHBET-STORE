@@ -11,17 +11,19 @@ export class HeaderComponent {
   constructor(private router:Router,
     private route:ActivatedRoute) { }
 
+  rol='cliente';
+
   filtro: string = '';
 
   buscar(){
 
-    this.router.navigate(['busqueda',this.user,this.filtro]);
+    this.router.navigate(['busqueda',this.user,this.filtro,this.rol]);
     console.log(this.filtro);
 
   }
 
   buscarTodos(){
-    this.router.navigate(['busqueda',this.user,'todos']);
+    this.router.navigate(['busqueda',this.user,'todos',this.rol]);
     console.log('todos');
   }
 
@@ -42,6 +44,7 @@ export class HeaderComponent {
       this.user= this.actualUser;
     }
     
+    this.rol=this.route.snapshot.params['rol'];
   }
 
   cerrarSesion(){
@@ -49,11 +52,11 @@ export class HeaderComponent {
   }
 
   verPerfil(){
-    this.router.navigate(['perfil',this.user]);
+    this.router.navigate(['perfil',this.user,this.rol]);
   }
 
   verProductos(){
-    this.router.navigate(['inicio',this.user]);
+    this.router.navigate(['inicio',this.user,this.rol]);
   }
 
   verResenas(){
@@ -68,8 +71,6 @@ export class HeaderComponent {
       icon: 'warning',
       confirmButtonText: 'OK'
     })*/
-
-    
-    this.router.navigate(['administracion',this.user]);
+    this.router.navigate(['administracion',this.user,'admin','administracion']);
   }
 }

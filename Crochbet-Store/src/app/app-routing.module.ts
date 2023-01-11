@@ -10,11 +10,13 @@ import { InsertarReseniaComponent } from './pages/resenia/insertar-resenia/inser
  
 const routes: Routes = [
   {path:"",component:InicioSesionComponent},
-  {path:"inicio/:usuario",component:PaginaInicioComponent,pathMatch:'full'},
-  {path:"busqueda/:usuario/:filtro",component:BusquedaComponent,pathMatch:'full'},
-  {path:"perfil/:usuario",component:PerfilComponent,pathMatch:'full'},
-  {path:"insertarResenia/:usuario",component:InsertarReseniaComponent,pathMatch:'full'},
-  {path:"administracion/:usuario",component:AdministracionComponent,pathMatch:'full'}
+  {path:"inicio/:usuario/:rol",component:PaginaInicioComponent,pathMatch:'full'},
+  {path:"busqueda/:usuario/:filtro/:rol",component:BusquedaComponent,pathMatch:'full'},
+  {path:"perfil/:usuario/:rol",component:PerfilComponent,pathMatch:'full'},
+  {path:"insertarResenia/:usuario/:rol",component:InsertarReseniaComponent,pathMatch:'full'},
+  {path:"administracion/:usuario/:rol",component:AdministracionComponent,pathMatch:'full'},
+  {path:"administracion/:usuario/:rol/:modulo",component:AdministracionComponent,pathMatch:'full'}
+ 
 ];
 
 @NgModule({

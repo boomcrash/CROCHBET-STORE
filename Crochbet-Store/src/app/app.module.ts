@@ -36,6 +36,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { MatTableModule } from '@angular/material/table';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { MatTableModule } from '@angular/material/table';
     FooterComponent,
     CarritoComponent,
     BusquedaComponent,
-    AdministracionComponent
+    AdministracionComponent,
+    ChatComponent
     
   ],
   imports: [

@@ -27,12 +27,15 @@ export class PaginaInicioComponent {
 
   usuario:string='';
 
+  rol:string='';
+
   miCarrito=(new CarritoModule());
 
   //ropaPlatzi:Product[]=[{id:'',title:'',price:0,description:'',category:'',image:''}];
  
   ngOnInit(): void {
     this.usuario=this.route.snapshot.params['usuario'];
+    this.rol=this.route.snapshot.params['rol'];
     /*this.productsService.getAllProducts().subscribe((data)=>{
       this.ropaPlatzi=data;
       console.log(this.ropaPlatzi);
@@ -121,7 +124,7 @@ export class PaginaInicioComponent {
 
   buscar(filtro:string){
 
-    this.router.navigate(['busqueda',this.usuario,filtro]);
+    this.router.navigate(['busqueda',this.usuario,filtro,this.rol]);
     console.log(filtro);
     
   }

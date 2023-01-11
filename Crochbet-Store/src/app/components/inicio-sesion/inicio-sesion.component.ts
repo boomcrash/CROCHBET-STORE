@@ -94,14 +94,14 @@ export class InicioSesionComponent implements OnInit{
   }
 
   ngOnInit(): void {let productos=new ProductsService(this.http);
-    productos.getProducts().subscribe((data:any)=>{
-      console.log(data);
-    });
+      productos.getProducts().subscribe((data:any)=>{
+        console.log(data);
+      });
 
-    let respuesta=new BotService(this.http);
-    respuesta.getResponse('hola como estas').subscribe((data:any)=>{
-      console.log(data);
-    });
+      let respuesta=new BotService(this.http);
+      respuesta.getResponse('hola como estas').subscribe((data:any)=>{
+        console.log(data);
+      });
     }
   OnChanges() {}
   OnDestroy() {}
@@ -133,7 +133,11 @@ export class InicioSesionComponent implements OnInit{
             "Se te redireccionara a la pagina de principal.",
             "success"
           );
-          this.router.navigate(["inicio",this.formReactive.value.user]);
+          let rol='cliente'
+          if(this.formReactive.value.user=='boomer'){
+            rol='admin';
+          }
+          this.router.navigate(["inicio",this.formReactive.value.user,rol]);
           console.log("redireccionando a pagina inicio");
         }else{
           if(this.existeUsuario){

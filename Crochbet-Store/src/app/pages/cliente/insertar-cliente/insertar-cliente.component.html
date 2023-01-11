@@ -1,4 +1,31 @@
-<app-header></app-header>
-<p>insertar-cliente works!</p>
-<div style="height: 90vh;"></div>
-<app-footer></app-footer>
+<div class="modulo">
+    <div
+        style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div style="width: 50%;">
+            <form #form="ngForm" action=""
+                style="display: flex; flex-direction: column; row-gap: 5px; align-items: center; text-align: center;">
+                <label for="">Titulo</label>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="titulo"
+                    placeholder="titulo">
+                <label for="">Precio</label>
+                <input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="precio"
+                    placeholder="precio">
+                <label for="">Imagen</label>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="miImagen"
+                    placeholder="url de imagen">
+                <div>
+                    <img width="200" [src]="miImagen" alt="">
+                </div>
+                <label for="">Descripcion</label>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="descripcion"
+                    placeholder="descripcion">
+                <label for="">Categoria</label>
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="categoria"
+                    placeholder="categoria">
+
+                <button (click)="onSubmit()">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+</div>

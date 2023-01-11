@@ -1,91 +1,16 @@
 <app-header></app-header>
 <div class="contenedor-admin">
-    <div class="subcontenedor-admin">
-        <h1>Administración</h1>
-        <div class="caja">
-            <h1>CLIENTE</h1>
-            
-            <div style="display: flex; justify-content: space-evenly; column-gap: 10px; width: fit-content">
-                <button class="boton" (click)="estado('agregar')">AGREGAR</button>
-                <button class="boton" (click)="estado('listar')">LISTAR</button>
-            </div>
-
-            <div class="modulo" *ngIf="Actualstatus=='listar' ; else add">
-                
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                    <ng-container matColumnDef="id">
-                        <th mat-header-cell *matHeaderCellDef> id </th>
-                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="title">
-                        <th mat-header-cell *matHeaderCellDef> Titulo </th>
-                        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="price">
-                        <th mat-header-cell *matHeaderCellDef> Precio </th>
-                        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="image">
-                        <th mat-header-cell *matHeaderCellDef> Imagen </th>
-                        <td  mat-cell *matCellDef="let element"><img style="width: 100px; height: 110px;" [src]="element.image" alt=""></td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="description">
-                        <th mat-header-cell *matHeaderCellDef> Desripcion </th>
-                        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="category">
-                        <th mat-header-cell *matHeaderCellDef> Categoria </th>
-                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="actions">
-                        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                        <td mat-cell *matCellDef="let element"> 
-                            <button  style="background-color: blue; color: white;" mat-raised-button color="primary" (click)="editarProducto(element.id)">Editar</button>
-                            <button  style="background-color: red; color: white;" mat-raised-button color="warn" (click)="eliminarProducto(element.id)">Eliminar</button>
-                        </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-
-            </div>
-
-            <ng-template #add>
-                <div class="modulo" *ngIf="Actualstatus=='agregar' ; else add">
-                    <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                        <div style="width: 50%;">
-                            <form #form="ngForm" action="" style="display: flex; flex-direction: column; row-gap: 5px; align-items: center; text-align: center;">
-                                <label for="">Titulo</label>
-                                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="titulo" placeholder="titulo">
-                                <label for="">Precio</label>
-                                <input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="precio" placeholder="precio">
-                                <label for="">Imagen</label>
-                                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="miImagen" placeholder="url de imagen">
-                                <div>
-                                    <img width="200" [src]="miImagen" alt="">
-                                </div>
-                                <label for="">Descripcion</label>
-                                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="descripcion" placeholder="descripcion">
-                                <label for="">Categoria</label>
-                                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="categoria" placeholder="categoria">
-
-                                <button (click)="onSubmit()">Agregar</button>
-                            </form>
-                        </div>
-                    </div>
-                    
-                </div>
-
-            </ng-template>
-        
-        </div>
+    <div class="botones">
+        <button (click)="mostrarComponente('clientes')" style="border-radius: 40px; width :fit-content; " class="boton">CLIENTES</button>
+        <button (click)="mostrarComponente('proveedores')" style="border-radius: 40px; width :fit-content; " class="boton">PROVEEDORES</button>
+        <button (click)="mostrarComponente('resenas')" style="border-radius: 40px; width :fit-content; " class="boton">RESEÑAS</button>
+        <button (click)="mostrarComponente('productos')" style="border-radius: 40px; width :fit-content; " class="boton">PRODUCTOS</button>
     </div>
+    <div class="contenedor-interno" *ngIf="actualTag=='clientes';else proovedor">
+       <app-listar-cliente></app-listar-cliente>
+    </div>
+    <ng-template #proovedor>
+        
+    </ng-template>
 </div>
 <app-footer></app-footer>

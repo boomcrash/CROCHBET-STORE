@@ -1,12 +1,35 @@
 .contenedor-admin{ 
     margin-top: 50px; width: 100%; height: auto; background-color: rgb(255, 255, 255);
-    display: flex; justify-content: center; align-items: center; text-align: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
 }
 
-.subcontenedor-admin{
+.botones{
+    display: flex; flex-direction: row; justify-content: space-evenly;
+    align-items: center; text-align: center; width:fit-content; height: auto;
+    margin-top: 40px;
+    border: 1px solid black;
+    border-radius: 20px ;
+    padding: 10px;
+    width: 80%;
+    background-color: rgb(52, 67, 80);
+    
+}
+
+.boton{
+    cursor: pointer;
+}
+
+
+
+.contenedor-interno{
     background-color: rgb(255, 255, 255); width: 100%; height: auto;
     display: flex; justify-content: center; align-items: center;
-     text-align: center;  flex-direction: column;
+     text-align: center;  flex-direction: column; box-shadow: 5px 5px 5px 5px black;
+     background-color: #f3f3f3f3;
+     margin-top: 40px;
+     height: auto;
+     padding-bottom: 40px;
+     width: 95%;
 }
 
 .caja{
@@ -32,4 +55,20 @@
 
 input{
     width: fit-content;
+}
+
+@media screen and (max-width:510px) {
+    .botones{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-items: center;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .botones{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
 }
