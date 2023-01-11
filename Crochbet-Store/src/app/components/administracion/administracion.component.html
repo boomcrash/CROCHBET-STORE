@@ -10,7 +10,19 @@
        <app-listar-producto></app-listar-producto>
     </div>
     <ng-template #proovedor>
-        
+        <div class="contenedor-interno" *ngIf="actualTag=='proveedores';else clientes">
+            <app-listar-proveedor></app-listar-proveedor>
+         </div>
+         <ng-template #clientes>
+            <div class="contenedor-interno" *ngIf="actualTag=='clientes';else resenas">
+                <app-listar-cliente></app-listar-cliente>
+             </div>
+             <ng-template #resenas>
+                <div class="contenedor-interno" *ngIf="actualTag=='resenas'">
+                    <app-listar-resenia></app-listar-resenia>
+                 </div>
+             </ng-template>
+         </ng-template>
     </ng-template>
 </div>
 <app-footer></app-footer>

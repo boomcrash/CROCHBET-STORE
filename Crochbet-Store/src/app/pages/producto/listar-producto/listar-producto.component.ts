@@ -68,11 +68,11 @@ export class ListarProductoComponent {
       this.dialog.open(EditarProductoComponent, {
         data: {
                 'id':idCliente,
-                'titulo':titulo,
-                'precio':precio,
-                'imagen':imagen,
-                'descripcion':descripcion,
-                'categoria':categoria
+                'title':titulo,
+                'price':precio,
+                'image':imagen,
+                'description':descripcion,
+                'category':categoria
               }
       });
   }
