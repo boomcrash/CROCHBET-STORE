@@ -10,38 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class EliminarClienteComponent {
 
-  id=0;
 
-  constructor(public dialogRef: MatDialogRef<EliminarClienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number){
-      this.id=data;
-      console.log(this.id);
-    }
-
-
-  productObject=ProductoModule.productos;
-
-  ngOnInit(): void {
-    
-  }
-
-  eliminarProducto(){
-    for (let index = 0; index < this.productObject.length; index++) {
-      if(this.productObject[index].id==this.id){
-        this.productObject.splice(index,1);
-        Swal.fire({
-          title: 'ELIMINADO EXITOSAMENTE',
-          text: 'Usted ha eliminado el cliente con id : '+this.id,
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        });
-        this.dialogRef.close();
-      }
-    }
-  }
-
-  salir(){
-    this.dialogRef.close();
-  }
 
 }

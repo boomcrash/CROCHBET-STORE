@@ -6,8 +6,8 @@
         <button (click)="mostrarComponente('resenas')" style="border-radius: 40px; width :fit-content; " class="boton">RESEÑAS</button>
         <button (click)="mostrarComponente('productos')" style="border-radius: 40px; width :fit-content; " class="boton">PRODUCTOS</button>
     </div>
-    <div class="contenedor-interno" *ngIf="actualTag=='clientes';else proovedor">
-       <app-listar-cliente></app-listar-cliente>
+    <div class="contenedor-interno" *ngIf="actualTag=='productos';else proovedor">
+       <app-listar-producto></app-listar-producto>
     </div>
     <ng-template #proovedor>
         
