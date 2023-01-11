@@ -21,7 +21,7 @@
                     <div class="contenedor-producto" *ngIf="filtrarProductos().length>0; else vacio">
                         <div class="producto" id="producto" *ngFor="let objeto of filtrarProductos() ; index as indice">
                             <div class="item">
-                                <div (click)="objeto.id">
+                                <div (click)="verProducto(objeto.id)">
                                     <img id="foto" [src]="objeto.image" alt="">
                                     <p> {{objeto.title}}</p>
                                     <p class="precio">$ {{objeto.price}}</p>

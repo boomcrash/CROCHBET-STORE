@@ -6,3 +6,10 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
+
+.caja{
+    width: 100%;
+}
+.subcontenedor-admin{
+    width: 100%;
+}

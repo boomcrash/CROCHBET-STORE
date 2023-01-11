@@ -1,23 +1,23 @@
 <div class="modificar-contenedor">
     <h1 style="color:red;">EDITAR PRODUCTO</h1>
     <form #formulario="ngForm" (ngSubmit)="modificarProducto()">
-        <label for="titulo">titulo</label>
+        <label for="titulo">Titulo</label>
         <input name="titulo" type="text" placeholder="titulo" [(ngModel)]="titulo" [ngModelOptions]="{ standalone: true }"> 
 
-        <label for="precio">precio</label>
+        <label for="precio">Precio</label>
         <input name="precio" type="number" placeholder="precio" [(ngModel)]="precio" [ngModelOptions]="{ standalone: true }">
 
-        <label for="imagen">imagen</label>
+        <label for="imagen">Imagen</label>
         <input name="imagen" type="text" placeholder="imagen" [(ngModel)]="imagen" [ngModelOptions]="{ standalone: true }">
 
         <div>
             <img width="200" [src]="imagen" alt="">
         </div>
 
-        <label for="descripcion">descripcion</label>
-        <input name="descripcion" type="text" placeholder="descripcion" [(ngModel)]="descripcion" [ngModelOptions]="{ standalone: true }">
+        <label for="descripcion">Descripcion</label>
+        <textarea class="descripcion" name="descripcion" type="text-area" placeholder="descripcion" [(ngModel)]="descripcion" [ngModelOptions]="{ standalone: true }"></textarea>
 
-        <label for="categoria">categoria</label>
+        <label for="categoria">Categoria</label>
         <input name="categoria" type="text" placeholder="categoria" [(ngModel)]="categoria" [ngModelOptions]="{ standalone: true }">
 
         <button>Modificar</button>

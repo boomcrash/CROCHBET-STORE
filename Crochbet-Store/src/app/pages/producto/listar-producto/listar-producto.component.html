@@ -1,7 +1,7 @@
 <div class="subcontenedor-admin">
     <h1>Administración</h1>
     <div class="caja">
-        <h1>CLIENTE</h1>
+        <h1>PRODUCTOS</h1>
 
         <div style="display: flex; justify-content: center; column-gap: 10px; width: 100%">
             <button class="boton" (click)="estado('agregar')">AGREGAR</button>
@@ -58,8 +58,8 @@
 
         </div>
 
-        <ng-template #add>
-            <app-insertar-producto></app-insertar-producto>
+        <ng-template #add style="width: 100%;">
+                <app-insertar-producto></app-insertar-producto>
         </ng-template>
 
     </div>
