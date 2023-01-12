@@ -36,17 +36,25 @@ export class BusquedaComponent {
     filtrarProductos(){
       let arrayProductos:Product[]=[];
       let filtrado=this.route.snapshot.params['filtro'];
+      let tipo=this.route.snapshot.params['tipo'];
+
+     
+
       console.log(filtrado)
       var regex = new RegExp(filtrado,'gi');
       console.log(regex);
-      arrayProductos=this.moduloProducto.filter(producto => producto.title.search(regex)!=-1 );
-      if(arrayProductos.length==0){
-        arrayProductos=this.moduloProducto.filter(producto => producto.category.search(regex)!=-1 );
-      }
+
       if(filtrado=='todos'){
         return this.moduloProducto;
       }else{
-        return arrayProductos;
+        if (tipo=='categoria'){
+          arrayProductos=this.moduloProducto.filter(producto => producto.category.search(regex)!=-1 );
+          return arrayProductos;
+        }else {
+          arrayProductos=this.moduloProducto.filter(producto => producto.title.search(regex)!=-1 );
+          return arrayProductos;
+        }
+        
       }
       
     }

@@ -124,7 +124,7 @@ export class PaginaInicioComponent {
 
   buscar(filtro:string){
 
-    this.router.navigate(['busqueda',this.usuario,filtro,this.rol]);
+    this.router.navigate(['busqueda',this.usuario,filtro,this.rol,'categoria']);
     console.log(filtro);
     
   }

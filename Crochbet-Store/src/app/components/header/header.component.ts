@@ -17,7 +17,7 @@ export class HeaderComponent {
 
   buscar(){
 
-    this.router.navigate(['busqueda',this.user,this.filtro,this.rol]);
+    this.router.navigate(['busqueda',this.user,this.filtro,this.rol,'titulo']);
     console.log(this.filtro);
 
   }
