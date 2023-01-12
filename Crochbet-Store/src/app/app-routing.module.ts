@@ -17,7 +17,8 @@ const routes: Routes = [
   {path:"insertarResenia/:usuario/:rol",component:InsertarReseniaComponent,pathMatch:'full'},
   {path:"administracion/:usuario/:rol",component:AdministracionComponent,pathMatch:'full'},
   {path:"administracion/:usuario/:rol/:modulo",component:AdministracionComponent,pathMatch:'full'},
-  {path:"pasarela",component:PasarelaPagoComponent}
+  {path:"pasarela",component:PasarelaPagoComponent},
+  {path:"resena/:usuario/:rol",component:InsertarReseniaComponent}
 
 ];
 

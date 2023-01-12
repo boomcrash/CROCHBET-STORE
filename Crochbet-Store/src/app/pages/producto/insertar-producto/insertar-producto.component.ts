@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-insertar-producto',
@@ -43,6 +44,16 @@ export class InsertarProductoComponent {
     if(existe==false){
       ProductoModule.categorias.push(this.categoria.toUpperCase());
     }
-    
+    Swal.fire({
+      title: 'INSERTADO EXITOSAMENTE',
+      text: 'Usted ha insertado el producto ',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+    this.titulo="";
+    this.precio=0;
+    this.miImagen='';
+    this.descripcion="";
+    this.categoria="";
    }
 }

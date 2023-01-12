@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from 'src/app/interfaces/product';
+import { Cliente } from 'src/app/interfaces/cliente';
 
 
 
@@ -216,8 +217,6 @@ export class ProductoModule {
     {id: 201, title: 'Bolso Rana', price: 38, description: 'Bolso tejido a crochet en forma de rana', category: 'Bolsos', image: 'https://i.pinimg.com/564x/38/2f/65/382f6598364e3ed326125bd408b79599.jpg'},
 
   ]
-
-
 
   filtrpoTitulo:Product[] = [];
   static categorias: string[] = ['BLUSAS', 'BRAZALETES','FALDAS','GORROS','SHORTS','PANTALONES','TRAJES','PAREOS','MEDIAS','TAPETES','ALFOMBRAS','COJINES','COBERTORES','ABRIGOS','CARDIGAN','BUFANDAS','GUANTES','ARETES','TURBANTES','BOLSOS'];

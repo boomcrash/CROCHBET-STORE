@@ -1,0 +1,15 @@
+<div class="modificar-contenedor">
+    <h1 style="color:red;">EDITAR PRODUCTO</h1>
+    <form #formulario="ngForm" (ngSubmit)="modificarCliente()">
+        <label for="titulo">Nombre</label>
+        <input name="titulo" type="text" placeholder="Nombre" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"> 
+
+        <label for="precio">Apellido</label>
+        <input name="precio" type="text" placeholder="Apellido" [(ngModel)]="apellido" [ngModelOptions]="{ standalone: true }">
+
+        <label for="imagen">Cedula</label>
+        <input name="imagen" type="text" placeholder="Cedula" [(ngModel)]="cedula" [ngModelOptions]="{ standalone: true }">
+
+        <button>Modificar</button>
+    </form>
+</div>

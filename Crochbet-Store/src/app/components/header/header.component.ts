@@ -60,7 +60,7 @@ export class HeaderComponent {
   }
 
   verResenas(){
-    this.router.navigate(['insertarResenia',this.user]);
+    this.router.navigate(['insertarResenia',this.user,this.rol]);
   }
 
   verAdministracion(){
