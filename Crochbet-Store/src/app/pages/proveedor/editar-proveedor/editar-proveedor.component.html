@@ -1,4 +1,21 @@
-<app-header></app-header>
-<p>editar-proveedor works!</p>
-<div style="height: 90vh;"></div>
-<app-footer></app-footer>
+<div class="modificar-contenedor">
+    <h1 style="color:red;">EDITAR PROVEEDOR</h1>
+    <form #formulario="ngForm" (ngSubmit)="modificarProveedor()">
+        <label for="nombre">Nombre</label>
+        <input name="nombre" type="text" placeholder="nombre" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"> 
+
+        <label for="ruc">Ruc</label>
+        <input name="ruc" type="number" placeholder="ruc" [(ngModel)]="ruc" [ngModelOptions]="{ standalone: true }">
+
+        <label for="telefono">Telefono</label>
+        <input name="telefono" type="number" placeholder="telefono" [(ngModel)]="telefono" [ngModelOptions]="{ standalone: true }">
+
+        <label for="correo">Correo</label>
+        <input name="correo" type="text" placeholder="correo" [(ngModel)]="correo" [ngModelOptions]="{ standalone: true }">
+
+        <label for="direccion"> Direccion</label>
+        <textarea class="direccion" name="direccion" type="text-area" placeholder="direccion" [(ngModel)]="direccion" [ngModelOptions]="{ standalone: true }"></textarea>
+
+        <button>Modificar</button> 
+    </form>  
+</div>
