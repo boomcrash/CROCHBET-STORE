@@ -55,4 +55,24 @@ button{
     width: fit-content;
     border: 1px solid #fcfcfcf3;
     box-shadow: 2px 2px 2px 2px #fffffff3;
+    margin: 10px;
+}
+@media screen and (max-width: 170px){
+    input {
+        width: 75%;
+        font-size: 10px;
+    }
+    label{
+        font-size: 10px;
+    }
+    button{
+        width: 50%;
+        font-size: 8px
+    }
+    textarea{
+        font-size: 10px;
+    }
+    form{
+        margin-top: 20px;
+    }
 }

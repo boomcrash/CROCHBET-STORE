@@ -17,7 +17,7 @@ export class InsertarProveedorComponent {
   constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) {
     this.formReactive=this.formBuilder.group(
       {
-        nombre:['',[Validators.required, Validators.maxLength(40), Validators.pattern(/^[a-z ,.'-]+$/i)]],
+        nombre:['',[Validators.required, Validators.pattern(/^[a-z ,.'-]+$/i)]],
         ruc:['',[Validators.required, Validators.minLength(13), Validators.maxLength(13), Validators.pattern(/^[0-9]{13}$/i)]],
         telefono:['',[Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]{10}$/i)]],
         correo: ['',[Validators.required,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)]],
