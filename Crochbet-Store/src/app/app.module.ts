@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -38,6 +38,10 @@ import { AdministracionComponent } from './components/administracion/administrac
 import { MatTableModule } from '@angular/material/table';
 import { ChatComponent } from './components/chat/chat.component';
 import { PasarelaPagoComponent } from './components/pasarela-pago/pasarela-pago.component';
+import { NgxSpinner } from 'ngx-spinner';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -77,9 +81,13 @@ import { PasarelaPagoComponent } from './components/pasarela-pago/pasarela-pago.
     ReactiveFormsModule ,
     HttpClientModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    NgxSpinnerModule,
+    NgxPayPalModule,
+    NgbModule
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
