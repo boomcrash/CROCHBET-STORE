@@ -1,9 +1,8 @@
 import { Component, Inject, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Cliente } from 'src/app/interfaces/cliente';
-import { Product } from 'src/app/interfaces/product';
 import { ClienteModule } from 'src/app/modules/cliente/cliente.module';
-import { ProductoModule } from 'src/app/modules/producto/producto.module';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,13 +11,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./editar-cliente.component.css']
 })
 export class EditarClienteComponent {
- 
 
   nombre:string="";
   apellido:string="";
-  cedula:string="";
+  ciudad:string="";
+  direccion:string="";
+  telefono: string='';
+  correo: string = ""
 
   id=0;
+  formReactive: any;
 
   constructor(public dialogRef: MatDialogRef<EditarClienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente){
@@ -26,14 +28,19 @@ export class EditarClienteComponent {
       console.log(this.id);
       this.nombre=data.nombre;
       this.apellido=data.apellido;
-      this.cedula=data.cedula;
+      this.ciudad=data.ciudad;
+      this.direccion=data.direccion;
+      this.telefono=data.telefono;
+      this.correo=data.correo;
+
     }
+
 
 
   clientesObject=ClienteModule.clientes;
 
   ngOnInit(): void {
-    
+
   }
 
   modificarCliente(){
@@ -41,7 +48,10 @@ export class EditarClienteComponent {
       if(this.clientesObject[index].id==this.id){
           this.clientesObject[index].nombre=this.nombre;
           this.clientesObject[index].apellido=this.apellido;
-          this.clientesObject[index].cedula=this.cedula;
+          this.clientesObject[index].ciudad=this.ciudad;
+          this.clientesObject[index].direccion=this.direccion;
+          this.clientesObject[index].telefono=this.telefono;
+          this.clientesObject[index].correo=this.correo;
         Swal.fire({
           title: 'EDITADO EXITOSAMENTE',
           text: 'Usted ha editado el cliente con id : '+this.id,

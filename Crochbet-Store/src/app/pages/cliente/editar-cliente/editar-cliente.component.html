@@ -1,14 +1,23 @@
 <div class="modificar-contenedor">
     <h1 style="color:red;">EDITAR PRODUCTO</h1>
     <form #formulario="ngForm" (ngSubmit)="modificarCliente()">
-        <label for="titulo">Nombre</label>
-        <input name="titulo" type="text" placeholder="Nombre" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"> 
+        <label for="nombre">Nombre</label>
+        <input name="nombre" type="text" placeholder="Nombre" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }">
 
-        <label for="precio">Apellido</label>
-        <input name="precio" type="text" placeholder="Apellido" [(ngModel)]="apellido" [ngModelOptions]="{ standalone: true }">
+        <label for="apellido">Apellido</label>
+        <input name="apellido" type="text" placeholder="Apellido" [(ngModel)]="apellido" [ngModelOptions]="{ standalone: true }">
 
-        <label for="imagen">Cedula</label>
-        <input name="imagen" type="text" placeholder="Cedula" [(ngModel)]="cedula" [ngModelOptions]="{ standalone: true }">
+        <label for="ciudad">Ciudad</label>
+        <input name="ciudad" type="text" placeholder="Ciudad" [(ngModel)]="ciudad" [ngModelOptions]="{ standalone: true }">
+
+        <label for="direccion">Dirección</label>
+        <textarea name="direccion" type="text" placeholder="Dirrección" [(ngModel)]="direccion" [ngModelOptions]="{ standalone: true }"></textarea>
+
+        <label for="telefono">Teléfono</label>
+        <input name="telefono" type="text" placeholder="Teléfono" [(ngModel)]="telefono" [ngModelOptions]="{ standalone: true }">
+
+        <label for="correo">Correo</label>
+        <input name="imagen" type="text" placeholder="correo" [(ngModel)]="correo" [ngModelOptions]="{ standalone: true }">
 
         <button>Modificar</button>
     </form>

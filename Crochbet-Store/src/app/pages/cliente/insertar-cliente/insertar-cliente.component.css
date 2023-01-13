@@ -5,7 +5,7 @@ input{
     border:1px solid #fffffff3;
     height: 20px;
     box-shadow: 2px 2px 2px 2px #fffffff3;
-    outline:none;  
+    outline:none;
 }
 
 input :focus{
@@ -42,4 +42,9 @@ button:hover{
 
 .foto:hover{
     box-shadow: 1px 1px 3px 4px white;
+}
+
+p{
+  color: white;
+  cursor: pointer;
 }

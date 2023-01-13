@@ -23,10 +23,10 @@ export class EliminarClienteComponent {
   clientesObject=ClienteModule.clientes;
 
   ngOnInit(): void {
-    
+
   }
 
-  eliminarProducto(){
+  eliminarCliente(){
     for (let index = 0; index < this.clientesObject.length; index++) {
       if(this.clientesObject[index].id==this.id){
         this.clientesObject.splice(index,1);
