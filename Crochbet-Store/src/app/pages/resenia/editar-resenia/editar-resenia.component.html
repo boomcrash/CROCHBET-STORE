@@ -1,4 +1,16 @@
-<app-header></app-header>
-<p>editar-resenia works!</p>
-<div style="height: 90vh;"></div>
-<app-footer></app-footer>
+<div class="modificar-contenedor">
+    <h1 style="color:red;">EDITAR RESEÑA</h1>
+    <form #formulario="ngForm" (ngSubmit)="modificarResenia()">
+        <label for="nombre">Nombre</label>
+        <input name="nombre" type="text" placeholder="Nombre" [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"> 
+
+        <label for="email">Correo Electronico</label>
+        <input name="email" type="text" placeholder="email" [(ngModel)]="email" [ngModelOptions]="{ standalone: true }">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" type="text-area" placeholder="mensaje" [(ngModel)]="mensaje" [ngModelOptions]="{ standalone: true }"></textarea>
+
+        <button>Modificar</button>
+        <button (click)="salir()">salir</button>
+    </form>
+</div>
