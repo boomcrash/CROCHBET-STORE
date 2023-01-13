@@ -13,7 +13,7 @@ import { EliminarReseniaComponent } from '../eliminar-resenia/eliminar-resenia.c
 })
 export class ListarReseniaComponent {
   constructor(public dialog:MatDialog){}
-  displayedColumns: string[] = ['id', 'nombre', 'email','mensaje','actions'];
+  displayedColumns: string[] = ['id','nombre','apellido','email','mensaje','actions'];
   dataSource:any=[];
 
   reseñasObject=ReseñaModule.reseñas;
@@ -21,13 +21,14 @@ export class ListarReseniaComponent {
     this.dataSource=new MatTableDataSource<Reseña>(this.reseñasObject as Reseña[]);
   }
 
-editarResenia(idReseña:number, nombre:string, email:string, mensaje:string){
+editarResenia(idReseña:number, nombre:string, apellido:string, email:string, mensaje:string){
   this.dialog.open(EditarReseniaComponent, {
     data: {
             'id':idReseña,
             'nombre':nombre,
-            'apellido':email,
-            'cedula':mensaje,
+            'apellido':apellido,
+            'email':email,
+            'mensaje':mensaje,
           }
   });
 }
