@@ -56,8 +56,8 @@ export class EditarProveedorComponent {
         this.proveedorObject[index].correo=this.correo;
         this.proveedorObject[index].direccion=this.direccion;
         Swal.fire({
-          title: 'EDITADO EXITOSAMENTE',
-          text: 'Usted ha editado el proveedor con id : '+this.id,
+          title: 'OPERACION EXITOSAMENTE',
+          text: 'Usted ha completado exitosamente la operacion del proveedor con id : '+this.id,
           icon: 'warning',
           confirmButtonText: 'OK'
         });
