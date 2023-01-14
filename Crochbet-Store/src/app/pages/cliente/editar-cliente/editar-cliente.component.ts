@@ -22,7 +22,7 @@ export class EditarClienteComponent {
   id=0;
   formReactive: any;
 
-  constructor(public dialogRef: MatDialogRef<EditarClienteComponent>,
+  constructor(private formBuilder:FormBuilder, public dialogRef: MatDialogRef<EditarClienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente){
       this.id=data.id;
       console.log(this.id);
@@ -32,6 +32,19 @@ export class EditarClienteComponent {
       this.direccion=data.direccion;
       this.telefono=data.telefono;
       this.correo=data.correo;
+
+      this.formReactive=this.formBuilder.group(
+        {
+          nombre:['',[Validators.required, Validators.maxLength(20), Validators.pattern(/^[a-z ,.'-]+$/i)]],//Validators.pattern("[A-Za-z]")
+          apellido:['',[Validators.required,Validators.maxLength(20), Validators.pattern(/^[a-z ,.'-]+$/i) ]],
+          ciudad:['',[Validators.required, Validators.pattern(/^[a-z ,.'-]+$/i)]],
+          direccion:['',[Validators.required,Validators.maxLength(20)]],
+          telefono:['',[Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(/^[0-9]{10}$/i)]],
+          correo: ['',[Validators.required,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)]]
+
+        }
+      )
+
 
     }
 
@@ -65,6 +78,65 @@ export class EditarClienteComponent {
 
   salir(){
     this.dialogRef.close();
+  }
+
+  getValue(value:string){
+    return this.formReactive.get(value)
+  }
+
+  abrirVentana(input:string){
+    if(input=="nombre"){
+      Swal.fire(
+        "NOMBRE INCORRECTO !",
+        "Su nombre debe tener un máximo de 20 caracteres <br> Ejemplo: Ruth Maria",
+        "error"
+      );
+    }else if(input=="apellido"){
+      Swal.fire(
+        "APELLIDO INCORRECTO!",
+        "Su nombre debe tener un máximo de 20 caracteres <br> Ejemplo: Quito Yambay",
+        "error"
+      );
+    }else if(input=="direccion"){
+      Swal.fire(
+        "DIRECCIÓN INCORRECTO !",
+        "Debe ingresar su dirección<br> Ejemplo: Coop. Juan Pablo II",
+        "error"
+      );
+    }else if(input=="ciudad"){
+      Swal.fire(
+        "CIUDAD INCORRECTO !",
+        "Ciudades: <br> Riobamba, Guayaquil, Ambato, Quevedo, Ambato, Manta <br>",
+        "error"
+      );
+
+    }else if(input== "telefono"){
+      Swal.fire(
+        "CIUDAD INCORRECTO !",
+        "El telefono debe: <br>1.- Tener 10 números <br> Ejemplo: 0934299134",
+        "error"
+      );
+    }else if(input== "correo"){
+      Swal.fire(
+        "CIUDAD INCORRECTO !",
+        "Ingrese correctamente su correo: <br>Ejemplo: ruth11@gmail.com",
+        "error"
+      );
+    }
+
+  }
+  //validación de ciudades
+  existe = false;
+  verificarCiudad(ciudad: string){
+    let ciudades = ClienteModule.ciudades;
+    for(let i=0; i<ciudades.length; i++){
+      if(ciudades[i].toLowerCase() ==ciudad.toLowerCase()){
+        this.existe = true;
+      }
+    }
+    if(this.existe){
+      alert('Esta ciudad existe')
+    }
   }
 
 }
