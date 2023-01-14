@@ -14,7 +14,7 @@
                 <p *ngIf="getValue('apellido')?.invalid && (getValue('apellido')?.touched || getValue('apellido')?.dirty)" (click)="abrirVentana('apellido')">Campo no cumple requisitos</p>
 
                 <label for="">Ciudad</label>
-                <input (keyup)="verificarCiudad(ciudad)" formControlName="ciudad" type="text" [(ngModel)]="ciudad"
+                <input formControlName="ciudad" type="text" [(ngModel)]="ciudad"
                     placeholder="Ciudad">
                 <p *ngIf="getValue('ciudad')?.invalid && (getValue('ciudad')?.touched || getValue('ciudad')?.dirty)" (click)="abrirVentana('ciudad')">Campo no cumple requisitos</p>
 
@@ -33,7 +33,7 @@
                     placeholder="Correo">
                 <p *ngIf="getValue('correo')?.invalid && (getValue('correo')?.touched || getValue('correo')?.dirty)" (click)="abrirVentana('correo')">Campo no cumple requisitos</p>
 
-                <button [disabled]="((!formReactive.valid) || (existe==false))">Agregar</button>
+                <button [disabled]="((!formReactive.valid))">Agregar</button>
             </form>
         </div>
     </div>

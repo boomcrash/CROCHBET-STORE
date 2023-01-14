@@ -55,7 +55,7 @@ export class InsertarClienteComponent {
     }
     ClienteModule.clientes.push(nuevo);
     Swal.fire({
-      title: 'INSERTADO EXITOSAMENTE',
+      title: 'OPERACIÓN EXITOSA',
       text: 'Usted ha insertado el cliente ',
       icon: 'success',
       confirmButtonText: 'OK'
@@ -66,7 +66,6 @@ export class InsertarClienteComponent {
     this.direccion= "";
     this.telefono= "";
     this.correo="";
-    this.existe=false;
    }
 
    getValue(value:string){
@@ -77,13 +76,13 @@ export class InsertarClienteComponent {
     if(input=="nombre"){
       Swal.fire(
         "NOMBRE INCORRECTO !",
-        "Su nombre debe tener un máximo de 20 caracteres <br> Ejemplo: Ruth Maria",
+        "El nombre no debe tener un mas de 20 caracteres, y no incluye números <br> Ejemplo: Ruth Maria",
         "error"
       );
     }else if(input=="apellido"){
       Swal.fire(
-        "APELLIDO INCORRECTO!",
-        "Su nombre debe tener un máximo de 20 caracteres <br> Ejemplo: Quito Yambay",
+        "NOMBRE INCORRECTO !",
+        "El apellido no debe tener un mas de 20 caracteres, y no incluye números <br> Ejemplo: Quito Yambay",
         "error"
       );
     }else if(input=="direccion"){
@@ -95,13 +94,13 @@ export class InsertarClienteComponent {
     }else if(input=="ciudad"){
       Swal.fire(
         "CIUDAD INCORRECTO !",
-        "El telefono debe: <br>1.- Tener 10 números <br> Ejemplo: 0934299134",
+        "Debe llenar este campo con ciudades ecuatorianas<br>",
         "error"
       );
     }else if(input== "telefono"){
       Swal.fire(
         "CIUDAD INCORRECTO !",
-        "Ciudades: <br> Riobamba, Guayaquil, Ambato, Quevedo, Ambato, Manta <br>",
+        "El telefono debe: <br>1.- Tener un max. de 10 números <br> Ejemplo: 0934299134",
         "error"
       );
     }else if(input== "correo"){
@@ -112,18 +111,5 @@ export class InsertarClienteComponent {
       );
     }
 
-  }
-  //validación de ciudades
-  existe = false;
-  verificarCiudad(ciudad: string){
-    let ciudades = ClienteModule.ciudades;
-    for(let i=0; i<ciudades.length; i++){
-      if(ciudades[i].toLowerCase() ==ciudad.toLowerCase()){
-        this.existe = true;
-      }
-    }
-    if(this.existe){
-      alert('Esta ciudad existe')
-    }
   }
 }

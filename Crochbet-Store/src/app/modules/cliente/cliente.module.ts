@@ -25,7 +25,7 @@ export class ClienteModule {
     {id: 10, nombre: 'Bestsaida Valentina' , apellido: 'Montero Herrera' , ciudad: 'Riobamba', direccion: 'Punin', telefono: '0923254093', correo: 'valentinaB@outlook.com'}
   ]
 
-  static ciudades = [
+/*   static ciudades = [
     'Cuenca', 'Gualaceo', 'Paute', 'Sigsig', 'Girón', 'San Fernando', 'Santa Isabel', 'Pucará', 'Nabón',
     'Cañar','Biblian', 'Azogue', 'La troncal', 'Guaranda', 'San Miguel de Bolivar', 'Caluma','Chillanes',
     'Echeandia', 'Chimbo', 'La asusción', 'La Magdalena', 'Mira', 'Bolivar', 'El angel', 'Huacana', 'Julio Andrade',
@@ -34,5 +34,5 @@ export class ClienteModule {
     'Guayaquil', 'Daule', 'Duran', 'El Empalme', 'Manta', 'Santa Elena', 'La libertad', 'Salinas', 'Loja', 'Macara', 'Macas',
     'Ibarra', 'Babahoyo', 'Buena Fe', 'Ventanas', 'Portoviejo', 'Chone', 'Bahia de Caraquez', 'El Carmen', 'Tena',
     'Puyo', 'Mera', 'Santo Domingo', 'Cayambe', 'Coocoto', 'Machachi', 'Ambato', 'Baños'
-  ]
+  ] */
 }

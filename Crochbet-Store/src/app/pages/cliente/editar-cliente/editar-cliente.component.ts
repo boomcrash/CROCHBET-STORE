@@ -66,7 +66,7 @@ export class EditarClienteComponent {
           this.clientesObject[index].telefono=this.telefono;
           this.clientesObject[index].correo=this.correo;
         Swal.fire({
-          title: 'EDITADO EXITOSAMENTE',
+          title: 'OPERACIÓN EXITOSA',
           text: 'Usted ha editado el cliente con id : '+this.id,
           icon: 'warning',
           confirmButtonText: 'OK'
@@ -88,7 +88,7 @@ export class EditarClienteComponent {
     if(input=="nombre"){
       Swal.fire(
         "NOMBRE INCORRECTO !",
-        "Su nombre debe tener un máximo de 20 caracteres <br> Ejemplo: Ruth Maria",
+        "El nombre no debe tener un mas de 20 caracteres, y no incluye números <br> Ejemplo: Ruth Maria",
         "error"
       );
     }else if(input=="apellido"){
@@ -106,7 +106,7 @@ export class EditarClienteComponent {
     }else if(input=="ciudad"){
       Swal.fire(
         "CIUDAD INCORRECTO !",
-        "Ciudades: <br> Riobamba, Guayaquil, Ambato, Quevedo, Ambato, Manta <br>",
+        "Debe llenar este campo, con ciudades ecuatorianas<br>",
         "error"
       );
 
@@ -125,18 +125,4 @@ export class EditarClienteComponent {
     }
 
   }
-  //validación de ciudades
-  existe = false;
-  verificarCiudad(ciudad: string){
-    let ciudades = ClienteModule.ciudades;
-    for(let i=0; i<ciudades.length; i++){
-      if(ciudades[i].toLowerCase() ==ciudad.toLowerCase()){
-        this.existe = true;
-      }
-    }
-    if(this.existe){
-      alert('Esta ciudad existe')
-    }
-  }
-
 }
