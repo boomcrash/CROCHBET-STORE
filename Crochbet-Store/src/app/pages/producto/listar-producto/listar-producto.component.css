@@ -8,8 +8,13 @@
 }
 
 .caja{
-    width: 100%;
+    width: 95%;
 }
 .subcontenedor-admin{
     width: 100%;
+    overflow: none;
+}
+
+.modulo{
+    overflow-x: auto;
 }

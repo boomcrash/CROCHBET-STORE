@@ -13,3 +13,15 @@
 .subcontenedor-admin{
     width: 100%;
 }
+
+.caja{
+    width: 95%;
+}
+.subcontenedor-admin{
+    width: 100%;
+    overflow: none;
+}
+
+.modulo{
+    overflow-x: auto;
+}
