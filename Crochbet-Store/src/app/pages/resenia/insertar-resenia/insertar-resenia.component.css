@@ -258,13 +258,13 @@
     }
     label{
         text-align: center;
-        width: 30%;
+        width: 25%;
         height: auto;
         margin: 0;
         padding: 0;
         color:white;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     }
     .mensaje{
         height :80px;
