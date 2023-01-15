@@ -1,7 +1,91 @@
 <app-header></app-header>
+<div class="cont-principal">
+    <h1 class="titular">DÉJANOS TU RESEÑA</h1>
+    <h4>¿QUE TE PARECIÓ LA TIENDA?</h4>
 
-<div style="margin-top:70px; height: 90vh;">
-<p>insertar-resenia works!</p>
-<p>HOLO COCO LANDIA</p>
+    <div class="imagen">
+        <img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiky9HTLiY023ePzR4m_DWERcfh7dIInw8qzmxAvtLZlffFD46iFrIag0-ftobUmplw1B1PrV8SgXRSX2ReQtf4vhyXC281VujhMV1kHCpMrcvV7g8TH1qk5wMU9qo_k_DQP268awYTHYBaJxEW_UeWVCOGwguPO9_O06IsJlKFjpQuKsyyGHYYbFxq/w547-h405/08337170-1035-47c3-a9c0-5a330c9a9bf3.png">
+    </div>
+    
+    <div class="modulo">
+        <div class="cont-form" >
+            <div>
+                <form [formGroup]="formularioResenia" (ngSubmit)="onSubmit()" class="form">
+                    <label for="">Nombre</label>
+                    <input type="text"  formControlName="nombre" [(ngModel)]="nombre" required pattern="[a-zA-Z ]{2,10}" 
+                        placeholder="Nombre">
+                    <div *ngIf="this.formularioResenia.get('nombre')?.errors?.['required']" style="color: yellow;">
+                        (! debe ingrersar el nombre)
+                    </div>
+                    <div *ngIf="this.formularioResenia.get('nombre')?.errors?.['pattern']" style="color: red;">
+                        (! solo se permite ingresar letras)
+                    </div>
+
+                    <label for="">Apellido</label>
+                    <input type="text" formControlName="apellido" [(ngModel)]="apellido"
+                        placeholder="apellido" required pattern="[a-zA-Z ]{2,20}">
+                        <div *ngIf="this.formularioResenia.get('apellido')?.errors?.['required']" style="color: yellow;">
+                            (! debe ingrersar el apellido)
+                        </div>
+                        <div *ngIf="this.formularioResenia.get('apellido')?.errors?.['pattern']" style="color: red;">
+                            (! solo se permite ingresar letras)
+                        </div>
+
+                    <label for="">Correo electronico</label>
+                    <input type="text" name="email" formControlName="email" [(ngModel)]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                        placeholder="email">
+                        <div *ngIf="this.formularioResenia.get('email')?.errors?.['required']" style="color: yellow;">
+                        (! El mail no puede quedar vacio)
+                        </div>
+                        <div *ngIf="this.formularioResenia.get('email')?.errors?.['pattern']" style="color: red;">
+                            (! El mail no es valido)
+                        </div>
+                              
+                    <label for="">Mensaje</label>
+                    <textarea  formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
+                        placeholder="mensaje" required></textarea>
+                    <div *ngIf="this.formularioResenia.get('mensaje')?.errors?.['required']" style="color: yellow;">
+                            (! El mensaje no puede quedar vacío)
+                    </div>
+                    <div *ngIf="this.formularioResenia.get('mensaje')?.errors?.['maxLength']" style="color: red;">
+                        (! ha llegado al manximo de caracteres permitidos)
+                    </div>
+
+                    <button type="submit" (click)="onSubmit()" [disabled]="!formularioResenia.valid"  >Agregar</button>
+                </form>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="grid-container">
+        <div class="grid-item">
+            <p class="textos">
+                <strong class="comilla">❝</strong> fascinan los diseños y el estilo de las prendas que adquirí,
+                hice mi compra en línea y me dieron una atención súper personalizada
+                lo cual me sirvió mucho a decidir. El envío súper rápido y me encantó
+                 Gracias.
+            </p>
+            <strong class="user">Rosa Amelia </strong>
+        </div>
+        <div class="grid-item">
+            <p class="textos">
+                <strong class="comilla">❝</strong> Las tres prendas que compré están divinas, los diseños me encantaron, 
+                la tela que utilizan está increíble, súper fresca y cómoda. ¡El envío fue rapídisimo!
+                ¡Muchas gracias! Sin duda, volvería a comprar en CROCHBET STORE
+                
+            </p>
+            <strong class="user">KARLA GARCIA</strong>
+            
+        </div>
+        <div class="grid-item">
+            <p class="textos">
+                <strong class="comilla">❝</strong> ME ENCANTARON AMBOS PANTALONES.
+                 COMPRAR EN LINEA ES DIFICIL POR LAS TALLAS PERO REALMENTE MUY BUEN CORTE Y TELAS.
+                  ADEMÁS EL ENVIO FUE MUY RAPIDO! FELICIDADES!!
+            </p>
+            <strong class="user" style="">Juan Carlos Osorio</strong>
+        </div>
+      </div>
 </div>
 <app-footer></app-footer>

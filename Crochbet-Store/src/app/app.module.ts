@@ -18,7 +18,6 @@ import { ListarClienteComponent } from './pages/cliente/listar-cliente/listar-cl
 import { EditarClienteComponent } from './pages/cliente/editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from './pages/cliente/eliminar-cliente/eliminar-cliente.component';
 import { InsertarClienteComponent } from './pages/cliente/insertar-cliente/insertar-cliente.component';
-
 import { ListarProveedorComponent } from './pages/proveedor/listar-proveedor/listar-proveedor.component';
 import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/editar-proveedor.component';
 import { EliminarProveedorComponent } from './pages/proveedor/eliminar-proveedor/eliminar-proveedor.component';

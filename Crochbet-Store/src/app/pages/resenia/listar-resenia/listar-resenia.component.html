@@ -1,2 +1,55 @@
-<h1>Reseñas</h1>
-<div style="height: 90vh;"></div>
+<div class="subcontenedor-admin">
+    <h1>Administración</h1>
+    <div class="caja">
+        <h1>RESEÑAS</h1>
+
+        
+
+        <div class="modulo">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="id" >
+                    <th class="id" mat-header-cell *matHeaderCellDef> id </th>
+                    <td class="id" mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th class="nombre" mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td  class="nombre" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="apellido" class="apellido">
+                    <th class="apellido" mat-header-cell *matHeaderCellDef> Apellido </th>
+                    <td class="apellido" mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email" >
+                    <th class="email" mat-header-cell *matHeaderCellDef> Direccion de email </th>
+                    <td class="email" mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="mensaje" >
+                    <th class="mensaje" mat-header-cell *matHeaderCellDef> Mensaje </th>
+                    <td class="mensaje" mat-cell *matCellDef="let element"> {{element.mensaje}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th class="actions" mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let element" class="actions">
+                        <button style="background-color: blue; color: white;" mat-raised-button color="primary"
+                            (click)="editarResenia(element.id,element.nombre,element.apellido,element.email,element.mensaje)">Editar</button>
+                        <button style="background-color: red; color: white;" mat-raised-button color="warn"
+                            (click)="eliminarResenia(element.id)">Eliminar</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+
+        
+
+    </div>
+</div>

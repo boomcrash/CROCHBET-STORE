@@ -1,0 +1,328 @@
+
+/* Pantallas pequeñas (móviles) */
+@media only screen and (max-width: 600px) {
+/* Reglas de diseño para pantallas pequeñas */
+.cont-principal{
+    margin-top:70px;
+     height: 150vh;
+     align-items: center;
+}
+.modulo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+    text-align: center; 
+}
+.grid-container {
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:  rgb(87, 82, 82);
+    }
+    .grid-item {
+    flex-flow: column;
+    align-items: flex-end;
+    border-radius: 10px;
+    width: 95%;
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 10px 10px 0 rgb(5 5 5);
+    }
+    .comilla{
+    font-size: 18px;
+    }
+    .textos{
+    font-size: 12px;
+    }
+    .user{
+    font-size: 12px;
+    }
+    .mensaje{
+        height :80px;
+        width: 70%;
+        border-radius: 5px;
+    }
+    input {
+        box-shadow: 2px 2px 2px 2px #fffffff3;
+        border:1px solid #fffffff3;
+        height: 30%;
+        width: 70%;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        outline:none;  
+    }   
+    label{
+        text-align: center;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        color:white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    }
+    .cont-form{
+        border-radius: 30px;
+        margin-top: 20px;
+        background-color: rgb(51, 51, 51);
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .logo{
+        display:none;
+        margin:auto;
+        width: 150px;
+        height: 120px;
+    }
+}
+/* Pantallas medianas (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+/* Reglas de diseño para pantallas medianas */
+.cont-principal{
+    margin-top:70px;
+     height: 185vh;
+}
+.modulo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color:  rgb(87, 82, 82);
+    margin-top: 50px;
+    height: 500px;
+    }
+.grid-item {
+    flex-flow: column;
+    align-items: flex-end;
+    border-radius: 10px;
+    width: 90%;
+    height: 30%;
+    margin-left: 35px;
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    }
+    .comilla{
+    font-size: 25px;
+    }
+    .textos{
+    font-size: 14px;
+    }
+    .user{
+    font-size: 14px;
+    position: absolute;
+    right: 70px;
+    }
+    input {
+        box-shadow: 2px 2px 2px 2px #fffffff3;
+        border:1px solid #fffffff3;
+        height: 30%;
+        width: 70%;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        outline:none;  
+    }
+    label{
+        text-align: center;
+        width: 30%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        color:white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    }
+    .mensaje{
+        height :80px;
+        width: 80%;
+        border-radius: 5px;
+    }
+    .cont-form{
+        border-radius: 30px;
+        margin-top: 20px;
+        background-color: rgb(51, 51, 51);
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+    }
+    .form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        align-items: center;
+        text-align: center; 
+    }
+    .logo{
+        display:block;
+        margin:auto;
+        width: 150px;
+        height: 120px;
+    }
+    }
+
+    /* Pantallas grandes (escritorio) */
+@media only screen and (min-width: 901px ) {
+/* Reglas de diseño para pantallas grandes */
+.cont-principal{
+    margin-top:70px;
+     height: 160vh;
+}
+.modulo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    height: 350px;
+
+    align-items: center;
+    background-color:  rgb(87, 82, 82);
+    margin-top: 50px;
+}
+.grid-item {
+    
+    width: 25%;
+    margin-left: 100px;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-end;
+    flex-flow: column;
+    flex-basis: 20%;
+    box-shadow: 0 10px 10px 0 rgb(5 5 5);
+    text-align: justify;
+    font-style: italic;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 80%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    }
+    .comilla{
+    font-size: 30px;
+    }
+    .textos{
+    font-size: 16px;
+    }
+    .user{
+    font-size: 16px;
+    }
+    input {
+        box-shadow: 2px 2px 2px 2px #fffffff3;
+        border:1px solid #fffffff3;
+        height: 30%;
+        width: 70%;
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        outline:none;  
+    }
+    label{
+        text-align: center;
+        width: 25%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        color:white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    }
+    .mensaje{
+        height :80px;
+        width: 80%;
+    }
+    .cont-form{
+        border-radius: 30px;
+        margin-top: 20px;
+        background-color: rgb(51, 51, 51);
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 550px;
+    }
+    .form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        align-items: center;
+        text-align: center; 
+    }
+    .logo{
+        display:block;
+        margin:auto;
+        width: 150px;
+        height: 120px;
+    }
+    }
+
+button{
+    background-color: white;
+    margin-top: 10px;
+    height: 30px;
+    width: fit-content;
+    border: 1px solid #fcfcfcf3;
+    box-shadow: 2px 2px 2px 2px #fffffff3;
+    cursor: pointer;
+}
+
+button:hover{
+    box-shadow: 1px 4px 7px 8px black;
+}
+.titular{
+    width: auto;
+    text-align: center;
+    font-size: 50px;
+    font-family: serif;
+    color: rgb(51, 51, 51);
+}
+h4{
+    text-align: center;
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(51, 51, 51);
+}
+
+  

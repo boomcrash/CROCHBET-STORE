@@ -1,4 +1,45 @@
-<app-header></app-header>
-<p>editar-resenia works!</p>
-<div style="height: 90vh;"></div>
-<app-footer></app-footer>
+<div class="modificar-contenedor">
+    <h1 class="titulo">EDITAR RESEÑA</h1>
+    <form #formulario="ngForm" [formGroup]="formularioEditarResenia" (ngSubmit)="modificarResenia()">
+        
+        <label for="nombre">Nombre</label>
+        <input name="nombre" type="text" placeholder="Nombre"  formControlName="nombre" [(ngModel)]="nombre" required pattern="[a-zA-Z ]{2,10}"> 
+        <div class="error" *ngIf="this.formularioEditarResenia.get('nombre')?.errors?.['required']" style="color: yellow;">
+            (! debe ingrersar el nombre)
+        </div>
+        <div class="error" *ngIf="this.formularioEditarResenia.get('nombre')?.errors?.['pattern']" style="color: red;">
+            (! solo se permite ingresar letras)
+        </div>
+
+        <label for="apellido">Apellido</label>
+        <input name="apellido" type="text" placeholder="apellido"  formControlName="apellido" [(ngModel)]="apellido" required pattern="[a-zA-Z ]{2,10}"> 
+        <div class="error" *ngIf="this.formularioEditarResenia.get('apellido')?.errors?.['required']" style="color: yellow;">
+            (! debe ingrersar el apellido)
+        </div>
+        <div class="error" *ngIf="this.formularioEditarResenia.get('apellido')?.errors?.['pattern']" style="color: red;">
+            (! solo se permite ingresar letras)
+        </div>
+
+        <label for="email">Correo electronico</label>
+        <input name="email" type="text" formControlName="email" [(ngModel)]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+        placeholder="email">
+        <div class="error" *ngIf="this.formularioEditarResenia.get('email')?.errors?.['required']" style="color: yellow;">
+            (! El mail no puede quedar vacio)
+        </div>
+        <div class="error" *ngIf="this.formularioEditarResenia.get('email')?.errors?.['pattern']" style="color: red;">
+            (! El mail no es valido)
+        </div>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea rows="10" cols="70" formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
+        placeholder="mensaje" required></textarea>
+        <div class="error" *ngIf="this.formularioEditarResenia.get('mensaje')?.errors?.['required']" style="color: yellow;">
+            (! El mensaje no puede quedar vacío)
+        </div>
+        <div class="error" *ngIf="this.formularioEditarResenia.get('mensaje')?.errors?.['maxLength']" style="color: red;">
+            (! ha llegado al manximo de caracteres permitidos)
+        </div>
+
+        <button [disabled]="!formularioEditarResenia.valid">Modificar</button>
+    </form>
+</div>
