@@ -1,6 +1,6 @@
 <div class="modificar-contenedor">
     <h1 class="titulo">EDITAR RESEÑA</h1>
-    <form #formulario="ngForm" [formGroup]="formularioEditarResenia" (ngSubmit)="modificarResenia()">
+    <form id="form" #formulario="ngForm" [formGroup]="formularioEditarResenia" (ngSubmit)="modificarResenia()">
         
         <label for="nombre">Nombre</label>
         <input name="nombre" type="text" placeholder="Nombre"  formControlName="nombre" [(ngModel)]="nombre" required pattern="[a-zA-Z ]{2,10}"> 
@@ -31,7 +31,7 @@
         </div>
 
         <label for="mensaje">Mensaje</label>
-        <textarea rows="10" cols="70" formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
+        <textarea id="area" rows="10" cols="70" formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
         placeholder="mensaje" required></textarea>
         <div class="error" *ngIf="this.formularioEditarResenia.get('mensaje')?.errors?.['required']" style="color: yellow;">
             (! El mensaje no puede quedar vacío)
@@ -39,7 +39,10 @@
         <div class="error" *ngIf="this.formularioEditarResenia.get('mensaje')?.errors?.['maxLength']" style="color: red;">
             (! ha llegado al manximo de caracteres permitidos)
         </div>
-
-        <button [disabled]="!formularioEditarResenia.valid">Modificar</button>
+        <div style="width: 50%;">
+            <button [disabled]="!formularioEditarResenia.valid">Modificar</button>
+            <div style="height: 30px; cursor: pointer; color: red; background-color: white; margin-top: 5px; font-weight: bold; width: 50%;" (click)="salir()">Cancelar</div> 
+        </div>
+        
     </form>
 </div>

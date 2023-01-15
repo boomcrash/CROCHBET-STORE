@@ -1,6 +1,6 @@
 <div class="modificar-contenedor">
 
-    <form #formulario="ngForm" (ngSubmit)="modificarCliente()" [formGroup]="formReactive">
+    <form  id="form" #formulario="ngForm" (ngSubmit)="modificarCliente()" [formGroup]="formReactive">
         <div>
           <label for="nombre">Nombre: </label>
         <input formControlName="nombre" name="nombre" type="text" placeholder="Nombre" [(ngModel)]="nombre">
@@ -37,9 +37,9 @@
         <p *ngIf="getValue('correo')?.invalid && (getValue('correo')?.touched || getValue('correo')?.dirty)" (click)="abrirVentana('correo')">Campo no cumple requisitos</p>
         </div>
 
-        <div>
+        <div style="width: 50%;">
           <button [disabled]="((!formReactive.valid))">Modificar</button>
-          <button (click)="salir()">Salir</button>
+          <div style="height: 30px; cursor: pointer; color: red; background-color: white; margin-top: 5px; font-weight: bold; width: 50%;" (click)="salir()">Cancelar</div> 
         </div>
     </form>
 </div>

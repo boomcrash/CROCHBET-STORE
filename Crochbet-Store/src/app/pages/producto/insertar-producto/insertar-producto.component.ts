@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
 import Swal from 'sweetalert2';
 
@@ -9,7 +12,19 @@ import Swal from 'sweetalert2';
 })
 export class InsertarProductoComponent {
   
-  constructor() { }
+
+  formReactive:FormGroup;
+
+  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) {
+    this.formReactive=this.formBuilder.group(
+      {
+        titulo:['',[Validators.required,, Validators.minLength(3), Validators.maxLength(20)]],//Validators.pattern("[A-Za-z]")
+        precio:['',[Validators.required,Validators.minLength(1), Validators.pattern(/^[0-9]{1,4}$/i)]],
+        imagen:['',[Validators.required]],
+        descripcion:['',[Validators.required, Validators.minLength(10), Validators.maxLength(100)]],
+        categoria:['',[Validators.required,Validators.minLength(4)]]      }
+    )
+  }
   
   titulo:string="";
   precio:number=0;

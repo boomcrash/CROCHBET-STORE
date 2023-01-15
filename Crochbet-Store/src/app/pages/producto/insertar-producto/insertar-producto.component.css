@@ -43,3 +43,40 @@ button:hover{
 .foto:hover{
     box-shadow: 1px 1px 3px 4px white;
 }
+
+#pre-form{
+    width: 25%;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    #pre-form{
+      width: 50%;
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    #pre-form{
+      width: 65%;
+    }
+  }
+   
+  @media screen and (max-width: 302px) {
+    input{
+      width: 50%;
+      font-size: 8px;
+     }
+     label{
+      font-size: 10px;
+     }
+    button{
+      width: 50%;
+      font-size: 8px;
+    }
+    textarea{
+      font-size: 8px;
+    }
+    #pre-form{
+      width: 80%;
+    }
+  }
+  

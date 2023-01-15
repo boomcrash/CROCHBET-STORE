@@ -1,25 +1,28 @@
 <div class="modificar-contenedor">
     <h1 style="color:red;">EDITAR PRODUCTO</h1>
-    <form #formulario="ngForm" (ngSubmit)="modificarProducto()">
+    <form id="form" #f="ngForm" (ngSubmit)="modificarProducto()" [formGroup]="formReactive"  #form="ngForm">
         <label for="titulo">Titulo</label>
-        <input name="titulo" type="text" placeholder="titulo" [(ngModel)]="titulo" [ngModelOptions]="{ standalone: true }"> 
+        <input formControlName="titulo" name="titulo" type="text" placeholder="titulo" [(ngModel)]="titulo" > 
 
         <label for="precio">Precio</label>
-        <input name="precio" type="number" placeholder="precio" [(ngModel)]="precio" [ngModelOptions]="{ standalone: true }">
+        <input formControlName="precio" name="precio" type="number" placeholder="precio" [(ngModel)]="precio" >
 
         <label for="imagen">Imagen</label>
-        <input name="imagen" type="text" placeholder="imagen" [(ngModel)]="imagen" [ngModelOptions]="{ standalone: true }">
+        <input formControlName="imagen" name="imagen" type="text" placeholder="imagen" [(ngModel)]="imagen" >
 
         <div>
-            <img width="200" [src]="imagen" alt="">
+            <img width="100" height="100" [src]="imagen" alt="">
         </div>
 
         <label for="descripcion">Descripcion</label>
-        <textarea class="descripcion" name="descripcion" type="text-area" placeholder="descripcion" [(ngModel)]="descripcion" [ngModelOptions]="{ standalone: true }"></textarea>
+        <textarea formControlName="descripcion" class="descripcion" name="descripcion" type="text-area" placeholder="descripcion" [(ngModel)]="descripcion" ></textarea>
 
         <label for="categoria">Categoria</label>
-        <input name="categoria" type="text" placeholder="categoria" [(ngModel)]="categoria" [ngModelOptions]="{ standalone: true }">
+        <input formControlName="categoria" name="categoria" type="text" placeholder="categoria" [(ngModel)]="categoria">
 
-        <button>Modificar</button>
+        <div style="width: 50%;">
+            <button [disabled]="((!formReactive.valid))">Modificar</button>
+            <div style="height: 30px; cursor: pointer; color: red; background-color: white; margin-top: 5px; font-weight: bold; width: 50%;" (click)="salir()">Cancelar</div> 
+        </div>
     </form>
 </div>

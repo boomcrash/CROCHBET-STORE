@@ -15,6 +15,10 @@
     
 }
 
+.botones button{
+    width :20%; height: 50px; 
+}
+
 .boton{
     cursor: pointer;
 }
@@ -62,6 +66,10 @@ input{
         display: grid;
         grid-template-columns: 50% 50%;
         justify-items: center;
+        row-gap: 10px;
+    }
+    .botones button{
+        width :80%; height: 50px; 
     }
 }
 

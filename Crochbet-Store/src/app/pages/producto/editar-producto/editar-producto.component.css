@@ -56,3 +56,49 @@ button{
     border: 1px solid #fcfcfcf3;
     box-shadow: 2px 2px 2px 2px #fffffff3;
 }
+
+#form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    row-gap: 10px;
+}
+
+#form{
+    width: 25%;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    #form{
+      width: 50%;
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    #form{
+      width: 65%;
+    }
+  }
+   
+  @media screen and (max-width: 302px) {
+    input{
+      width: 50%;
+      font-size: 8px;
+     }
+     label{
+      font-size: 10px;
+     }
+    button{
+      width: 50%;
+      font-size: 8px;
+    }
+    textarea{
+      font-size: 8px;
+    }
+    #form{
+      width: 80%;
+    }
+  }
+  

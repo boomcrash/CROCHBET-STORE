@@ -1,6 +1,6 @@
 <div class="modificar-contenedor">
     <h1 style="color:red;">EDITAR PROVEEDOR</h1>
-    <form #formulario="ngForm" (ngSubmit)="modificarProveedor()" [formGroup]="formReactive">
+    <form id="form" #formulario="ngForm" (ngSubmit)="modificarProveedor()" [formGroup]="formReactive">
         
         <label for="nombre">Nombre</label>
         <input name="nombre" type="text" formControlName="nombre" placeholder="nombre" [(ngModel)]="nombre"> 
@@ -23,9 +23,9 @@
         <p *ngIf="getValue('direccion')?.invalid && (getValue('direccion')?.touched || getValue('direccion')?.dirty)" (click)="abrirVentana('direccion')">Campo no cumple requisitos</p>
 
         
-        <div>
-            <button [disabled]="((!formReactive.valid))">Modificar</button> 
-            <button (click)="salir()">Cancelar</button> 
+        <div  style="width: 50%;">
+            <button [disabled]="(!formReactive.valid)">Modificar</button> 
+            <div style="height: 30px; width: 50%; cursor: pointer; color: red; background-color: white; margin-top: 5px; font-weight: bold;" (click)="salir()">Cancelar</div> 
         </div>
     </form>  
 </div>

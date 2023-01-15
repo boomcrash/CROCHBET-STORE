@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div class="contenedor-admin">
     <div class="botones">
-        <button (click)="mostrarComponente('clientes')" style="border-radius: 40px; width :fit-content; " class="boton">CLIENTES</button>
-        <button (click)="mostrarComponente('proveedores')" style="border-radius: 40px; width :fit-content; " class="boton">PROVEEDORES</button>
-        <button (click)="mostrarComponente('resenas')" style="border-radius: 40px; width :fit-content; " class="boton">RESEÑAS</button>
-        <button (click)="mostrarComponente('productos')" style="border-radius: 40px; width :fit-content; " class="boton">PRODUCTOS</button>
+        <button (click)="mostrarComponente('clientes')" style="border-radius: 40px; " class="boton">CLIENTES</button>
+        <button (click)="mostrarComponente('proveedores')" style="border-radius: 40px; " class="boton">PROVEEDORES</button>
+        <button (click)="mostrarComponente('resenas')" style="border-radius: 40px; " class="boton">RESEÑAS</button>
+        <button (click)="mostrarComponente('productos')" style="border-radius: 40px;  " class="boton">PRODUCTOS</button>
     </div>
     <div class="contenedor-interno" *ngIf="actualTag=='productos';else proovedor">
        <app-listar-producto style="width: 100%;"></app-listar-producto>
