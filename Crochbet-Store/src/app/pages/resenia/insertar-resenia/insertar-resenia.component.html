@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div style="margin-top:70px; height: 150vh;">
+<div class="cont-principal">
     <h1 class="titular">DÉJANOS TU RESEÑA</h1>
     <h4>¿QUE TE PARECIÓ LA TIENDA?</h4>
 
@@ -7,11 +7,10 @@
         <img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiky9HTLiY023ePzR4m_DWERcfh7dIInw8qzmxAvtLZlffFD46iFrIag0-ftobUmplw1B1PrV8SgXRSX2ReQtf4vhyXC281VujhMV1kHCpMrcvV7g8TH1qk5wMU9qo_k_DQP268awYTHYBaJxEW_UeWVCOGwguPO9_O06IsJlKFjpQuKsyyGHYYbFxq/w547-h405/08337170-1035-47c3-a9c0-5a330c9a9bf3.png">
     </div>
     
-    <div class="modulo" style="width:100%;  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; ">
-        <div style="border-radius: 30px; margin-top: 20px; background-color: rgb(51, 51, 51); width: 25%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-            <div style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
-                <form [formGroup]="formularioResenia" (ngSubmit)="onSubmit()"
-                style="width: 100%; display: flex; flex-direction: column; row-gap: 5px; align-items: center; text-align: center;">
+    <div class="modulo">
+        <div class="cont-form" >
+            <div>
+                <form [formGroup]="formularioResenia" (ngSubmit)="onSubmit()" class="form">
                     <label for="">Nombre</label>
                     <input type="text"  formControlName="nombre" [(ngModel)]="nombre" required pattern="[a-zA-Z ]{2,10}" 
                         placeholder="Nombre">
@@ -43,7 +42,7 @@
                         </div>
                               
                     <label for="">Mensaje</label>
-                    <textarea rows="10" cols="70" formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
+                    <textarea  formControlName="mensaje" class="mensaje" type="text"  [(ngModel)]="mensaje"
                         placeholder="mensaje" required></textarea>
                     <div *ngIf="this.formularioResenia.get('mensaje')?.errors?.['required']" style="color: yellow;">
                             (! El mensaje no puede quedar vacío)
@@ -61,7 +60,7 @@
     
     <div class="grid-container">
         <div class="grid-item">
-            <p>
+            <p class="textos">
                 <strong class="comilla">❝</strong> fascinan los diseños y el estilo de las prendas que adquirí,
                 hice mi compra en línea y me dieron una atención súper personalizada
                 lo cual me sirvió mucho a decidir. El envío súper rápido y me encantó
@@ -70,7 +69,7 @@
             <strong class="user">Rosa Amelia </strong>
         </div>
         <div class="grid-item">
-            <p>
+            <p class="textos">
                 <strong class="comilla">❝</strong> Las tres prendas que compré están divinas, los diseños me encantaron, 
                 la tela que utilizan está increíble, súper fresca y cómoda. ¡El envío fue rapídisimo!
                 ¡Muchas gracias! Sin duda, volvería a comprar en CROCHBET STORE
@@ -80,7 +79,7 @@
             
         </div>
         <div class="grid-item">
-            <p>
+            <p class="textos">
                 <strong class="comilla">❝</strong> ME ENCANTARON AMBOS PANTALONES.
                  COMPRAR EN LINEA ES DIFICIL POR LAS TALLAS PERO REALMENTE MUY BUEN CORTE Y TELAS.
                   ADEMÁS EL ENVIO FUE MUY RAPIDO! FELICIDADES!!

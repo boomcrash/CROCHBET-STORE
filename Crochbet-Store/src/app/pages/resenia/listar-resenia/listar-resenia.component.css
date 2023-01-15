@@ -1,0 +1,65 @@
+
+/* Pantallas pequeñas (móviles) */
+
+@media only screen and (max-width: 332px) {
+    .nombre, .apellido, .email{
+        display: none;
+        
+    }
+    .mensaje, .id, .nombre{
+        text-align: center;
+        color: black bold;
+        font-size: 12px;
+    }
+    .caja{
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    .modulo{
+        align-items: center;
+        width: 100%;
+    }
+    .mat-elevation-z8{
+        width: 100%;
+    }
+    
+
+}
+
+.subcontenedor-admin{
+    width: 100%;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .apellido, .email{
+        display: none;
+    }
+    .caja{
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        color: rgb(41, 38, 38);
+    }
+    
+    .modulo{
+        align-items: center;
+        width: 100%;
+    }
+    .mat-elevation-z8{
+        width: 100%;
+    }
+    .mensaje{
+        text-align: justify;
+    }
+    
+    td, td{
+        text-align: center;
+        font-size: 12px;
+        width: 50px;
+        color: black;
+    }
+
+
+}
