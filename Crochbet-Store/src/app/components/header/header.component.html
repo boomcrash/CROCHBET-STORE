@@ -1,5 +1,5 @@
 <header>
-    <div><img src="../../../assets/pagina-inicio/usuario.png" /> 
+    <div id="div" ><img id="perfilImg" src="../../../assets/pagina-inicio/usuario.png" /> 
         <div class="dropdown-menu">
             <span>{{user}} ▼</span> 
             <ul class="dropdown">
@@ -9,16 +9,16 @@
         </div>
     </div>
     <div class="buscador">
-        <div >
+        <div id="buscador-interno">
             <div id="todo" (click)="buscarTodos()"> 
                 <p>Todo  ➤</p>
             </div>
             
             <div  id="buscar" class="buscar"><input [(ngModel)]="filtro" class="caja" type="text" placeholder="ESCRIBE EL NOMBRE DE LO QUE BUSCAS !"></div>
-            <div><img (click)="buscar()" src="../../../assets/pagina-inicio/lupa.png" /></div>
+            <div ><img  (click)="buscar()" src="../../../assets/pagina-inicio/lupa.png" /></div>
         </div>
     </div>
-    <div class="dropdown-menu">
+    <div id="div"  class="dropdown-menu">
         <h2 style="cursor: pointer;">CROCHBET ▼</h2> 
         <ul class="dropdown" *ngIf="rol=='admin'; else ocultar">
             <li (click)="verProductos()">Productos</li>

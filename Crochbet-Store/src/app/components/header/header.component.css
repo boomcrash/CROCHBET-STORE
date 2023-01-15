@@ -25,6 +25,10 @@ header div{
     height: 100%;
 }
 
+#div{
+    background-color: rgba(0, 0, 0, 0);
+}
+
 header :nth-child(1) img{
     display: flex;
     justify-content: space-evenly;
@@ -116,14 +120,14 @@ header :nth-child(1) img{
     text-align: center;
     cursor: pointer;
     color: white;
-    background-color: rgb(19, 19, 19);
+    background-color: rgba(19, 19, 19, 0);
 }
 
 .dropdown{
     
     margin-top: 100px;
     position: absolute;
-    width: 50%;
+    width: 100%;
 }
 
 .dropdown li{
@@ -205,6 +209,7 @@ header :nth-child(1) img{
         height: 50%;
     }
    
+    #perfilImg{display: none !important; }
 }
 @media screen and (max-width: 683px) {
     .dropdown{
@@ -216,6 +221,10 @@ header :nth-child(1) img{
     }
     header :nth-child(3) h2 {
         font-size: 0.75rem;
+    }
+    header{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 }
 
@@ -232,11 +241,25 @@ header :nth-child(1) img{
 
 
 @media screen and (max-width: 350px) {
+
+    #todo{
+        display:none;
+    }
+    #buscador-interno{
+        display: grid;
+        grid-template-columns: 80% 20%;
+    }
+
+    #div{
+        text-align: start;
+    }
+    
     header{
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
-        grid-template-columns: 30% 50% 20%;
+        grid-template-columns: 30% 40% 30%;
     }
+
     header :nth-child(2) div{
         border-radius: 10px;
     }
