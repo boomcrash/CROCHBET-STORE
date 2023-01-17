@@ -88,4 +88,9 @@ export class ListarProductoComponent {
     });
   }
 
+
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+  } 
 }

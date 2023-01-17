@@ -23,6 +23,10 @@ export class CarritoModule {
     CarritoModule.listaCarrito.splice(CarritoModule.listaCarrito.indexOf(producto),1);
   }
 
+  static eliminarTodoDelCarrito(){
+    CarritoModule.listaCarrito=[];
+  }
+
   static geTotalCarrito(){
     let total=0;
     CarritoModule.listaCarrito.forEach((producto)=>{

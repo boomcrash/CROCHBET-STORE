@@ -41,9 +41,12 @@ input{
     border:1px solid #fffffff3;
     height: 20px;
     box-shadow: 2px 2px 2px 2px #fffffff3;
-    outline:none;  
+    outline:none; 
+    border-radius: 5px; 
 }
-
+textarea{
+  border-radius: 5px;
+}
 input :focus{
     outline:none;
 }

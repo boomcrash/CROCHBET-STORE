@@ -256,6 +256,9 @@
         border-radius: 5px;
         outline:none;  
     }
+    textarea{
+      border-radius: 5px;
+    }
     label{
         text-align: center;
         width: 25%;

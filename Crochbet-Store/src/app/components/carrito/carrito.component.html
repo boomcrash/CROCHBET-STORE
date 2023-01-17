@@ -41,11 +41,11 @@
                     <p><strong>${{(((miCarrito.geTotalCarrito()*0.054)+0.3)+miCarrito.geTotalCarrito()).toFixed(2)}}</strong></p>
                 </div>
             </div>
-            <div style="justify-content: center; align-items: center; text-align: center; margin-top: 10px;"><ngx-paypal  [config]="payPalConfig"></ngx-paypal></div>
+            <div style="justify-content: center; align-items: center; text-align: center; margin-top: 10px;"><ngx-paypal   [config]="payPalConfig"></ngx-paypal></div>
 
         </div>
         <p style="color: grey; width: 30%; text-align: justify; margin-left: 20px; width: 100%;"><strong>NOTA: </strong>Los productos se envían por correo certificado, el tiempo de entrega es de 15 a 20 días hábiles</p>
-        <div style="align-self: center; text-align: end;"><button (click)="closeDialog()" style="background-color: red; width: fit-content; height: fit-content; ">Cerrar</button></div>
+        <div style="align-self: center; text-align: end;"><button  (click)="closeDialog()" style="background-color: red; width: fit-content; height: fit-content; " >Cerrar</button></div>
         
     </div>
     <br><br>

@@ -42,4 +42,9 @@ eliminarResenia(idReseña:number){
     this.dataSource=new MatTableDataSource<Reseña>(this.reseñasObject as Reseña[]);
   });
 }
+
+filtrar(event: Event) {
+  const filtro = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filtro.trim().toLowerCase();
+} 
 }

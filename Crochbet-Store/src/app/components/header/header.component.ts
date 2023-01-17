@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -32,6 +33,9 @@ export class HeaderComponent {
 
   user: string = '';
 
+  accion='Cerrar Sesion'
+
+
   ngOnInit(): void {
     
     let usuario=this.route.snapshot.params['usuario'];
@@ -45,9 +49,21 @@ export class HeaderComponent {
     }
     
     this.rol=this.route.snapshot.params['rol'];
+    
+    if(this.rol=='invitado'){
+      this.accion='Salir';
+    }
   }
 
+
   cerrarSesion(){
+    try{
+      CarritoModule.eliminarTodoDelCarrito();
+      localStorage.removeItem('usuario');
+      localStorage.removeItem('rol');
+    }catch(error){
+      console.log(error);
+    }
     this.router.navigate(['']);
   }
 

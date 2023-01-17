@@ -4,7 +4,7 @@
             <span>{{user}} ▼</span> 
             <ul class="dropdown">
                 <li (click)="verPerfil()">Mi cuenta</li>
-                <li (click)="cerrarSesion()">Cerrar Sesion</li>
+                <li (click)="cerrarSesion()">{{accion}}</li>
             </ul>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <li (click)="verAdministracion()">Administracion</li>
         </ul>
         <ng-template #ocultar>
-            <ul class="dropdown" *ngIf="rol=='cliente'; else ocultar">
+            <ul class="dropdown" *ngIf="rol=='cliente' || rol=='invitado'; else ocultar">
                 <li (click)="verProductos()">Productos</li>
                 <li (click)="verResenas()">Reseñas</li>
             </ul>

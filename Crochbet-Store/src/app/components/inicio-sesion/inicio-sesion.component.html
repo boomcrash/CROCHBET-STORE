@@ -15,7 +15,7 @@
         
         <div class="pre-formulario" id="pre-formulario" >
             
-            <form class="formulario" id="formulario" [formGroup]="formReactive" (ngSubmit)="ejecutarAccion()">
+            <form class="formulario" id="formulario" [formGroup]="formReactive" (ngSubmit)="ejecutarAccion('OFICIAL')">
                 <div>
                     <label>Usuario:</label>
                     <input (keyup)="sendAction('user')"  (keydown)="sendAction('user')" [ngStyle]="{backgroundColor: inputColorUser}"  type="text"  formControlName="user"/>
@@ -37,7 +37,7 @@
         
         <div class="pre-registro" id="pre-registro">
             <div>
-                <p style="font-size: 1rem; color: red; cursor: pointer;"> {{enlace}} </p>
+                <p (click)="ejecutarAccion('INVITADO')" style="font-size: 1rem; color: red; cursor: pointer;"> {{enlace}} </p>
                 <span><strong>{{span}}</strong></span>
                 <button (click)="cambiarAccion()">{{alternativa}}</button>
             </div>

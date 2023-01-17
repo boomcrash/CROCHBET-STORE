@@ -21,7 +21,7 @@ export class InicioSesionComponent implements OnInit{
   accion='Iniciar Sesión';
   span='¿No tienes cuenta?';
   alternativa='Registrate !';
-  enlace="Olvidé la Contraseña";
+  enlace="Entrar Como Invitado";
   // Cambios de vatiables que alteran la accion del formulario
   cambiarAccion(){
     if(this.accion=='Iniciar Sesión'){
@@ -115,79 +115,88 @@ export class InicioSesionComponent implements OnInit{
   duplicado=false;
   existeUsuario=false;
   //inicio de sesion o registro
-  ejecutarAccion(){
-    if(this.accion=='Iniciar Sesión'){
-      this.existe=false;
-      this.existeUsuario=false;
+  ejecutarAccion(tipo:string){
+    if(tipo=='INVITADO'){
+      Swal.fire(
+        "ENTRASTE COMO INVITADO!",
+        "Bienvenido a la tienda de CrochBet",
+        "success"
+      );
+      let invitadoRol='invitado';
+      this.router.navigate(["inicio","INVITADO",invitadoRol]);
+    }else{
+      if(this.accion=='Iniciar Sesión'){
+        this.existe=false;
+        this.existeUsuario=false;
+          for (const item of this.usuariosRegistrados) {
+            if(item.user==this.formReactive.value.user&&item.password==this.formReactive.value.password){
+              this.existe=true;
+              break;
+            }else if(item.user==this.formReactive.value.user&&item.password!=this.formReactive.value.password){
+              this.existeUsuario=true;
+            }
+          }
+          if(this.existe){
+            Swal.fire(
+              "CREDENCIALES CORRECTAS!",
+              "Se te redireccionara a la pagina de principal.",
+              "success"
+            );
+            let rol='cliente'
+            if(this.formReactive.value.user=='boomer'){
+              rol='admin';
+            }
+            this.router.navigate(["inicio",this.formReactive.value.user,rol]);
+            console.log("redireccionando a pagina inicio");
+          }else{
+            if(this.existeUsuario){
+              Swal.fire(
+                "CONTRASEÑA INCORRECTA!",
+                "La contraseña es incorrecta, por favor intenta de nuevo.",
+                "error"
+              );
+            }else{
+              Swal.fire(
+                "USUARIO NO REGISTRADO!",
+                "El usuario no se encuentra registrado, por favor registrese.",
+                "error"
+              );
+            }
+            
+          }
+          
+        
+      }else{
+        this.duplicado=false;
         for (const item of this.usuariosRegistrados) {
-          if(item.user==this.formReactive.value.user&&item.password==this.formReactive.value.password){
-            this.existe=true;
+          if(item.user==this.formReactive.value.user){
+            this.duplicado=true;
             break;
-          }else if(item.user==this.formReactive.value.user&&item.password!=this.formReactive.value.password){
-            this.existeUsuario=true;
           }
         }
-        if(this.existe){
+        if(this.duplicado){
           Swal.fire(
-            "CREDENCIALES CORRECTAS!",
-            "Se te redireccionara a la pagina de principal.",
+            "Usuario Duplicado!",
+            "Este usuario ya existe.<br>Prueba con otro nombre de usuario.",
+            "error"
+          );
+  
+        }else{
+            this.myActualPass=this.formReactive.value.password;
+          this.myActualUser=this.formReactive.value.user;
+          this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass});
+          Swal.fire(
+            "USUARIO REGISTRADO  EXISTOSAMENTE!",
+            "Inicia sesion con tu nueva cuenta.",
             "success"
           );
-          let rol='cliente'
-          if(this.formReactive.value.user=='boomer'){
-            rol='admin';
-          }
-          this.router.navigate(["inicio",this.formReactive.value.user,rol]);
-          console.log("redireccionando a pagina inicio");
-        }else{
-          if(this.existeUsuario){
-            Swal.fire(
-              "CONTRASEÑA INCORRECTA!",
-              "La contraseña es incorrecta, por favor intenta de nuevo.",
-              "error"
-            );
-          }else{
-            Swal.fire(
-              "USUARIO NO REGISTRADO!",
-              "El usuario no se encuentra registrado, por favor registrese.",
-              "error"
-            );
-          }
           
         }
         
-      
-    }else{
-      this.duplicado=false;
-      for (const item of this.usuariosRegistrados) {
-        if(item.user==this.formReactive.value.user){
-          this.duplicado=true;
-          break;
-        }
       }
-      if(this.duplicado){
-        Swal.fire(
-          "Usuario Duplicado!",
-          "Este usuario ya existe.<br>Prueba con otro nombre de usuario.",
-          "error"
-        );
-
-      }else{
-          this.myActualPass=this.formReactive.value.password;
-        this.myActualUser=this.formReactive.value.user;
-        this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass});
-        Swal.fire(
-          "USUARIO REGISTRADO  EXISTOSAMENTE!",
-          "Inicia sesion con tu nueva cuenta.",
-          "success"
-        );
-        
-      }
-
-
-      
     }
-  }
+    }
+    
 
 }
 

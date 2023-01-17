@@ -63,7 +63,7 @@ export class PaginaInicioComponent {
   }
 
   mostrarCarrito(){
-    this.dialog.open(CarritoComponent,{});
+    this.dialog.open(CarritoComponent,{data:this.rol});
   }
   confirmation:any;
   verProducto(indice:number){

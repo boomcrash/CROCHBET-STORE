@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,11 +14,13 @@ import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 })
 export class CarritoComponent {
 
+    rol:string='';
 
   miCarrito=CarritoModule;
   constructor(public dialogRef: MatDialogRef<CarritoComponent>,
     private router:Router,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute, 
+    @Inject(MAT_DIALOG_DATA) public data:string) {this.rol=this.data}
 
   ngOnInit(): void {
     this.initConfig();
@@ -57,7 +60,8 @@ export class CarritoComponent {
 
   private initConfig(): void {
     let total:string=(((this.miCarrito.geTotalCarrito()*0.054)+0.3)+this.miCarrito.geTotalCarrito()).toFixed(2).toString();
-    
+
+
     this.payPalConfig = {
         currency: 'EUR',
         clientId: 'AVXXg2veS19mhrbPoUX1NAKtdF8EPJfrBD3w1NVbDB00oyiCt5t8OKYUSrCpBJcvxxpqRhiT-8UYn2LB',
@@ -102,7 +106,7 @@ export class CarritoComponent {
         },
         onClientAuthorization: (data) => {
             console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-           
+            
         },
         onCancel: (data, actions) => {
             console.log('OnCancel', data, actions);
@@ -114,9 +118,26 @@ export class CarritoComponent {
             
         },
         onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-            
+            if(total=='0.30'){
+                total='0.00';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No hay productos en el carrito!',
+                    });
+            }
+            if (this.rol=='invitado'){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Alto ahí!',
+                    text: 'Debes estar registrado para realizar la compra!',
+                    });
+            }else{
+                console.log('onClick', data, actions);
+            }
         }
     };
 }
+
+
 }

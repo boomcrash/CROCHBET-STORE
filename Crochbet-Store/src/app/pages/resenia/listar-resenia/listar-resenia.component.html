@@ -7,6 +7,9 @@
 
         <div class="modulo">
 
+            <mat-form-field class="search">
+                <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+            </mat-form-field>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container matColumnDef="id" >
                     <th class="id" mat-header-cell *matHeaderCellDef> id </th>
@@ -36,10 +39,8 @@
                 <ng-container matColumnDef="actions">
                     <th class="actions" mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let element" class="actions">
-                        <button style="background-color: blue; color: white;" mat-raised-button color="primary"
-                            (click)="editarResenia(element.id,element.nombre,element.apellido,element.email,element.mensaje)">Editar</button>
-                        <button style="background-color: red; color: white;" mat-raised-button color="warn"
-                            (click)="eliminarResenia(element.id)">Eliminar</button>
+                        <img class="botones" style="cursor: pointer; " src="../../../../assets/administracion/editar.png"  (click)="editarResenia(element.id,element.nombre,element.apellido,element.email,element.mensaje)"/>
+                        <img class="botones" style="cursor: pointer; margin-left: 1px;" src="../../../../assets/administracion/eliminar.png"  (click)="eliminarResenia(element.id)"/>
                     </td>
                 </ng-container>
 
