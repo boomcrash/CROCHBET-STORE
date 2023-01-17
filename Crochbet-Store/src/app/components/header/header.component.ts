@@ -68,7 +68,16 @@ export class HeaderComponent {
   }
 
   verPerfil(){
-    this.router.navigate(['perfil',this.user,this.rol]);
+    if(this.rol!='invitado'){
+      this.router.navigate(['perfil',this.user,this.rol]);
+    }else{
+      Swal.fire({
+        title: 'Error',
+        text: 'Debe iniciar sesion para acceder a su perfil',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+    }
   }
 
   verProductos(){
