@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioModule } from 'src/app/modules/usuario/usuario.module';
 import { BotService } from 'src/app/services/bot/bot.service';
 import { ProductsService } from 'src/app/services/product/products.service';
 import Swal from 'sweetalert2';
@@ -72,7 +74,6 @@ export class InicioSesionComponent implements OnInit{
     }else if(this.getValue('password')?.valid && input=="password"){
       this.inputColorPass='lightgreen';
     }
-
   }
 
   //ventanas emergentes para visualizar el error de cada input
@@ -107,7 +108,7 @@ export class InicioSesionComponent implements OnInit{
   OnDestroy() {}
   OnAfterViewInit() {}
 
-  usuariosRegistrados:[{user:string,password:string}]=[{'user':'boomer','password':'Canasta_2#'}];
+  usuariosRegistrados:Usuario[]=UsuarioModule.usuarios;
     
   myActualUser: string='';
   myActualPass: string='';
@@ -184,7 +185,7 @@ export class InicioSesionComponent implements OnInit{
         }else{
             this.myActualPass=this.formReactive.value.password;
           this.myActualUser=this.formReactive.value.user;
-          this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass});
+          this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass,direccion:'',nombre:'',nacimiento:'',postal:''});
           Swal.fire(
             "USUARIO REGISTRADO  EXISTOSAMENTE!",
             "Inicia sesion con tu nueva cuenta.",
