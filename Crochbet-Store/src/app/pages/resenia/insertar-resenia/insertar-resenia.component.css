@@ -197,7 +197,7 @@
 /* Reglas de diseño para pantallas grandes */
 .cont-principal{
     margin-top:70px;
-     height: 160vh;
+     height: 100vh;
 }
 .modulo{
     width: 100%;
