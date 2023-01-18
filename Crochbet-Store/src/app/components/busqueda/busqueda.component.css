@@ -75,7 +75,7 @@ body :nth-child(1) :nth-child(1){
 }
 
 #title{
-    height: 40px;
+    height: auto;
     margin-top: 30px;
     border: 5px solid black;
     padding:5px;

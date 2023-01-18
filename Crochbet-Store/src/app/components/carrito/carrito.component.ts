@@ -5,6 +5,7 @@ import { Product } from 'src/app/interfaces/product';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CarritoComponent {
     rol:string='';
 
   miCarrito=CarritoModule;
-  constructor(public dialogRef: MatDialogRef<CarritoComponent>,
+  constructor(private spinner:NgxSpinnerService,public dialogRef: MatDialogRef<CarritoComponent>,
     private router:Router,
     private route:ActivatedRoute, 
     @Inject(MAT_DIALOG_DATA) public data:string) {this.rol=this.data}
@@ -98,6 +99,7 @@ export class CarritoComponent {
             layout: 'vertical'
         },
         onApprove: (data, actions) => {
+            this.spinner.show();
             console.log('onApprove - transaction was approved, but not authorized', data, actions);
             actions.order.get().then((details: any) => {
                 console.log('onApprove - you can get full order details inside onApprove: ', details);
@@ -106,7 +108,7 @@ export class CarritoComponent {
         },
         onClientAuthorization: (data) => {
             console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-            
+            this.spinner.hide();
         },
         onCancel: (data, actions) => {
             console.log('OnCancel', data, actions);

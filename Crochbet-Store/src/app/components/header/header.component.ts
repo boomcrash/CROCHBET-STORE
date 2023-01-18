@@ -24,7 +24,7 @@ export class HeaderComponent {
   }
 
   buscarTodos(){
-    this.router.navigate(['busqueda',this.user,'todos',this.rol]);
+    this.router.navigate(['busqueda',this.user,'todos',this.rol,'titulo']);
     console.log('todos');
   }
 
