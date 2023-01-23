@@ -42,6 +42,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CambiarContrasenaComponent } from './components/cambiar-contrasena/cambiar-contrasena.component';
+import { NotFoundErrorComponent } from './components/not-found-error/not-found-error.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { CambiarContrasenaComponent } from './components/cambiar-contrasena/camb
     AdministracionComponent,
     ChatComponent,
     PasarelaPagoComponent,
-    CambiarContrasenaComponent
+    CambiarContrasenaComponent,
+    NotFoundErrorComponent
     
   ],
   imports: [

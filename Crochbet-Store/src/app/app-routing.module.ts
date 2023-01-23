@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundError } from 'rxjs';
 import { AppComponent } from './app.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { NotFoundErrorComponent } from './components/not-found-error/not-found-error.component';
 import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
 import { PasarelaPagoComponent } from './components/pasarela-pago/pasarela-pago.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path:"administracion/:usuario/:rol",component:AdministracionComponent,pathMatch:'full'},
   {path:"administracion/:usuario/:rol/:modulo",component:AdministracionComponent,pathMatch:'full'},
   {path:"pasarela",component:PasarelaPagoComponent},
-  {path:"resena/:usuario/:rol",component:InsertarReseniaComponent}
+  {path:"resena/:usuario/:rol",component:InsertarReseniaComponent},
+  {path:"**",component:NotFoundErrorComponent}
 
 ];
 
