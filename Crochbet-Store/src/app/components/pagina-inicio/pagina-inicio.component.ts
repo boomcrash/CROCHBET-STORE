@@ -37,6 +37,9 @@ export class PaginaInicioComponent {
     try{
       this.usuario=sessionStorage.getItem('usuario');
       this.rol=sessionStorage.getItem('rol');
+      if(this.rol==null){
+        this.router.navigate(['']);
+      }
     }catch(e){
       console.log('este usuario no tiene sesion iniciada');
     }

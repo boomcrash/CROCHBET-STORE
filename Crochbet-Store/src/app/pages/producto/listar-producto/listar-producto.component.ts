@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
+import { environment } from 'src/environments/environment.development';
 import { EditarClienteComponent } from '../../cliente/editar-cliente/editar-cliente.component';
 import { EditarProductoComponent } from '../editar-producto/editar-producto.component';
 import { EliminarProductoComponent } from '../eliminar-producto/eliminar-producto.component';
@@ -13,7 +15,7 @@ import { EliminarProductoComponent } from '../eliminar-producto/eliminar-product
   styleUrls: ['./listar-producto.component.css']
 })
 export class ListarProductoComponent {
-  constructor(public dialog:MatDialog){}
+  constructor(public dialog:MatDialog,private route:Router){}
 
   titulo:string="";
   precio:number=0;
@@ -34,7 +36,11 @@ export class ListarProductoComponent {
 
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('rol')!=environment.roles[2]){
+      this.route.navigate(["administracion/error"])
+    }else{
     this.dataSource=new MatTableDataSource<Product>(this.productObject as Product[]);
+    }
   }
 
   onSubmit(){

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteModule } from 'src/app/modules/cliente/cliente.module';
+import { environment } from 'src/environments/environment.development';
 import { EditarClienteComponent } from '../editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from '../eliminar-cliente/eliminar-cliente.component';
 
@@ -12,7 +14,7 @@ import { EliminarClienteComponent } from '../eliminar-cliente/eliminar-cliente.c
   styleUrls: ['./listar-cliente.component.css']
 })
 export class ListarClienteComponent {
-  constructor(public dialog:MatDialog){}
+  constructor(public dialog:MatDialog,private route:Router){}
   Actualstatus="agregar";
 
   displayedColumns: string[] = ['id', 'nombre', 'apellido','ciudad', 'direccion', 'telefono', 'correo', 'actions'];
@@ -21,8 +23,20 @@ export class ListarClienteComponent {
 
   clientesObject=ClienteModule.clientes;
 
+  usuario:string | null="";
+  rol:string | null="";
+
   ngOnInit(): void {
-    this.dataSource=new MatTableDataSource<Cliente>(this.clientesObject as Cliente[]);
+    this.usuario=sessionStorage.getItem('usuario');
+    this.rol=sessionStorage.getItem('rol');
+    if(this.rol==null){
+      this.route.navigate(['']);
+    }
+    else if(sessionStorage.getItem('rol')!=environment.roles[2]){
+      this.route.navigate(["administracion/error"])
+    }else{
+      this.dataSource=new MatTableDataSource<Cliente>(this.clientesObject as Cliente[]);
+    }
   }
 
   editarCliente(idCliente:string, nombre:string, apellido:number, ciudad:string, direccion:string, telefono:string, correo:string){

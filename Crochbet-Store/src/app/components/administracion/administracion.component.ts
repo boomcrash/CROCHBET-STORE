@@ -14,8 +14,9 @@ export class AdministracionComponent implements OnInit{
 
   constructor(private router:Router) { }
 
+
   ngOnInit(): void {
-    
+
   }
 
   valorCambio(value: string){
