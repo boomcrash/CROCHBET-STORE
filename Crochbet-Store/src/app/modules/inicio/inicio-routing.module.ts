@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AdministracionComponent } from 'src/app/website/components/administracion/administracion.component';
 import { BusquedaComponent } from 'src/app/website/components/busqueda/busqueda.component';
 import { InicioComponent } from 'src/app/website/components/inicio/inicio.component';
@@ -9,13 +10,13 @@ import { InsertarReseniaComponent } from 'src/app/website/pages/resenia/insertar
 
 const routes: Routes = [
 
-  {path:"",component:InicioComponent,children:[
+  {path:"",canActivate:[AuthGuard],component:InicioComponent,children:[
     {path:"",redirectTo:"productos",pathMatch:"full"},
-    {path:"productos",component:PaginaInicioComponent,pathMatch:"full"},
-    {path:"busqueda/:filtro/:tipo",component:BusquedaComponent},
-    {path:"perfil",component:PerfilComponent,pathMatch:"full"},
-    {path:"insertarResenia",component:InsertarReseniaComponent},
-    {path:"resena",component:InsertarReseniaComponent},  ]
+    {path:"productos",canActivate:[AuthGuard],component:PaginaInicioComponent,pathMatch:"full"},
+    {path:"busqueda/:filtro/:tipo",canActivate:[AuthGuard],component:BusquedaComponent},
+    {path:"perfil",canActivate:[AuthGuard],component:PerfilComponent,pathMatch:"full"},
+    {path:"insertarResenia",canActivate:[AuthGuard],component:InsertarReseniaComponent},
+    {path:"resena",canActivate:[AuthGuard],component:InsertarReseniaComponent},  ]
   }, 
   
 
