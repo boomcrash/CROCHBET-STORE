@@ -130,7 +130,7 @@ export class PaginaInicioComponent {
 
   buscar(filtro:string){
 
-    this.router.navigate(['busqueda',filtro,'categoria']);
+    this.router.navigate(['inicio/busqueda',filtro,'categoria']);
     console.log(filtro);
     
   }
