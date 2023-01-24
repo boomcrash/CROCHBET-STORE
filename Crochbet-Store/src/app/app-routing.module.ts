@@ -13,7 +13,7 @@ import { InsertarReseniaComponent } from './pages/resenia/insertar-resenia/inser
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:"login",component:InicioSesionComponent,pathMatch:'full'},
-  {path:"principal",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)},
+  {path:"inicio",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)},
   {path:"**",component:NotFoundErrorComponent}
 ];
 

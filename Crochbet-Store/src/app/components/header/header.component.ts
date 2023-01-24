@@ -19,13 +19,13 @@ export class HeaderComponent {
 
   buscar(){
 
-    this.router.navigate(['busqueda',this.filtro,'titulo']);
+    this.router.navigate(['inicio/busqueda',this.filtro,'titulo']);
     console.log(this.filtro);
 
   }
 
   buscarTodos(){
-    this.router.navigate(['busqueda','todos','titulo']);
+    this.router.navigate(['inicio/busqueda','todos','titulo']);
     console.log('todos');
   }
 
@@ -68,7 +68,7 @@ export class HeaderComponent {
 
   verPerfil(){
     if(this.rol!=environment.roles[0]){
-      this.router.navigate(['perfil']);
+      this.router.navigate(['inicio/perfil']);
     }else{
       Swal.fire({
         title: 'Error',
@@ -84,7 +84,7 @@ export class HeaderComponent {
   }
 
   verResenas(){
-    this.router.navigate(['insertarResenia']);
+    this.router.navigate(['inicio/insertarResenia']);
   }
 
   verAdministracion(){
@@ -95,6 +95,6 @@ export class HeaderComponent {
       icon: 'warning',
       confirmButtonText: 'OK'
     })*/
-    this.router.navigate(['administracion','administracion']);
+    this.router.navigate(['inicio/administracion']);
   }
 }

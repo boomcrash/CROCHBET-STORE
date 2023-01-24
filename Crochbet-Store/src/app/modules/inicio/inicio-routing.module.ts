@@ -10,14 +10,13 @@ import { InsertarReseniaComponent } from 'src/app/pages/resenia/insertar-resenia
 const routes: Routes = [
 
   {path:"",component:InicioComponent,children:[
-    {path:"",redirectTo:"inicio"},
-    {path:"inicio",component:PaginaInicioComponent},
+    {path:"",redirectTo:"productos",pathMatch:"full"},
+    {path:"productos",component:PaginaInicioComponent,pathMatch:"full"},
     {path:"busqueda/:filtro/:tipo",component:BusquedaComponent},
-    {path:"busqueda/:filtro/:tipo",component:BusquedaComponent},
-    {path:"perfil",component:PerfilComponent},
+    {path:"perfil",component:PerfilComponent,pathMatch:"full"},
     {path:"insertarResenia",component:InsertarReseniaComponent},
     {path:"administracion",component:AdministracionComponent},
-    {path:"administracion/:modulo",component:AdministracionComponent},
+    {path:"administracion",component:AdministracionComponent},
     {path:"resena",component:InsertarReseniaComponent},
   ]
   }, 

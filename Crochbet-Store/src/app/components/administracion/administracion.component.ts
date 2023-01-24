@@ -17,14 +17,9 @@ export class AdministracionComponent implements OnInit{
     
   }
 
-
-
-
   valorCambio(value: string){
     console.log("nuevo valor:" + value)
  }
-
-
  
   actualTag='administracion'
   mostrarComponente(tag:string){
