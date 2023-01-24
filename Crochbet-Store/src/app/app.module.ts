@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 
+
+import { QuicklinkModule } from 'ngx-quicklink';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule ,
     MatDialogModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    QuicklinkModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

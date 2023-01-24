@@ -18,7 +18,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PaginaInicioComponent } from 'src/app/website/components/pagina-inicio/pagina-inicio.component';
 
-
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [  
@@ -27,7 +27,7 @@ import { PaginaInicioComponent } from 'src/app/website/components/pagina-inicio/
     BusquedaComponent,
     ChatComponent,
     CambiarContrasenaComponent,
-    CarritoComponent,
+    CarritoComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +39,8 @@ import { PaginaInicioComponent } from 'src/app/website/components/pagina-inicio/
     ReactiveFormsModule ,
     MatDialogModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    QuicklinkModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

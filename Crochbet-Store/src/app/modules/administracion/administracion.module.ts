@@ -28,6 +28,8 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { AdministracionComponent } from 'src/app/website/components/administracion/administracion.component';
 
+import { QuicklinkModule } from 'ngx-quicklink';
+
 @NgModule({
   declarations: [
     ListarProductoComponent,
@@ -58,7 +60,8 @@ import { AdministracionComponent } from 'src/app/website/components/administraci
     ReactiveFormsModule ,
     MatDialogModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    QuicklinkModule
   ],
   
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

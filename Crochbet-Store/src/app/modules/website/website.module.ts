@@ -18,6 +18,8 @@ import { InicioComponent } from 'src/app/website/components/inicio/inicio.compon
 import { AdministracionComponent } from 'src/app/website/components/administracion/administracion.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { QuicklinkModule } from 'ngx-quicklink';
+
 @NgModule({
   declarations: [
     InicioSesionComponent,
@@ -34,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule ,
     MatDialogModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    QuicklinkModule
   ]
 })
 export class WebsiteModule { }
