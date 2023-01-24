@@ -1,9 +1,8 @@
-import { Component, Inject, Input } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
 import Swal from 'sweetalert2';
-import { ProductsService } from  '../../services/product/products.service';
 import { CarritoComponent } from '../carrito/carrito.component';
 import {MatDialog} from '@angular/material/dialog';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';

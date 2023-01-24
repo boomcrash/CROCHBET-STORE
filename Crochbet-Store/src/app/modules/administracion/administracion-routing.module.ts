@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministracionComponent } from 'src/app/components/administracion/administracion.component';
-import { ListarClienteComponent } from 'src/app/pages/cliente/listar-cliente/listar-cliente.component';
-import { ListarProductoComponent } from 'src/app/pages/producto/listar-producto/listar-producto.component';
-import { ListarProveedorComponent } from 'src/app/pages/proveedor/listar-proveedor/listar-proveedor.component';
-import { ListarReseniaComponent } from 'src/app/pages/resenia/listar-resenia/listar-resenia.component';
+import { AdministracionComponent } from 'src/app/website/components/administracion/administracion.component';
+import { ListarClienteComponent } from 'src/app/website/pages/cliente/listar-cliente/listar-cliente.component';
+import { ListarProductoComponent } from 'src/app/website/pages/producto/listar-producto/listar-producto.component';
+import { ListarProveedorComponent } from 'src/app/website/pages/proveedor/listar-proveedor/listar-proveedor.component';
+import { ListarReseniaComponent } from 'src/app/website/pages/resenia/listar-resenia/listar-resenia.component';
 
 const routes: Routes = [
   {path:"",component:AdministracionComponent,children:[

@@ -235,7 +235,7 @@
 @media screen and (min-width: 400px){
 
     .fondo{
-        content: url("../../../assets/inicio-sesion/fondo-rectangular.jpeg");background-size:contain;
+        content: url("../../../../assets/inicio-sesion/fondo-rectangular.jpeg");background-size:contain;
     }
 }
     

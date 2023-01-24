@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministracionComponent } from 'src/app/components/administracion/administracion.component';
-import { BusquedaComponent } from 'src/app/components/busqueda/busqueda.component';
-import { InicioComponent } from 'src/app/components/inicio/inicio.component';
-import { PaginaInicioComponent } from 'src/app/components/pagina-inicio/pagina-inicio.component';
-import { PerfilComponent } from 'src/app/components/perfil/perfil.component';
-import { InsertarReseniaComponent } from 'src/app/pages/resenia/insertar-resenia/insertar-resenia.component';
+import { AdministracionComponent } from 'src/app/website/components/administracion/administracion.component';
+import { BusquedaComponent } from 'src/app/website/components/busqueda/busqueda.component';
+import { InicioComponent } from 'src/app/website/components/inicio/inicio.component';
+import { PaginaInicioComponent } from 'src/app/website/components/pagina-inicio/pagina-inicio.component';
+import { PerfilComponent } from 'src/app/website/components/perfil/perfil.component';
+import { InsertarReseniaComponent } from 'src/app/website/pages/resenia/insertar-resenia/insertar-resenia.component';
 
 const routes: Routes = [
 

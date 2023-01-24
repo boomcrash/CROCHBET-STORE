@@ -109,7 +109,6 @@ body .contener-categoria{
     margin-top: 10px;
     margin-bottom: 20px;
     
-    margin-bottom: 100px;
 }
 
 
@@ -212,9 +211,8 @@ body  .contener-categoria :nth-child(1) :nth-child(1) .producto .item div .preci
 }
 
 #mas{
-    box-shadow: none; border-radius: 40px; border:1px #f4f4f4;background-image: url(../../../assets/pagina-inicio/mas-sign-bg.png) ; background-color: #ffffff00;
+    box-shadow: none; border-radius: 40px; border:1px #f4f4f4;background-image: url(../../../../assets/pagina-inicio/mas-sign-bg.png) ; background-color: #ffffff00;
 }
-
 
 
 @media screen and (max-width: 1400px) {
