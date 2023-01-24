@@ -25,17 +25,22 @@ export class PaginaInicioComponent {
 
   categorias=ProductoModule.categorias;
 
-  usuario:string='';
+  usuario:string | null='';
 
-  rol:string='';
+  rol:string | null='';
 
   miCarrito=(new CarritoModule());
 
   //ropaPlatzi:Product[]=[{id:'',title:'',price:0,description:'',category:'',image:''}];
  
   ngOnInit(): void {
-    this.usuario=this.route.snapshot.params['usuario'];
-    this.rol=this.route.snapshot.params['rol'];
+    try{
+      this.usuario=sessionStorage.getItem('usuario');
+      this.rol=sessionStorage.getItem('rol');
+    }catch(e){
+      console.log('este usuario no tiene sesion iniciada');
+    }
+    
     /*this.productsService.getAllProducts().subscribe((data)=>{
       this.ropaPlatzi=data;
       console.log(this.ropaPlatzi);
@@ -65,6 +70,7 @@ export class PaginaInicioComponent {
   mostrarCarrito(){
     this.dialog.open(CarritoComponent,{data:this.rol});
   }
+  
   confirmation:any;
   verProducto(indice:number){
     indice=indice-1;
@@ -124,7 +130,7 @@ export class PaginaInicioComponent {
 
   buscar(filtro:string){
 
-    this.router.navigate(['busqueda',this.usuario,filtro,this.rol,'categoria']);
+    this.router.navigate(['busqueda',filtro,'categoria']);
     console.log(filtro);
     
   }

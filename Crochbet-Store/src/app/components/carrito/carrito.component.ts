@@ -6,6 +6,7 @@ import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from 'src/environments/environment.development';
 
 
 @Component({
@@ -128,7 +129,7 @@ export class CarritoComponent {
                     text: 'No hay productos en el carrito!',
                     });
             }
-            if (this.rol=='invitado'){
+            if (this.rol==environment.roles[0]){
                 Swal.fire({
                     icon: 'error',
                     title: 'Alto ahí!',

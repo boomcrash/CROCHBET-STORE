@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
+import { environment } from 'src/environments/environment.development';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,45 +13,43 @@ export class HeaderComponent {
   constructor(private router:Router,
     private route:ActivatedRoute) { }
 
-  rol='cliente';
-
+  rol:string|null='';
+  roles:string[] = [];
   filtro: string = '';
 
   buscar(){
 
-    this.router.navigate(['busqueda',this.user,this.filtro,this.rol,'titulo']);
+    this.router.navigate(['busqueda',this.filtro,'titulo']);
     console.log(this.filtro);
 
   }
 
   buscarTodos(){
-    this.router.navigate(['busqueda',this.user,'todos',this.rol,'titulo']);
+    this.router.navigate(['busqueda','todos','titulo']);
     console.log('todos');
   }
 
-  @Input()
-  actualUser!: string;
 
-  user: string = '';
+
+  user: string | null= '';
 
   accion='Cerrar Sesion'
 
 
   ngOnInit(): void {
+    this.roles=environment.roles;
+
+    let usuario=sessionStorage.getItem('usuario');
     
-    let usuario=this.route.snapshot.params['usuario'];
     console.log('usuario: '+usuario);
     
-    if(this.actualUser == null && usuario != null){
+    if(usuario != null){
       this.user = usuario;
     }
-    else{
-      this.user= this.actualUser;
-    }
     
-    this.rol=this.route.snapshot.params['rol'];
-    
-    if(this.rol=='invitado'){
+    this.rol=sessionStorage.getItem('rol') ;
+    console.log('rol: '+this.rol);
+    if(this.rol==this.roles[0]){
       this.accion='Salir';
     }
   }
@@ -59,8 +58,8 @@ export class HeaderComponent {
   cerrarSesion(){
     try{
       CarritoModule.eliminarTodoDelCarrito();
-      localStorage.removeItem('usuario');
-      localStorage.removeItem('rol');
+      sessionStorage.removeItem('usuario');
+      sessionStorage.removeItem('rol');
     }catch(error){
       console.log(error);
     }
@@ -68,8 +67,8 @@ export class HeaderComponent {
   }
 
   verPerfil(){
-    if(this.rol!='invitado'){
-      this.router.navigate(['perfil',this.user,this.rol]);
+    if(this.rol!=environment.roles[0]){
+      this.router.navigate(['perfil']);
     }else{
       Swal.fire({
         title: 'Error',
@@ -81,11 +80,11 @@ export class HeaderComponent {
   }
 
   verProductos(){
-    this.router.navigate(['inicio',this.user,this.rol]);
+    this.router.navigate(['inicio']);
   }
 
   verResenas(){
-    this.router.navigate(['insertarResenia',this.user,this.rol]);
+    this.router.navigate(['insertarResenia']);
   }
 
   verAdministracion(){
@@ -96,6 +95,6 @@ export class HeaderComponent {
       icon: 'warning',
       confirmButtonText: 'OK'
     })*/
-    this.router.navigate(['administracion',this.user,'admin','administracion']);
+    this.router.navigate(['administracion','administracion']);
   }
 }

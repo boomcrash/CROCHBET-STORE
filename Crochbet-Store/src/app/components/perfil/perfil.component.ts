@@ -32,7 +32,7 @@ export class PerfilComponent {
     }
 
 
-  usuario:string= '';
+  usuario:string | null= '';
   nombre:string= '';
   contrasena:string= '';
   direccion:string= '';
@@ -40,15 +40,17 @@ export class PerfilComponent {
   nacimiento:string= '';
   usuarios:Usuario[]=UsuarioModule.usuarios;
   ngOnInit() {
-    this.usuario=this.route.snapshot.params['usuario'];
+    this.usuario=sessionStorage.getItem('usuario');
     for(let i=0;i<this.usuarios.length;i++){
-      if(this.usuarios[i].user.toLowerCase()==this.usuario.toLowerCase()){
-        this.nombre=this.usuarios[i].nombre;
-        this.contrasena=this.usuarios[i].password;
-        this.direccion=this.usuarios[i].direccion;
-        this.postal=this.usuarios[i].postal;
-        this.nacimiento=this.usuarios[i].nacimiento;
-        //transformar fecha de nacimiento a tipo de dato Date
+      if(this.usuario!=null){
+        if(this.usuarios[i].user.toLowerCase()==this.usuario.toLowerCase()){
+          this.nombre=this.usuarios[i].nombre;
+          this.contrasena=this.usuarios[i].password;
+          this.direccion=this.usuarios[i].direccion;
+          this.postal=this.usuarios[i].postal;
+          this.nacimiento=this.usuarios[i].nacimiento;
+          //transformar fecha de nacimiento a tipo de dato Date
+        }
       }
     } 
   }
@@ -56,6 +58,8 @@ export class PerfilComponent {
 
   guardarCambios(){
     for(let i=0;i<this.usuarios.length;i++){
+      if(this.usuario!=null){
+
       if(this.usuarios[i].user.toLowerCase()==this.usuario.toLowerCase()){
         this.usuarios[i].nombre=this.nombre;
         this.usuarios[i].direccion=this.direccion;
@@ -68,8 +72,9 @@ export class PerfilComponent {
           showConfirmButton: false,
           timer: 1500
         });
-      }
-    } 
+        }
+      } 
+    }
   }
 
   cambiarContrasena(){

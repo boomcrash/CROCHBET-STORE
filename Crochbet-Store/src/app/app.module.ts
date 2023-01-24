@@ -36,13 +36,13 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { MatTableModule } from '@angular/material/table';
 import { ChatComponent } from './components/chat/chat.component';
-import { PasarelaPagoComponent } from './components/pasarela-pago/pasarela-pago.component';
 import { NgxSpinner } from 'ngx-spinner';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CambiarContrasenaComponent } from './components/cambiar-contrasena/cambiar-contrasena.component';
 import { NotFoundErrorComponent } from './components/not-found-error/not-found-error.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -72,9 +72,9 @@ import { NotFoundErrorComponent } from './components/not-found-error/not-found-e
     BusquedaComponent,
     AdministracionComponent,
     ChatComponent,
-    PasarelaPagoComponent,
     CambiarContrasenaComponent,
-    NotFoundErrorComponent
+    NotFoundErrorComponent,
+    InicioComponent,
     
   ],
   imports: [

@@ -4,5 +4,6 @@ export interface Usuario {
     nombre:string,
     direccion:string,
     postal:string,
-    nacimiento:string
+    nacimiento:string,
+    rol:number
 }

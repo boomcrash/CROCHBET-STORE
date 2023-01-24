@@ -3,7 +3,8 @@
     <div  class="carrito">
         <img (click)="mostrarCarrito()" (mouseenter)="desplegarTextoCarrito()"  height="50px" src="../../../assets/pagina-inicio/carro.png" >
     </div>
-   <app-header [actualUser]="usuario"></app-header>
+   
+   <router-outlet></router-outlet>
     <body id="cuerpo">
         <div>
             <div>
@@ -42,6 +43,5 @@
         </div>
         
     </body>
-    <app-footer></app-footer>
 </div>
 <app-chat></app-chat>
