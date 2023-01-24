@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:"login",component:InicioSesionComponent,pathMatch:'full'},
   {path:"inicio",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)},
+  {path:"administracion",loadChildren:()=>import('./modules/administracion/administracion.module').then(m=>m.AdministracionModule)},
   {path:"**",component:NotFoundErrorComponent}
 ];
 

@@ -95,6 +95,6 @@ export class HeaderComponent {
       icon: 'warning',
       confirmButtonText: 'OK'
     })*/
-    this.router.navigate(['inicio/administracion']);
+    this.router.navigate(['administracion']);
   }
 }

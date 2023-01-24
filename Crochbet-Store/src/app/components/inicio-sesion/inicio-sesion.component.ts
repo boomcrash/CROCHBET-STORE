@@ -126,7 +126,7 @@ export class InicioSesionComponent implements OnInit{
 
       sessionStorage.setItem('usuario','INVITADO');
       sessionStorage.setItem('rol','0');
-      this.router.navigate(["principal"]);
+      this.router.navigate(["inicio"]);
     }else{
       if(this.accion=='Iniciar Sesión'){
         this.existe=false;
@@ -151,7 +151,7 @@ export class InicioSesionComponent implements OnInit{
 
             sessionStorage.setItem('usuario',this.formReactive.value.user);
             sessionStorage.setItem('rol',rol.toString());
-            this.router.navigate(["principal"]);
+            this.router.navigate(["inicio"]);
             console.log("redireccionando a pagina inicio");
           }else{
             if(this.existeUsuario){

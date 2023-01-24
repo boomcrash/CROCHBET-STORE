@@ -15,10 +15,7 @@ const routes: Routes = [
     {path:"busqueda/:filtro/:tipo",component:BusquedaComponent},
     {path:"perfil",component:PerfilComponent,pathMatch:"full"},
     {path:"insertarResenia",component:InsertarReseniaComponent},
-    {path:"administracion",component:AdministracionComponent},
-    {path:"administracion",component:AdministracionComponent},
-    {path:"resena",component:InsertarReseniaComponent},
-  ]
+    {path:"resena",component:InsertarReseniaComponent},  ]
   }, 
   
 

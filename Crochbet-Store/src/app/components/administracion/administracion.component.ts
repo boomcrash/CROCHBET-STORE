@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
 
@@ -11,7 +12,7 @@ import { ProductoModule } from 'src/app/modules/producto/producto.module';
 })
 export class AdministracionComponent implements OnInit{
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     
@@ -24,6 +25,7 @@ export class AdministracionComponent implements OnInit{
   actualTag='administracion'
   mostrarComponente(tag:string){
     this.actualTag=tag;
+    this.router.navigate(['administracion/'+tag]);
   }
 
 }
