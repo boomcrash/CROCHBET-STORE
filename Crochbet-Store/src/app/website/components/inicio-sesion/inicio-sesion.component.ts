@@ -7,6 +7,8 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioModule } from 'src/app/modules/usuario/usuario.module';
 import { BotService } from 'src/app/services/bot/bot.service';
 import { ProductsService } from 'src/app/services/product/products.service';
+import { UsuariosService } from 'src/app/services/usuario/usuarios.service';
+//importar usuarioRest interfaz
 import Swal from 'sweetalert2';
 
 @Component({
@@ -94,7 +96,15 @@ export class InicioSesionComponent implements OnInit{
     
   }
 
-  ngOnInit(): void {let productos=new ProductsService(this.http);
+  ngOnInit(): void {
+      /*let usuarios=new UsuariosService(this.http);
+      console.log("USUARIOS");
+      usuarios.getUsarios().subscribe((data:any)=>{
+        console.log(data);
+      });*/
+      
+      let productos=new ProductsService(this.http);
+
       productos.getProducts().subscribe((data:any)=>{
         console.log(data);
       });
@@ -125,80 +135,102 @@ export class InicioSesionComponent implements OnInit{
       );
 
       sessionStorage.setItem('usuario','INVITADO');
-      sessionStorage.setItem('rol','0');
+      sessionStorage.setItem('rol','1');
       this.router.navigate(["inicio"]);
     }else{
       if(this.accion=='Iniciar Sesión'){
-        this.existe=false;
-        this.existeUsuario=false;
-        let rol=0;
-          for (const item of this.usuariosRegistrados) {
-            if(item.user==this.formReactive.value.user&&item.password==this.formReactive.value.password){
-              this.existe=true;
-              rol=item.rol;
-              
-              break;
-            }else if(item.user==this.formReactive.value.user&&item.password!=this.formReactive.value.password){
-              this.existeUsuario=true;
-            }
+
+        let usuarios=new UsuariosService(this.http);
+        let existeUser=false;
+        console.log("VERIFICAR USUARIO");
+        usuarios.verificarUsuarioContrasena(this.formReactive.value.user,this.formReactive.value.password).subscribe((data:any)=>{
+          console.log(data);
+          console.log("rol",data[0]['rolId']);
+          let rolId=data[0]['rolId'];
+          let userId=data[0]['idUsuario'];
+          if(data!=false&&data!=null&&data!=undefined&&data.length>0){
+            existeUser=true; 
           }
-          if(this.existe){
+
+          if(existeUser){
             Swal.fire(
               "CREDENCIALES CORRECTAS!",
               "Se te redireccionara a la pagina de principal.",
               "success"
             );
-
-            sessionStorage.setItem('usuario',this.formReactive.value.user);
-            sessionStorage.setItem('rol',rol.toString());
+            
+            sessionStorage.setItem('usuario',data[0]['usuario']);
+            sessionStorage.setItem('rol',rolId.toString());
+            sessionStorage.setItem('idUsuario',userId.toString());
             this.router.navigate(["inicio"]);
             console.log("redireccionando a pagina inicio");
           }else{
-            if(this.existeUsuario){
+            if(this.existeUsuario==false){
               Swal.fire(
-                "CONTRASEÑA INCORRECTA!",
-                "La contraseña es incorrecta, por favor intenta de nuevo.",
-                "error"
-              );
-            }else{
-              Swal.fire(
-                "USUARIO NO REGISTRADO!",
-                "El usuario no se encuentra registrado, por favor registrese.",
+                "CREDENCIALES INCORRECTAS!",
+                "El usuario o la contraseña son incorrectos.",
                 "error"
               );
             }
             
           }
-          
+
+        });
         
+
+
       }else{
         this.duplicado=false;
-        for (const item of this.usuariosRegistrados) {
-          if(item.user==this.formReactive.value.user){
-            this.duplicado=true;
-            break;
+        let usuariosBd=new UsuariosService(this.http);
+        
+        usuariosBd.getUsuarios().subscribe((data:any)=>{
+          console.log(data);
+
+          for (const item of data) {
+            if(item.usuario==this.formReactive.value.user){
+              this.duplicado=true;
+              break;
+            }
+          }
+          if(this.duplicado){
+            Swal.fire(
+              "Usuario Duplicado!",
+              "Este usuario ya existe.<br>Prueba con otro nombre de usuario.",
+              "error"
+            );
+    
+          }else{
+            
+            this.myActualPass=this.formReactive.value.password;
+            this.myActualUser=this.formReactive.value.user;
+            
+            let usuariosInsert=new UsuariosService(this.http);
+            usuariosInsert.insertarUsuario(this.myActualUser,this.myActualPass,2).subscribe((data:any)=>{
+              console.log(data);
+              if(data==true){
+                Swal.fire(
+                  "USUARIO REGISTRADO  EXISTOSAMENTE!",
+                  "Inicia sesion con tu nueva cuenta.",
+                  "success"
+                );
+                this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass,direccion:'',nombre:'',nacimiento:'',postal:'',rol:1});
+              }else{
+                Swal.fire(
+                  "ERROR AL REGISTRAR USUARIO!",
+                  "No se pudo registrar el usuario.",
+                  "error"
+                );
+              }
+              
+            });
+
+            
+            
           }
         }
-        if(this.duplicado){
-          Swal.fire(
-            "Usuario Duplicado!",
-            "Este usuario ya existe.<br>Prueba con otro nombre de usuario.",
-            "error"
-          );
-  
-        }else{
-            this.myActualPass=this.formReactive.value.password;
-          this.myActualUser=this.formReactive.value.user;
-          
-          this.usuariosRegistrados.push({user:this.myActualUser,password:this.myActualPass,direccion:'',nombre:'',nacimiento:'',postal:'',rol:1});
-          Swal.fire(
-            "USUARIO REGISTRADO  EXISTOSAMENTE!",
-            "Inicia sesion con tu nueva cuenta.",
-            "success"
-          );
-          
-        }
+
         
+        );
       }
     }
     }

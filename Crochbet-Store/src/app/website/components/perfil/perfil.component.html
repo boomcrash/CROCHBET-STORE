@@ -9,19 +9,26 @@
         <input formControlName="nombre"  type="text" id="nombre" name="nombre" [(ngModel)]="nombre">
       </div>
       <div class="form-group">
-        <label for="contrasena">Contraseña:</label>
-        <input formControlName="contrasena" type="password" id="contrasena" name="contrasena" [(ngModel)]="contrasena">      </div>
+        <label for="contrasena">Apellido:</label>
+        <input formControlName="apellido" type="text" id="contrasena" name="contrasena" [(ngModel)]="apellido">      </div>
       <div class="form-group">
         <label for="direccion">Dirección:</label>
         <input formControlName="direccion" type="text" id="direccion" name="direccion" [(ngModel)]="direccion">
       </div>
+
       <div class="form-group">
-        <label for="postal">Código Postal:</label>
-        <input formControlName="postal" type="text" id="postal" name="postal" [(ngModel)]="postal">
+        <label for="nacimiento">Telefono:</label>
+        <input formControlName="telefono"   type="text" id="nacimiento"  name="nacimiento" [(ngModel)]="telefono" >
       </div>
+
       <div class="form-group">
-        <label for="nacimiento">Fecha de Nacimiento:</label>
-        <input formControlName="nacimiento"   type="date" id="nacimiento"  name="nacimiento" [(ngModel)]="nacimiento" >
+        <label for="postal">Ciudad:</label>
+        <input formControlName="ciudad" type="text" id="postal" name="postal" [(ngModel)]="ciudad">
+      </div>
+
+      <div class="form-group">
+        <label for="postal">Correo:</label>
+        <input formControlName="correo" type="email" id="postal" name="postal" [(ngModel)]="correo">
       </div>
       <div class="form-group" style="display: flex;">
         <button [disabled]="!formReactive.valid" type="submit" id="save-changes-button" (click)="guardarCambios()">Guardar cambios</button>

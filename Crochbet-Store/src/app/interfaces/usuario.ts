@@ -7,3 +7,11 @@ export interface Usuario {
     nacimiento:string,
     rol:number
 }
+
+export interface UsuarioRest{
+    idUsuario:number,
+    usuario:string,
+    contrasena:string,
+    rolId:number,
+    estado:string,
+}
