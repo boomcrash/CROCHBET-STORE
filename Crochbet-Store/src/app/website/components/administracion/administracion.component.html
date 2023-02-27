@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="contenedor-admin">
+    <div class="botones">
+        <button (click)="mostrarComponente('cliente')" style="border-radius: 40px; " class="boton">CLIENTES</button>
+        <button (click)="mostrarComponente('proveedor')" style="border-radius: 40px; " class="boton">PROVEEDORES</button>
+        <button (click)="mostrarComponente('resena')" style="border-radius: 40px; " class="boton">RESEÑAS</button>
+        <button (click)="mostrarComponente('producto')" style="border-radius: 40px;  " class="boton">PRODUCTOS</button>
+    </div>
+    <div class="contenedor-interno">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+<app-footer></app-footer>

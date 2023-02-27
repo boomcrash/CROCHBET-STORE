@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { AdministracionComponent } from './components/administracion/administracion.component';
-import { BusquedaComponent } from './components/busqueda/busqueda.component';
-import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
-import { PaginaInicioComponent } from './components/pagina-inicio/pagina-inicio.component';
-import { PasarelaPagoComponent } from './components/pasarela-pago/pasarela-pago.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
-import { InsertarReseniaComponent } from './pages/resenia/insertar-resenia/insertar-resenia.component';
- 
+import { RouterModule, Routes ,PreloadAllModules} from '@angular/router';
+import { InicioSesionComponent } from './website/components/inicio-sesion/inicio-sesion.component';
+import { LayoutComponent } from './website/components/layout/layout.component';
+import { NotFoundErrorComponent } from './website/components/not-found-error/not-found-error.component';
+import {QuicklinkStrategy} from 'ngx-quicklink';
 const routes: Routes = [
-  {path:"",component:InicioSesionComponent},
-  {path:"inicio/:usuario/:rol",component:PaginaInicioComponent,pathMatch:'full'},
-  {path:"busqueda/:usuario/:filtro/:rol/:tipo",component:BusquedaComponent,pathMatch:'full'},
-  {path:"perfil/:usuario/:rol",component:PerfilComponent,pathMatch:'full'},
-  {path:"insertarResenia/:usuario/:rol",component:InsertarReseniaComponent,pathMatch:'full'},
-  {path:"administracion/:usuario/:rol",component:AdministracionComponent,pathMatch:'full'},
-  {path:"administracion/:usuario/:rol/:modulo",component:AdministracionComponent,pathMatch:'full'},
-  {path:"pasarela",component:PasarelaPagoComponent},
-  {path:"resena/:usuario/:rol",component:InsertarReseniaComponent}
-
+  {
+    path: '',loadChildren: () => import('./modules/website/website.module').then(m => m.WebsiteModule)
+  },
+  
+  {path:"**",component:NotFoundErrorComponent}
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  //usar preloadAllModules para cargar todos los modulos de forma pre-cargada (cuando no tnegamos muchos modulos)
+
+   //usar ,{preloadingStrategy:QuicklinkStrategy} para cargar los modulos de forma pre-cargada (cuando tengamos muchos modulos)
+   //esto se usa para cargar en base a la navegacion del cliente!
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy:QuicklinkStrategy})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

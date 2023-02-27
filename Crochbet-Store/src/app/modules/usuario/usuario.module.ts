@@ -13,7 +13,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 export class UsuarioModule { 
 
   static usuarios:Usuario[]=[
-    {'user':'boomer','password':'Canasta_2#','nombre':'Boomer','direccion':'Calle 1','postal':'12345','nacimiento':'1980-01-01'},
+    {'user':'boomer','password':'Canasta_2#','nombre':'Boomer','direccion':'Calle 1','postal':'12345','nacimiento':'1980-01-01','rol':2},
   ]
 
 }

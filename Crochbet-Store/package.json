@@ -23,9 +23,10 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "ngx-paypal": "^11.0.0",
+    "ngx-quicklink": "^0.3.0",
     "ngx-spinner": "^15.0.1",
     "rxjs": "~7.5.0",
-    "sweetalert2": "^11.7.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
