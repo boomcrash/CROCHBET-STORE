@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuario/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +19,7 @@ export class CambiarContrasenaComponent {
   secondContrasena:string='';
   formReactive:FormGroup;
 
-   constructor(public dialogRef: MatDialogRef<CambiarContrasenaComponent>,private formBuilder:FormBuilder,
+   constructor(public http:HttpClient,public dialogRef: MatDialogRef<CambiarContrasenaComponent>,private formBuilder:FormBuilder,
     //private productsService:ProductsService,
     @Inject(MAT_DIALOG_DATA) public data:string) {
 
@@ -40,32 +42,40 @@ export class CambiarContrasenaComponent {
   CambiarContrasena(){
     console.log(this.actualContrasena);
     if(this.firstContrasena==this.secondContrasena&&this.actualContrasena==this.oldContrasena){
-      console.log("Contraseña cambiada");
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Contraseña cambiada',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      this.dialogRef.close();
-    }else if(this.actualContrasena!=this.oldContrasena){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'La contraseña actual no es correcta',
-      });
-
+      let user=new UsuariosService(this.http);
+      let idUsuario=String(sessionStorage.getItem('idUsuario'));
+      user.cambiarContrasena(idUsuario,this.firstContrasena).subscribe(
+        (data:Boolean)=>{
+            console.log(data);
+            if (data==true) {
+              console.log("Contraseña cambiada");
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Contraseña cambiada',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.dialogRef.close();
+            }else if(this.actualContrasena!=this.oldContrasena){
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'La contraseña actual no es correcta',
+              });
+        
+            }
+            else if(this.firstContrasena!=this.secondContrasena){
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Las contraseña nueva y la confirmacion no coinciden',
+              });
+        
+            }
+          }
+      );
     }
-    else if(this.firstContrasena!=this.secondContrasena){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Las contraseña nueva y la confirmacion no coinciden',
-      });
-
-    }
-    
   }
 
 

@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
+import { ProductsService } from 'src/app/services/product/products.service';
 import { environment } from 'src/environments/environment.development';
 import { EditarClienteComponent } from '../../cliente/editar-cliente/editar-cliente.component';
 import { EditarProductoComponent } from '../editar-producto/editar-producto.component';
@@ -15,13 +17,15 @@ import { EliminarProductoComponent } from '../eliminar-producto/eliminar-product
   styleUrls: ['./listar-producto.component.css']
 })
 export class ListarProductoComponent {
-  constructor(public dialog:MatDialog,private route:Router){}
+  constructor(public dialog:MatDialog,private route:Router,public http:HttpClient){}
 
   titulo:string="";
   precio:number=0;
   miImagen: string='';
   descripcion:string="";
   categoria:string="";
+  proveedorId:number=0;
+
 
   Actualstatus="agregar";
 
@@ -29,28 +33,36 @@ export class ListarProductoComponent {
 
   //productObject:ProductoModule=new ProductoModule();
 
-  productObject=ProductoModule.productos;
+  productObject:Product[]=[];
 
-  displayedColumns: string[] = ['id', 'title', 'price','image', 'description', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'price','image', 'description', 'category','proveedorId', 'actions'];
 
-
+  async cargarProductos(){
+    let products=new ProductsService(this.http);
+    let result=await products.getProducts().subscribe((data:any)=>{
+      this.productObject=data;
+      console.log(this.productObject);
+      if(sessionStorage.getItem('rol')!=environment.roles[2]){
+        this.route.navigate(["administracion/error"])
+      }else{
+      this.dataSource=new MatTableDataSource<Product>(this.productObject as Product[]);
+      }
+    });
+  }
 
   ngOnInit(): void {
-    if(sessionStorage.getItem('rol')!=environment.roles[2]){
-      this.route.navigate(["administracion/error"])
-    }else{
-    this.dataSource=new MatTableDataSource<Product>(this.productObject as Product[]);
-    }
+    this.cargarProductos();
   }
 
   onSubmit(){
     let nuevo={
-      id: this.productObject.length+1,
-      title: this.titulo,
-      price: this.precio,
-      image: this.miImagen,
-      description: this.descripcion,
-      category: this.categoria
+      idProducto: this.productObject.length+1,
+      titulo: this.titulo,
+      precio: this.precio,
+      imagen: this.miImagen,
+      descripcion: this.descripcion,
+      categoria: this.categoria,
+      proveedorId:this.proveedorId
     }
     ProductoModule.productos.push(nuevo);
     let existe=false;

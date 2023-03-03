@@ -26,13 +26,13 @@ export class EditarProductoComponent {
   id=0;
   constructor(private formBuilder:FormBuilder,public dialogRef: MatDialogRef<EditarProductoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product){
-      this.id=data.id;
+      this.id=data.idProducto;
       console.log(this.id);
-      this.titulo=data.title;
-      this.precio=data.price;
-      this.imagen=data.image;
-      this.descripcion=data.description;
-      this.categoria=data.category;
+      this.titulo=data.titulo;
+      this.precio=data.precio;
+      this.imagen=data.imagen;
+      this.descripcion=data.descripcion;
+      this.categoria=data.categoria;
 
       this.formReactive=this.formBuilder.group(
         {
@@ -53,12 +53,12 @@ export class EditarProductoComponent {
 
   modificarProducto(){
     for (let index = 0; index < this.productObject.length; index++) {
-      if(this.productObject[index].id==this.id){
-        this.productObject[index].title=this.titulo;
-        this.productObject[index].price=this.precio;
-        this.productObject[index].image=this.imagen;
-        this.productObject[index].description=this.descripcion;
-        this.productObject[index].category=this.categoria;
+      if(this.productObject[index].idProducto==this.id){
+        this.productObject[index].titulo=this.titulo;
+        this.productObject[index].precio=this.precio;
+        this.productObject[index].imagen=this.imagen;
+        this.productObject[index].descripcion=this.descripcion;
+        this.productObject[index].categoria=this.categoria;
         Swal.fire({
           title: 'EDITADO EXITOSAMENTE',
           text: 'Usted ha editado el producto con id : '+this.id,

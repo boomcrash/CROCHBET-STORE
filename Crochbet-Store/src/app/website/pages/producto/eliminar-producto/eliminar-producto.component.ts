@@ -26,7 +26,7 @@ export class EliminarProductoComponent {
 
   eliminarProducto(){
     for (let index = 0; index < this.productObject.length; index++) {
-      if(this.productObject[index].id==this.id){
+      if(this.productObject[index].idProducto==this.id){
         this.productObject.splice(index,1);
         Swal.fire({
           title: 'ELIMINADO EXITOSAMENTE',

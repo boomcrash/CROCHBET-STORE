@@ -1,4 +1,4 @@
-<div style="width: 100%; height: 100vh; margin: 0; padding: 0;">
+<div *ngIf="moduloProducto.length>0 && categorias.length>0 ; else cargando" style="width: 100%; height: 100vh; margin: 0; padding: 0;">
     <div (click)="mostrarCarrito()" (mouseleave)="ocultarTextoCarrito()"  ><span class="carrito-text" [ngStyle]="{display: despliegue}">VER</span></div>
     <div  class="carrito">
         <img (click)="mostrarCarrito()" (mouseenter)="desplegarTextoCarrito()"  height="50px" src="../../../assets/pagina-inicio/carro.png" >
@@ -12,16 +12,16 @@
             </div>
         </div>
         <div id="cajon" *ngFor="let category of categorias; index as indice">
-            <h1 id="title">{{category}}</h1>
+            <h1 id="title">{{category.toLocaleUpperCase()}}</h1>
             <div class="contener-categoria" id="contener-categoria">
                 <div class="productos">
                     <div class="contenedor-producto">
                         <div class="producto" id="producto" *ngFor="let objeto of filtrarCategoria(category) ; index as indice" >
                             <div class="item">
-                                <div (click)="verProducto(objeto.id)">
-                                    <img id="foto" [src]="objeto.image" alt="">
-                                    <p>	{{objeto.title}}</p>
-                                    <p class="precio">$ {{objeto.price}}</p>
+                                <div (click)="verProducto(objeto.idProducto)">
+                                    <img id="foto" [src]="objeto.imagen" alt="">
+                                    <p>	{{objeto.titulo}}</p>
+                                    <p class="precio">$ {{objeto.precio}}</p>
                                 </div>
                             </div>    
                         </div> 
@@ -44,4 +44,16 @@
         
     </body>
 </div>
+<ng-template #cargando style=" height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <div style="margin-top: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <img style="width: 10%;" id="foto"
+                    src="https://media1.tenor.com/images/440b9dc08fefeff13ec30dc0ae6a09df/tenor.gif?itemid=15269201" alt="">
+                <p> CARGANDO</p>
+                <p class="precio">Estamos actualizando los productos!</p>
+            </div>
+        </div>
+    </div>
+</ng-template>
 <app-chat></app-chat>

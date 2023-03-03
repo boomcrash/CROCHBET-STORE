@@ -17,6 +17,11 @@ export class UsuariosService {
     return this.http.post<UsuarioRest[]>(this.urlBase+"todos", {headers: this.headers}); // <--- This line
   }
 
+  getUsuarioId(){
+    //obtener la llave de sesion id usuario
+    let idUsuario=Number(sessionStorage.getItem('idUsuario'));
+    return this.http.post<UsuarioRest[]>(this.urlBase+"verificarId?id="+idUsuario, {headers: this.headers}); // <--- This line
+  }
 
   verificarUsuarioContrasena(_usuario:string, contrasena:string){
     let body = JSON.stringify({_usuario: _usuario, contrasena: contrasena});
@@ -29,7 +34,11 @@ export class UsuariosService {
     return this.http.post<UsuarioRest>(urlAdd,body, {headers: this.headers}); // <--- This line
   }
 
-  
+  cambiarContrasena(idUsuario:string, contrasena:string){
+    let urlAdd="https://localhost:7235/api/Usuario/editUserPassword"
+    let body = JSON.stringify({idUsuario: idUsuario, contrasena: contrasena});
+    return this.http.put<Boolean>(urlAdd,body, {headers: this.headers}); // <--- This line
+  }
 
   //getProducts(){
    // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');

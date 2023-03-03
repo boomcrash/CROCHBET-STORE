@@ -1,4 +1,4 @@
-<div class="subcontenedor-admin">
+<div *ngIf="productObject.length>0 ; else cargando" class="subcontenedor-admin">
     <h1>Administración</h1>
     <div class="caja">
         <h1>PRODUCTOS</h1>
@@ -15,33 +15,38 @@
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> id </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.idProducto}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="title">
                     <th mat-header-cell *matHeaderCellDef> Titulo </th>
-                    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef> Precio </th>
-                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="image">
                     <th mat-header-cell *matHeaderCellDef> Imagen </th>
                     <td mat-cell *matCellDef="let element"><img style="width: 100px; height: 110px;"
-                            [src]="element.image" alt=""></td>
+                            [src]="element.imagen" alt=""></td>
                 </ng-container>
 
                 <ng-container matColumnDef="description">
                     <th mat-header-cell *matHeaderCellDef> Desripcion </th>
-                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="category">
                     <th mat-header-cell *matHeaderCellDef> Categoria </th>
-                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="proveedorId">
+                    <th mat-header-cell *matHeaderCellDef> Proveedor </th>
+                    <td mat-cell *matCellDef="let element"> {{element.proveedorId}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="actions">
@@ -64,3 +69,15 @@
 
     </div>
 </div>
+<ng-template #cargando style=" height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <div style="margin-top: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <img style="width: 10%;" id="foto"
+                    src="https://media1.tenor.com/images/440b9dc08fefeff13ec30dc0ae6a09df/tenor.gif?itemid=15269201" alt="">
+                <p> CARGANDO</p>
+                <p class="precio">Estamos actualizando los productos!</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioModule } from 'src/app/modules/usuario/usuario.module';
 import { ClientesService } from 'src/app/services/cliente/clientes.service';
+import { UsuariosService } from 'src/app/services/usuario/usuarios.service';
 import Swal from 'sweetalert2';
 import { CambiarContrasenaComponent } from '../cambiar-contrasena/cambiar-contrasena.component';
 
@@ -59,6 +60,7 @@ export class PerfilComponent {
           this.ciudad=data[0]['ciudad'];
           this.telefono=data[0]['telefono'];
           this.correo=data[0]['correo'];
+          this.usuario=sessionStorage.getItem('usuario');
           console.log(data);
         }else{
           Swal.fire({
@@ -159,8 +161,20 @@ export class PerfilComponent {
     }*/
   }
 
-  cambiarContrasena(){
+  async cambiarContrasena(){
     //abrir modal para cambiar contraseña (componente cambiarContrasena)
-    /*this.dialog.open(CambiarContrasenaComponent,{data:this.contrasena});*/
+    let contrasena:string='';
+    let user=new UsuariosService(this.http);
+    let getUserId=await user.getUsuarioId().subscribe(
+      (data:any)=>{
+        console.log(data)
+        contrasena=data[0]['contrasena'];
+        //console.log("contrasena: ",contrasena);
+        this.dialog.open(CambiarContrasenaComponent,{data:contrasena});
+      }
+    );
+    
   }
+  
+
 }

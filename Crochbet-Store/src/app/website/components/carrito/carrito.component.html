@@ -14,9 +14,9 @@
                 <hr size="3px" color="black" width="100%"/>
                 <div class="producto" *ngFor="let producto of miCarrito.listaCarrito; index as indice">
                     <div class="fila">
-                        <img   [src]="producto.image" alt="">
-                        <p style="font-style: italic;">{{producto.description}}</p>
-                        <p style="font-weight: bold;">${{producto.price}}</p> 
+                        <img   [src]="producto.imagen" alt="">
+                        <p style="font-style: italic;">{{producto.descripcion}}</p>
+                        <p style="font-weight: bold;">${{producto.precio}}</p> 
                     </div>
                     <hr size="1px" color="black" width="100%"/>
                 </div>

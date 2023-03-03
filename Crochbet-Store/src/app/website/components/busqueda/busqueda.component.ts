@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -5,6 +6,7 @@ import { window } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
+import { ProductsService } from 'src/app/services/product/products.service';
 import Swal from 'sweetalert2';
 import { CarritoComponent } from '../carrito/carrito.component';
 
@@ -16,17 +18,23 @@ import { CarritoComponent } from '../carrito/carrito.component';
 export class BusquedaComponent {
   constructor(private router:Router,
     private route:ActivatedRoute,
-    public dialog:MatDialog){
+    public dialog:MatDialog,public http:HttpClient){
 
     }
   
-    moduloProducto=ProductoModule.productos;
+    moduloProducto:Product[]=[];
 
-
+    async cargarProductos(){
+      let products=new ProductsService(this.http);
+      let result=await products.getProducts().subscribe((data:any)=>{
+        this.moduloProducto=data;
+        console.log(this.moduloProducto);
+      });
+    }
 
 
     ngOnInit(): void {
-
+      this.cargarProductos();
     }
 
     ngOnChanges(): void {
@@ -41,6 +49,7 @@ export class BusquedaComponent {
      
 
       console.log(filtrado)
+
       var regex = new RegExp(filtrado,'gi');
       console.log(regex);
 
@@ -48,10 +57,13 @@ export class BusquedaComponent {
         return this.moduloProducto;
       }else{
         if (tipo=='categoria'){
-          arrayProductos=this.moduloProducto.filter(producto => producto.category.search(regex)!=-1 );
+          console.log(this.moduloProducto)
+          //imprimir productos que coincidan con la categoria inclutendo mayucusculas y minusculas
+          arrayProductos=this.moduloProducto.filter(producto => producto.categoria.search(regex)!=-1 );
+          console.log(arrayProductos);
           return arrayProductos;
         }else {
-          arrayProductos=this.moduloProducto.filter(producto => producto.title.search(regex)!=-1 );
+          arrayProductos=this.moduloProducto.filter(producto => producto.titulo.search(regex)!=-1 );
           return arrayProductos;
         }
         
@@ -83,14 +95,14 @@ export class BusquedaComponent {
   verProducto(indice:number){
     indice=indice-1;
     this.confirmation=Swal.fire({
-      title: this.moduloProducto[indice].title,
+      title: this.moduloProducto[indice].titulo,
       text: "Quieres agregar este producto al carrito?",
-      html: "<p>"+this.moduloProducto[indice].description+"</p>"
-      +"<p>Precio: $"+this.moduloProducto[indice].price+"</p>",
-      imageUrl: this.moduloProducto[indice].image,
+      html: "<p>"+this.moduloProducto[indice].descripcion+"</p>"
+      +"<p>Precio: $"+this.moduloProducto[indice].precio+"</p>",
+      imageUrl: this.moduloProducto[indice].imagen,
       imageWidth: 250,
       imageHeight: 225,
-      imageAlt: this.moduloProducto[indice].image,
+      imageAlt: this.moduloProducto[indice].imagen,
       showCancelButton: true,
       confirmButtonText: "AGREGAR",
       cancelButtonText: "SALIR",

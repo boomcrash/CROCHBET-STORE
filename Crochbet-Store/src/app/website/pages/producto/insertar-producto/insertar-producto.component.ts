@@ -31,6 +31,7 @@ export class InsertarProductoComponent {
   miImagen: string='';
   descripcion:string="";
   categoria:string="";
+  proveedorId:number=0;
 
   Actualstatus="agregar";
 
@@ -42,12 +43,13 @@ export class InsertarProductoComponent {
 
   onSubmit(){
     let nuevo={
-      id: this.productObject.length+1,
-      title: this.titulo,
-      price: this.precio,
-      image: this.miImagen,
-      description: this.descripcion,
-      category: this.categoria
+      idProducto: this.productObject.length+1,
+      titulo: this.titulo,
+      precio: this.precio,
+      imagen: this.miImagen,
+      descripcion: this.descripcion,
+      categoria: this.categoria,
+      proveedorId:this.proveedorId
     }
     ProductoModule.productos.push(nuevo);
     let existe=false;

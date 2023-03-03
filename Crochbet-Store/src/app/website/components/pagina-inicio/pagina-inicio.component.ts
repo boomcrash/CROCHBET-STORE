@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { CarritoComponent } from '../carrito/carrito.component';
 import {MatDialog} from '@angular/material/dialog';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
+import { HttpClient } from '@angular/common/http';
+import { ProductsService } from 'src/app/services/product/products.service';
 
 
 @Component({
@@ -18,11 +20,11 @@ export class PaginaInicioComponent {
   constructor(private router:Router,
     private route:ActivatedRoute,
     //private productsService:ProductsService,
-    public dialog:MatDialog){}
+    public dialog:MatDialog,public http:HttpClient){}
 
-  moduloProducto=ProductoModule.productos;
+  moduloProducto:Product[]=[];
 
-  categorias=ProductoModule.categorias;
+  categorias=[''];
 
   usuario:string | null='';
 
@@ -32,15 +34,38 @@ export class PaginaInicioComponent {
 
   //ropaPlatzi:Product[]=[{id:'',title:'',price:0,description:'',category:'',image:''}];
  
+  async cargarProductos(){
+    let products=new ProductsService(this.http);
+    let result=await products.getProducts().subscribe((data:any)=>{
+      this.moduloProducto=data;
+      console.log(this.moduloProducto);
+    });
+  }
+
+  async cargarCategorias(){
+    let products=new ProductsService(this.http);
+    let result=await products.getCategories().subscribe((data:any)=>{
+      const categorias = data.map((objeto: { categoria: string; }) => objeto.categoria);
+      console.log(categorias);
+      this.categorias=categorias;
+      console.log(this.categorias);
+    });
+  }
+  
+
   ngOnInit(): void {
     try{
       this.usuario=sessionStorage.getItem('usuario');
       this.rol=sessionStorage.getItem('rol');
       if(this.rol==null){
         this.router.navigate(['']);
+      }else{
+        this.cargarProductos();
+        this.cargarCategorias();
       }
     }catch(e){
       console.log('este usuario no tiene sesion iniciada');
+      this.router.navigate(['']);
     }
     
     /*this.productsService.getAllProducts().subscribe((data)=>{
@@ -77,14 +102,14 @@ export class PaginaInicioComponent {
   verProducto(indice:number){
     indice=indice-1;
     this.confirmation=Swal.fire({
-      title: this.moduloProducto[indice].title,
+      title: this.moduloProducto[indice].titulo,
       text: "Quieres agregar este producto al carrito?",
-      html: "<p>"+this.moduloProducto[indice].description+"</p>"
-      +"<p>Precio: $"+this.moduloProducto[indice].price+"</p>",
-      imageUrl: this.moduloProducto[indice].image,
+      html: "<p>"+this.moduloProducto[indice].descripcion+"</p>"
+      +"<p>Precio: $"+this.moduloProducto[indice].precio+"</p>",
+      imageUrl: this.moduloProducto[indice].imagen,
       imageWidth: 250,
       imageHeight: 225,
-      imageAlt: this.moduloProducto[indice].image,
+      imageAlt: this.moduloProducto[indice].imagen,
       showCancelButton: true,
       confirmButtonText: "AGREGAR",
       cancelButtonText: "SALIR",
@@ -110,7 +135,7 @@ export class PaginaInicioComponent {
     let arrayFiltrado:Product[]=[];
     let contador=1;
     for(let item of this.moduloProducto){
-      if(item.category.toLocaleLowerCase()==categoria.toLocaleLowerCase()&&contador<=4){
+      if(item.categoria.toLocaleLowerCase()==categoria.toLocaleLowerCase()&&contador<=4){
         arrayFiltrado.push(item);
         contador++;
       }

@@ -30,7 +30,7 @@ export class CarritoModule {
   static geTotalCarrito(){
     let total=0;
     CarritoModule.listaCarrito.forEach((producto)=>{
-      total+=producto.price;
+      total+=producto.precio;
     });
     return total;
   }
