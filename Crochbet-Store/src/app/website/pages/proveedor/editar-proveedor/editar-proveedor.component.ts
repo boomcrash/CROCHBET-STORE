@@ -21,7 +21,7 @@ export class EditarProveedorComponent {
   formReactive: any;
   constructor(private formBuilder:FormBuilder, public dialogRef: MatDialogRef<EditarProveedorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Proveedor){
-      this.id=data.id;
+      this.id=data.idProveedor;
       console.log(this.id);
       this.nombre=data.nombre;
       this.ruc=data.ruc;
@@ -49,7 +49,7 @@ export class EditarProveedorComponent {
 
   modificarProveedor(){
     for (let index = 0; index < this.proveedorObject.length; index++) {
-      if(this.proveedorObject[index].id==this.id){
+      if(this.proveedorObject[index].idProveedor==this.id){
         this.proveedorObject[index].nombre=this.nombre;
         this.proveedorObject[index].ruc=this.ruc;
         this.proveedorObject[index].telefono=this.telefono;

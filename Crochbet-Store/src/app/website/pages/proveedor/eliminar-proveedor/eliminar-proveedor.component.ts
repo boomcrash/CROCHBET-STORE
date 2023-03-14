@@ -26,7 +26,7 @@ export class EliminarProveedorComponent {
 
   eliminarProveedor(){
     for (let index = 0; index < this.proveedorObject.length; index++) {
-      if(this.proveedorObject[index].id==this.id){
+      if(this.proveedorObject[index].idProveedor==this.id){
         this.proveedorObject.splice(index,1);
         Swal.fire({
           title: 'ELIMINADO EXITOSAMENTE',

@@ -44,7 +44,7 @@ export class InsertarProveedorComponent {
   }
 
   onSubmit(){
-    let nuevo={
+    /*let nuevo={
       id: this.proveedorObject.length+1,
       nombre: this.nombre,
       ruc: this.ruc,
@@ -66,7 +66,7 @@ export class InsertarProveedorComponent {
     this.ruc="";
     this.telefono="";
     this.correo="";
-    this.direccion="";
+    this.direccion="";*/
    }
 
    abrirVentana(input:string){

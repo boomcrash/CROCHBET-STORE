@@ -37,6 +37,7 @@ export class ListarClienteComponent {
     }else{
       this.dataSource=new MatTableDataSource<Cliente>(this.clientesObject as Cliente[]);
     }
+
   }
 
   editarCliente(idCliente:string, nombre:string, apellido:number, ciudad:string, direccion:string, telefono:string, correo:string){
