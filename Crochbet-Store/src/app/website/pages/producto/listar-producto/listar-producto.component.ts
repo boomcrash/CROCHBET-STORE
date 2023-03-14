@@ -82,7 +82,7 @@ export class ListarProductoComponent {
     this.Actualstatus=estatus;
   }
 
-  editarProducto(idCliente:string, titulo:string, precio:number, imagen:string, descripcion:string, categoria:string){
+  editarProducto(idCliente:string, titulo:string, precio:number, imagen:string, descripcion:string, categoria:string, proveedorId:number){
       this.dialog.open(EditarProductoComponent, {
         data: {
                 'id':idCliente,
@@ -90,7 +90,8 @@ export class ListarProductoComponent {
                 'price':precio,
                 'image':imagen,
                 'description':descripcion,
-                'category':categoria
+                'category':categoria,
+                'proveedorId':proveedorId
               }
       });
   }

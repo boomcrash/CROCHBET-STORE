@@ -52,8 +52,8 @@
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let element">
-                        <img class="botones" style="cursor: pointer; " src="../../../../assets/administracion/editar.png"  (click)="editarProducto(element.id,element.title,element.price,element.image,element.description,element.category)"/>
-                        <img class="botones" style="cursor: pointer; margin-left: 1px;" src="../../../../assets/administracion/eliminar.png"  (click)="eliminarProducto(element.id)"/>
+                        <img class="botones" style="cursor: pointer; " src="../../../../assets/administracion/editar.png"  (click)="editarProducto(element.idProducto,element.titulo,element.precio,element.imagen,element.descripcion,element.categoria,proveedorId)"/>
+                        <img class="botones" style="cursor: pointer; margin-left: 1px;" src="../../../../assets/administracion/eliminar.png"  (click)="eliminarProducto(element.idProducto)"/>
                     </td>
                 </ng-container>
 

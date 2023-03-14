@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/interfaces/product';
+import { environment } from 'src/environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +17,12 @@ export class ProductsService {
 
   getProducts(){
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.http.post('https://localhost:7235/api/Producto/getProductos',{headers: this.headers});
+    return this.http.post(environment.url_base+environment.url_getProductos,{headers: this.headers});
   }
 
   getCategories(){
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.http.post('https://localhost:7235/api/Producto/getProductosCategories',{headers: this.headers});
+    return this.http.post(environment.url_base+environment.url_getProductosCategories,{headers: this.headers});
   }
 
 }
