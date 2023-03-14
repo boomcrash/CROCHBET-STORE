@@ -28,7 +28,7 @@ export class EliminarClienteComponent {
 
   eliminarCliente(){
     for (let index = 0; index < this.clientesObject.length; index++) {
-      if(this.clientesObject[index].id==this.id){
+      if(this.clientesObject[index].idCliente==this.id){
         this.clientesObject.splice(index,1);
         Swal.fire({
           title: 'ELIMINADO EXITOSAMENTE',

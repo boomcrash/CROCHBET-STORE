@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteRest } from 'src/app/interfaces/cliente';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class ClientesService {
   urlBase="https://localhost:7235/api/Usuario/GetUsuarios/"
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
+  listarCliente(){
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    return this.http.post(environment.url_base+environment.urlListarClientes,{headers: this.headers});
+  }
 
   GetClienteByUserId(id:number){
     const urlGetById="https://localhost:7235/api/Cliente/GetClienteByUserId"

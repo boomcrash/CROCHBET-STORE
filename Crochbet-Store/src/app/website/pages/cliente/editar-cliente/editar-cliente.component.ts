@@ -24,7 +24,7 @@ export class EditarClienteComponent {
 
   constructor(private formBuilder:FormBuilder, public dialogRef: MatDialogRef<EditarClienteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente){
-      this.id=data.id;
+      this.id=data.idCliente;
       console.log(this.id);
       this.nombre=data.nombre;
       this.apellido=data.apellido;
@@ -58,7 +58,7 @@ export class EditarClienteComponent {
 
   modificarCliente(){
     for (let index = 0; index < this.clientesObject.length; index++) {
-      if(this.clientesObject[index].id==this.id){
+      if(this.clientesObject[index].idCliente==this.id){
           this.clientesObject[index].nombre=this.nombre;
           this.clientesObject[index].apellido=this.apellido;
           this.clientesObject[index].ciudad=this.ciudad;

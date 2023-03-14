@@ -1,11 +1,12 @@
 export interface Cliente {
-    id:number,
-    nombre:string,
-    apellido:string,
-    ciudad:string,
-    direccion: string,
-    telefono: string,
-    correo: string
+    idCliente:number;
+    nombre:string;
+    apellido:string;
+    ciudad:string;
+    direccion: string;
+    telefono: string;
+    correo: string;
+    usuarioId: number;
 }
 
 export interface ClienteRest {

@@ -44,7 +44,7 @@ export class InsertarClienteComponent {
   clientesObject=ClienteModule.clientes;
 
   onSubmit(){
-    let nuevo={
+    /* let nuevo={
       id: this.clientesObject.length+1,
       nombre: this.nombre,
       apellido: this.apellido,
@@ -65,7 +65,7 @@ export class InsertarClienteComponent {
     this.ciudad="";
     this.direccion= "";
     this.telefono= "";
-    this.correo="";
+    this.correo=""; */
    }
 
    getValue(value:string){

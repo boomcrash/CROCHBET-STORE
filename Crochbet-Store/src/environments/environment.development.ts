@@ -4,4 +4,13 @@ export const environment = {
     //-------------- Productos ----------------
     url_getProductos:"Producto/getProductos",
     url_getProductosCategories:"Producto/getProductosCategories",
+
+
+    /* --------------CLIENTES------------------- */
+    urlListarClientes:"Cliente/getClientes",
+    urlListarClientesById:"Cliente/getClienteByUserId",
+    urlAgregarClientes:"Cliente/addClientes",
+    urlEditarClientes:"Cliente/editClientes",
+    urlEliminarClientes:"Cliente/deleteClientes",
+    
 };
