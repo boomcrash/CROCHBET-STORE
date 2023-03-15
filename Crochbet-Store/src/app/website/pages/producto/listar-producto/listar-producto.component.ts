@@ -52,6 +52,7 @@ export class ListarProductoComponent {
 
   ngOnInit(): void {
     this.cargarProductos();
+    
   }
 
   onSubmit(){
@@ -82,28 +83,32 @@ export class ListarProductoComponent {
     this.Actualstatus=estatus;
   }
 
-  editarProducto(idCliente:string, titulo:string, precio:number, imagen:string, descripcion:string, categoria:string){
+  editarProducto(idCliente:string, titulo:string, precio:number, imagen:string, descripcion:string, categoria:string, proveedorId:number){
       this.dialog.open(EditarProductoComponent, {
         data: {
-                'id':idCliente,
-                'title':titulo,
-                'price':precio,
-                'image':imagen,
-                'description':descripcion,
-                'category':categoria
+                'idProducto':idCliente,
+                'titulo':titulo,
+                'precio':precio,
+                'imagen':imagen,
+                'descripcion':descripcion,
+                'categoria':categoria,
+                'proveedorId':proveedorId
               }
       });
+      console.log(idCliente, titulo, precio, imagen, descripcion, categoria, proveedorId);
   }
 
-  eliminarProducto(idCliente:string){
+  eliminarProducto(idCliente:number){
     this.dialog.open(EliminarProductoComponent,{
-      data: <number><unknown>idCliente
+      data: idCliente
     });
+
+    
     
     this.dialog.afterAllClosed.subscribe(result=>{
-      this.productObject=ProductoModule.productos;
-      this.dataSource=new MatTableDataSource<Product>(this.productObject as Product[]);
+      console.log("se cerro el proceso de eliminado");
     });
+    
   }
 
 

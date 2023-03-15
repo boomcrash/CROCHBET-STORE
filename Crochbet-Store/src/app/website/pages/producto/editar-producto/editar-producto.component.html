@@ -25,6 +25,10 @@
         <input formControlName="categoria" name="categoria" type="text" placeholder="categoria" [(ngModel)]="categoria">
         <p *ngIf="getValue('categoria')?.invalid && (getValue('categoria')?.touched || getValue('categoria')?.dirty)" (click)="abrirVentana('categoria')">Campo no cumple requisitos</p>
 
+        <label for="proveedor">ProveedorId</label>
+        <input formControlName="proveedor" name="proveedor" type="number" placeholder="proveedor Id" [(ngModel)]="proveedorId">
+        <p *ngIf="getValue('proveedor')?.invalid && (getValue('proveedor')?.touched || getValue('proveedor')?.dirty)" (click)="abrirVentana('proveedor')">Campo no cumple requisitos</p>
+
         <div style="width: 50%;">
             <button [disabled]="((!formReactive.valid))">Modificar</button>
             <div style=" border-radius: 5px;height: 30px; cursor: pointer; color: red; background-color: white; margin-top: 5px; font-weight: bold; width: 50%;" (click)="salir()">Cancelar</div> 
