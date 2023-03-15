@@ -8,7 +8,7 @@ export const environment = {
 
     //-------------- Proveedores -------------
     urlListarProveedores:"Proveedor/getProveedores",
-    urlAgregarProveedores: "Proveedor/addProveedores",
+    /*urlAgregarProveedores: "Proveedor/addProveedores",
     urlEditarProveedores: "Proveedor/editProveedores",
-    urlEliminarProveedores: "Proveedor/deleteProveedores",
+    urlEliminarProveedores: "Proveedor/deleteProveedores",*/
 };
