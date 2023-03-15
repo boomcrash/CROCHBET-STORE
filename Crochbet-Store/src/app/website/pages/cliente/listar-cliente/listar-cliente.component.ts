@@ -66,16 +66,17 @@ export class ListarClienteComponent {
 
   }
 
-  editarCliente(idCliente:string, nombre:string, apellido:number, ciudad:string, direccion:string, telefono:string, correo:string){
+  editarCliente(idCliente:number, nombre:string, apellido:number, ciudad:string, direccion:string, telefono:string, correo:string, usuarioId:number ){
     this.dialog.open(EditarClienteComponent, {
       data: {
-              'id':idCliente,
+              'idCliente':idCliente,
               'nombre':nombre,
               'apellido':apellido,
               'ciudad':ciudad,
               'direccion': direccion,
               'telefono': telefono,
-              'correo': correo
+              'correo': correo,
+              'usuarioId': usuarioId
             }
     });
 }

@@ -36,6 +36,12 @@
         <input formControlName="correo" name="imagen" type="text" placeholder="correo" [(ngModel)]="correo">
         <p *ngIf="getValue('correo')?.invalid && (getValue('correo')?.touched || getValue('correo')?.dirty)" (click)="abrirVentana('correo')">Campo no cumple requisitos</p>
         </div>
+        
+        <div>
+          <label for="usuarioId">UsuarioId: </label>
+        <input formControlName="usuarioId" name="usuarioId" type="number" placeholder="usuarioId" [(ngModel)]="usuarioId">
+        <p *ngIf="getValue('usuarioId')?.invalid && (getValue('usuarioId')?.touched || getValue('usuarioId')?.dirty)" (click)="abrirVentana('usuarioId')">Campo no cumple requisitos</p>
+        </div>
 
         <div style="width: 50%;">
           <button [disabled]="((!formReactive.valid))">Modificar</button>

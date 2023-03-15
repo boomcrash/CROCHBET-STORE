@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ClienteRest } from 'src/app/interfaces/cliente';
+import { ClienteRest, Cliente } from 'src/app/interfaces/cliente';
 import { environment } from 'src/environments/environment.development';
+import { UsuarioRest } from 'src/app/interfaces/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,11 @@ export class ClientesService {
     return this.http.post<any>(urlGetById,body, {headers: this.headers}); // <--- This line
   }
 
+  //verificar si existe usuarios
+  getUsuarioIdParameter(idUsuario:number){
+    return this.http.post<UsuarioRest[]>(this.urlBase+"verificarId?id="+idUsuario, {headers: this.headers}); // <--- This line
+  }
+
   AddCliente(nombre:string, apellido:string,ciudad:string,direccion:string,telefono:string,correo:string,usuarioId:number){
     const urlGetById="https://localhost:7235/api/Cliente/addClientes"
     let body = JSON.stringify({nombre: nombre,apellido:apellido,ciudad:ciudad,direccion:direccion,telefono:telefono,correo:correo,usuarioId:usuarioId});
@@ -35,4 +41,16 @@ export class ClientesService {
     let body = JSON.stringify({idCliente:idCliente,nombre: nombre,apellido:apellido,ciudad:ciudad,direccion:direccion,telefono:telefono,correo:correo});
     return this.http.put<any>(urlsetById,body, {headers: this.headers}); // <--- This line
   }
+
+  putCliente(cliente:Cliente){
+    const urlsetById="https://localhost:7235/api/Cliente/editClientes"
+    let body = JSON.stringify(cliente);
+    return this.http.put<any>(urlsetById,body, {headers: this.headers}); // <--- This line
+  } 
+
+ /*  DeleteCliente(idCliente:number){
+    const urlDeleteClientes="https://localhost:7235/api/Cliente/deleteClientes"
+    let body = JSON.stringify({idCliente: idCliente});
+    return this.http.delete<any>(urlDeleteClientes,body, {headers: this.headers}); // <--- This line
+  } */
 }

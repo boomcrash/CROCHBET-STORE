@@ -8,9 +8,7 @@ export const environment = {
 
     /* --------------CLIENTES------------------- */
     urlListarClientes:"Cliente/getClientes",
-    urlListarClientesById:"Cliente/getClienteByUserId",
-    urlAgregarClientes:"Cliente/addClientes",
-    urlEditarClientes:"Cliente/editClientes",
-    urlEliminarClientes:"Cliente/deleteClientes",
-    
+    url_getClienteByUserId:"Cliente/GetClienteByUserId",    
+    url_addCliente:"Cliente/addClientes",    
+    url_editCliente:"Cliente/editClientes",
 };

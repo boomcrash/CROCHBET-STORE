@@ -27,6 +27,7 @@
     background-color: #3c3c3cf3;
     border-radius: 30px;
     margin-bottom: 20px;
+    overflow-y: scroll;
 }
 #form div{
     display: flex;
