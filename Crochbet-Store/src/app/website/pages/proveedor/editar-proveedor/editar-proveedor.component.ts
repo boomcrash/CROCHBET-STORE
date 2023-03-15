@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Proveedor } from 'src/app/interfaces/proveedor';
 import { ProveedorModule } from 'src/app/modules/proveedor/proveedor.module';
+import { ProveedoresService } from 'src/app/services/proveedor/proveedores.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,18 +19,29 @@ export class EditarProveedorComponent {
   correo:string=""; 
   direccion:string=""; 
 
-  id=0;
+  id: number=0;
   formReactive: any;
   constructor(private formBuilder:FormBuilder, public dialogRef: MatDialogRef<EditarProveedorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Proveedor){
+    @Inject(MAT_DIALOG_DATA) public data: Proveedor, private http:HttpClient ){
+      if(data.idProveedor!=undefined 
+        && data.nombre!= undefined
+        && data.ruc!= undefined
+        && data.telefono!= undefined
+        && data.correo!= undefined
+        && data.direccion!= undefined){
+
       this.id=data.idProveedor;
-      console.log(this.id);
+      console.log(data.idProveedor);
       this.nombre=data.nombre;
       this.ruc=data.ruc;
       this.telefono=data.telefono;
       this.correo=data.correo;
       this.direccion=data.direccion;
 
+    }
+
+    console.log(this.id, this.nombre, this.ruc, this.telefono, this.correo, this.direccion)
+    
       this.formReactive=this.formBuilder.group(
         {
           nombre:['',[Validators.required, Validators.pattern(/^[a-z ,.'-]+$/i)]],
@@ -48,13 +61,19 @@ export class EditarProveedorComponent {
   }
 
   modificarProveedor(){
-    for (let index = 0; index < this.proveedorObject.length; index++) {
-      if(this.proveedorObject[index].idProveedor==this.id){
-        this.proveedorObject[index].nombre=this.nombre;
-        this.proveedorObject[index].ruc=this.ruc;
-        this.proveedorObject[index].telefono=this.telefono;
-        this.proveedorObject[index].correo=this.correo;
-        this.proveedorObject[index].direccion=this.direccion;
+    
+    let servicioPut= new ProveedoresService(this.http)
+    let miProveedor: Proveedor={
+      idProveedor: this.id,
+      nombre: this.nombre,
+      ruc: this.ruc,
+      telefono: this.telefono,
+      correo: this.correo,
+      direccion: this.direccion
+    }
+    servicioPut.editarProveedor(miProveedor).subscribe((data:any)=>{
+      console.log(data);
+    
         Swal.fire({
           title: 'OPERACION EXITOSAMENTE',
           text: 'Usted ha completado exitosamente la operacion del proveedor con id : '+this.id,
@@ -62,9 +81,12 @@ export class EditarProveedorComponent {
           confirmButtonText: 'OK'
         });
         this.dialogRef.close();
-      }
+        window.location.reload()
+      });
     }
-  }
+
+    
+  
 
   getValue(value:string){
     return this.formReactive.get(value)

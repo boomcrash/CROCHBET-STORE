@@ -69,10 +69,10 @@ export class ListarProveedorComponent {
     this.Actualstatus=estatus;
   }
 
-  editarProveedor(idProveedor:string, nombre:string, ruc:string, telefono:string, correo: string, direccion:string){
+  editarProveedor(idProveedor:number, nombre:string, ruc:string, telefono:string, correo: string, direccion:string){
       this.dialog.open(EditarProveedorComponent, {
         data: {
-                'id':idProveedor,
+                'idProveedor':idProveedor,
                 'nombre':nombre,
                 'ruc':ruc,
                 'telefono':telefono,
