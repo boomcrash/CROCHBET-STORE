@@ -17,11 +17,11 @@ export class ProveedoresService {
     return this.http.post(environment.url_base+environment.urlListarProveedores,{headers: this.headers});
   }
 
-  /*agregarProveedor(nombre:string, ruc:string,telefono:string,correo:string,direccion:string){
+  agregarProveedor(proveedor:Proveedor){
     const urlAgregarProveedores="https://localhost:7235/api/Proveedor/addProveedores"
-    let body = JSON.stringify({nombre: nombre,ruc:ruc,telefono:telefono,correo:correo,direccion:direccion});
+    let body = JSON.stringify(proveedor);
     return this.http.post<any>(urlAgregarProveedores,body, {headers: this.headers}); // <--- This line
-  }*/
+  }
 
   editarProveedor(proveedor:Proveedor){
     const urlEditarProveedores="https://localhost:7235/api/Proveedor/editProveedores"

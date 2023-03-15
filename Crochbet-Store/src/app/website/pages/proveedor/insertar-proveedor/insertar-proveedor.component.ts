@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Proveedor } from 'src/app/interfaces/proveedor';
 import { ProveedorModule } from 'src/app/modules/proveedor/proveedor.module';
+import { ProveedoresService } from 'src/app/services/proveedor/proveedores.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +16,11 @@ export class InsertarProveedorComponent {
 
   formReactive:FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) {
+  constructor(
+    private formBuilder:FormBuilder,
+    private router:Router,
+    public http:HttpClient) {
+
     this.formReactive=this.formBuilder.group(
       {
         nombre:['',[Validators.required, Validators.pattern(/^[a-z ,.'-]+$/i)]],
@@ -28,14 +34,15 @@ export class InsertarProveedorComponent {
 
   nombre:string="";
   ruc:string="";
-  telefono: string="";
-  correo:string="";
-  direccion:string="";
+  telefono:string="";
+  correo:string=""; 
+  direccion:string=""; 
+
+  id: number=0;
 
   Actualstatus="agregar";
 
   dataSource:any=[];
-
 
   proveedorObject=ProveedorModule.proveedores;
 
@@ -44,18 +51,18 @@ export class InsertarProveedorComponent {
   }
 
   onSubmit(){
-    /*let nuevo={
-      id: this.proveedorObject.length+1,
+    let servicioPost= new ProveedoresService(this.http)
+    let miProveedor: Proveedor={
+      idProveedor: this.proveedorObject.length+1,
       nombre: this.nombre,
       ruc: this.ruc,
       telefono: this.telefono,
       correo: this.correo,
       direccion: this.direccion
     }
-    ProveedorModule.proveedores.push(nuevo);
-    let existe=false;
-    
-    
+    servicioPost.agregarProveedor(miProveedor).subscribe((data:any)=>{
+      console.log(data);
+
     Swal.fire({
       title: 'INSERTADO EXITOSAMENTE',
       text: 'Usted ha insertado al proveedor ',
@@ -66,8 +73,11 @@ export class InsertarProveedorComponent {
     this.ruc="";
     this.telefono="";
     this.correo="";
-    this.direccion="";*/
-   }
+    this.direccion="";
+
+    window.location.reload()
+  });
+}
 
    abrirVentana(input:string){
     if(input=="nombre"){
