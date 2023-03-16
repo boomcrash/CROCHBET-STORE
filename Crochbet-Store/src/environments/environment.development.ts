@@ -8,5 +8,5 @@ export const environment = {
     url_getResenas:"Resena/getResenas",
     url_addResenas: "Resena/addResenas",
     url_deleteResenas: "Resena/deleteResenas",
-    
+    url_getClienteId: "Cliente/getClientesById",
 };

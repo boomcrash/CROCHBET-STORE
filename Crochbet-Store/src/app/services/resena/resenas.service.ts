@@ -7,7 +7,11 @@ import {Reseña} from '../../interfaces/reseña';
   providedIn: 'root'
 })
 export class ResenasService {
-
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
+  mensaje: string = '';
+  clienteId: number = 0;
   constructor(private http:HttpClient) { }
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
@@ -24,18 +28,34 @@ export class ResenasService {
 
   editarResena(resena: Reseña): Observable<any> {
     const url = `${environment.url_base+environment.url_getResenas}${resena.idResena}`; // URL de la API para actualizar la reseña con el id correspondiente
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(url, resena, { headers });
+   // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(url, resena, { headers: this.headers });
   }
 
+  getClienteData( ): Observable<any> {
+    const url = `${environment.url_base+environment.url_getClienteId}`; // URL de la API para obtener los datos del cliente con el id correspondiente
+    return this.http.get(url, { headers: this.headers});
+  }
+/*
   addResena(resena: Reseña): Observable<any> {
     const url = `${environment.url_base+environment.url_addResenas}`; // URL de la API para agregar la reseña
     return this.http.post(url, resena, { headers: this.headers });
+  }*/
+
+  addResena(resena: Reseña): Observable<any> {
+    const url = `${environment.url_base+environment.url_addResenas}`; // URL de la API para agregar la reseña
+    let body = JSON.stringify({resena});
+    return this.http.post<any>(url,body, { headers: this.headers });
+  }
+
+  GetClienteByUserId(id:number){
+    const urlGetById="https://localhost:7235/api/Cliente/GetClienteByUserId"
+    let body = JSON.stringify({clienteId: id});
+    return this.http.post<any>(urlGetById,body, {headers: this.headers}); // <--- This line
   }
 
   deleteResena(idResena:number): Observable<any> {
     const url = `${environment.url_base+environment.url_deleteResenas}/${idResena}`; // URL de la API para eliminar la reseña con el id correspondiente
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.delete(url, { headers });
+    return this.http.delete(url, { headers: this.headers });
   }
 }

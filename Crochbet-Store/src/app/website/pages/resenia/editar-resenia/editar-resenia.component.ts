@@ -31,7 +31,7 @@ export class EditarReseniaComponent {
 
     }
 
-    reseniasObject=ReseñaModule.reseñas;
+   // reseniasObject=ReseñaModule.reseñas;
 
   ngOnInit(): void {
 

@@ -4,5 +4,5 @@ export interface Reseña {
     apellido : string,
     email : string,
     mensaje : string,
-   
+   clienteId: number
 }

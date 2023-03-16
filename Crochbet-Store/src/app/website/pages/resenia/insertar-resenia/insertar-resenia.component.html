@@ -10,9 +10,9 @@
     <div class="modulo">
         <div class="cont-form" >
             <div>
-                <form [formGroup]="formularioResenia"  class="form">
+                <form [formGroup]="formularioResenia"  class="form" (ngSubmit)=" onSubmit()" >
                     <label for="">Nombre</label>
-                    <input type="text"  formControlName="nombre"  required pattern="[a-zA-Z ]{2,10}"
+                    <input type="text"  formControlName="nombre"  required pattern="[a-zA-Z ]{2,10}"  [(ngModel)]="nombre"
                         placeholder="Nombre">
                     <div *ngIf="this.formularioResenia.get('nombre')?.errors?.['required']" style="color: yellow;">
                         (! debe ingrersar el nombre)
@@ -22,7 +22,7 @@
                     </div>
 
                     <label for="">Apellido</label>
-                    <input type="text" formControlName="apellido"
+                    <input type="text" formControlName="apellido"   [(ngModel)]="apellido"
                         placeholder="apellido" required pattern="[a-zA-Z ]{2,20}">
                         <div *ngIf="this.formularioResenia.get('apellido')?.errors?.['required']" style="color: yellow;">
                             (! debe ingrersar el apellido)
@@ -32,7 +32,7 @@
                         </div>
 
                     <label for="">Correo electronico</label>
-                    <input type="text" name="email" formControlName="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    <input type="text" name="email" formControlName="email"  [(ngModel)]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         placeholder="email">
                         <div *ngIf="this.formularioResenia.get('email')?.errors?.['required']" style="color: yellow;">
                         (! El mail no puede quedar vacio)
@@ -42,7 +42,7 @@
                         </div>
 
                     <label for="">Mensaje</label>
-                    <textarea  formControlName="mensaje" class="mensaje" type="text"
+                    <textarea  formControlName="mensaje" class="mensaje" type="text" [(ngModel)]="mensaje"
                         placeholder="mensaje" required></textarea>
                     <div *ngIf="this.formularioResenia.get('mensaje')?.errors?.['required']" style="color: yellow;">
                             (! El mensaje no puede quedar vacío)
