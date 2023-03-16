@@ -11,4 +11,6 @@ export const environment = {
     url_getClienteByUserId:"Cliente/GetClienteByUserId",    
     url_addCliente:"Cliente/addClientes",    
     url_editCliente:"Cliente/editClientes",
+    urldeleteClientes: "Cliente/deleteClientes/"
+
 };

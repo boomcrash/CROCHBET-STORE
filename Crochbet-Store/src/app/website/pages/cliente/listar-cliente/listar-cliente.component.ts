@@ -81,15 +81,14 @@ export class ListarClienteComponent {
     });
 }
 
-eliminarCliente(idCliente:string){
-  /* this.dialog.open(EliminarClienteComponent,{
-    data: <number><unknown>idCliente
+eliminarCliente(idCliente:number){
+  this.dialog.open(EliminarClienteComponent,{
+    data: idCliente
   });
 
-  this.dialog.afterAllClosed.subscribe(result=>{
-    this.clientesObject=ClienteModule.clientes;
-    this.dataSource=new MatTableDataSource<Cliente>(this.clientesObject as Cliente[]);
-  }); */
+  this.dialog.afterAllClosed.subscribe((result:any)=>{
+    console.log("Se cerro el dialogo ");
+  });
 }
 
 

@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ClienteModule } from 'src/app/modules/cliente/cliente.module';
 import { ProductoModule } from 'src/app/modules/producto/producto.module';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { ClientesService } from 'src/app/services/cliente/clientes.service';
 
 @Component({
   selector: 'app-eliminar-cliente',
@@ -14,7 +16,7 @@ export class EliminarClienteComponent {
   id=0;
 
   constructor(public dialogRef: MatDialogRef<EliminarClienteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number){
+    @Inject(MAT_DIALOG_DATA) public data: number, private http:HttpClient){
       this.id=data;
       console.log(this.id);
     }
@@ -22,23 +24,39 @@ export class EliminarClienteComponent {
 
   clientesObject=ClienteModule.clientes;
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   eliminarCliente(){
-    for (let index = 0; index < this.clientesObject.length; index++) {
-      if(this.clientesObject[index].idCliente==this.id){
-        this.clientesObject.splice(index,1);
-        Swal.fire({
-          title: 'ELIMINADO EXITOSAMENTE',
-          text: 'Usted ha eliminado el cliente con id : '+this.id,
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        });
-        this.dialogRef.close();
+    console.log("id", this.id);
+    let servicios =new ClientesService(this.http);
+
+    servicios.DeleteCliente(this.id).subscribe({
+      next: (data:any) =>{
+        console.log(data);
+        if (data == true){
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cliente eliminado con éxito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.dialogRef.close();
+        }else{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cliente eliminado con éxito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.dialogRef.close();
+        }
+      },
+      error: (error:any) =>{
+        console.log(error);
       }
-    }
+    });
   }
 
   salir(){

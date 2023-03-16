@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ClienteRest, Cliente } from 'src/app/interfaces/cliente';
 import { environment } from 'src/environments/environment.development';
 import { UsuarioRest } from 'src/app/interfaces/usuario';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,9 +49,8 @@ export class ClientesService {
     return this.http.put<any>(urlsetById,body, {headers: this.headers}); // <--- This line
   } 
 
- /*  DeleteCliente(idCliente:number){
-    const urlDeleteClientes="https://localhost:7235/api/Cliente/deleteClientes"
-    let body = JSON.stringify({idCliente: idCliente});
-    return this.http.delete<any>(urlDeleteClientes,body, {headers: this.headers}); // <--- This line
-  } */
+  DeleteCliente(idCliente:number):Observable<Boolean>{
+    const headers = new HttpHeaders().set ('Content-Type', 'application/json; charset=utf-8')
+    return this.http.delete<any>(environment.url_base+environment.urldeleteClientes+idCliente,{headers: this.headers}); // <--- This line
+  }
 }
