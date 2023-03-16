@@ -36,7 +36,7 @@ export class EliminarProveedorComponent {
         if(data == true){
           Swal.fire({
             position:'center',
-            icon: 'error',
+            icon: 'success',
             title: 'Proveedor Eliminado con Exito',
             showConfirmButton: false,
             timer: 1500

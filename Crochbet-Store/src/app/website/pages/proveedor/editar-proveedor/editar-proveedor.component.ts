@@ -77,7 +77,7 @@ export class EditarProveedorComponent {
         Swal.fire({
           title: 'OPERACION EXITOSAMENTE',
           text: 'Usted ha completado exitosamente la operacion del proveedor con id : '+this.id,
-          icon: 'warning',
+          icon: 'success',
           confirmButtonText: 'OK'
         });
         this.dialogRef.close();
