@@ -82,14 +82,13 @@ export class ListarProveedorComponent {
       });
   }
 
-  eliminarProveedor(idProveedor:string){
+  eliminarProveedor(idProveedor:number){
     this.dialog.open(EliminarProveedorComponent,{
-      data: <number><unknown>idProveedor
+      data: idProveedor
     });
     
     this.dialog.afterAllClosed.subscribe(result=>{
-      this.proveedorObject=ProveedorModule.proveedores;
-      this.dataSource=new MatTableDataSource<Proveedor>(this.proveedorObject as Proveedor[]);
+      console.log("se cerro el proceso de eliminado");
     });
   }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Proveedor } from 'src/app/interfaces/proveedor';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +30,8 @@ export class ProveedoresService {
     return this.http.put<any>(urlEditarProveedores,body, {headers: this.headers}); // <--- This line
   }
 
-  /*eliminarProveedor(idProveedor:number){
-    const urlEliminarProveedores="https://localhost:7235/api/Proveedor/deleteProveedores"
-    let body = JSON.stringify({idProveedor:idProveedor});
-    return this.http.delete<any>(urlEliminarProveedores,body, {headers: this.headers}); // <--- This line
-  }*/
+  eliminarProveedor(idProveedor:number): Observable<Boolean>{
+    const headers = new HttpHeaders().set ('Content-Type', 'application/json; charset=utf-8')
+    return this.http.delete<any>(environment.url_base+environment.urlEliminarProveedores+idProveedor,{headers: this.headers}); // <--- This line
+  }
 }
