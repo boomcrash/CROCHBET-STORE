@@ -18,7 +18,7 @@ import { EliminarProductoComponent } from '../eliminar-producto/eliminar-product
 })
 export class ListarProductoComponent {
   constructor(public dialog:MatDialog,private route:Router,public http:HttpClient){}
-
+  
   titulo:string="";
   precio:number=0;
   miImagen: string='';
@@ -74,7 +74,7 @@ export class ListarProductoComponent {
     if(existe==false){
       ProductoModule.categorias.push(this.categoria.toUpperCase());
     }
-    
+
    }
 
 
@@ -99,7 +99,7 @@ export class ListarProductoComponent {
     this.dialog.open(EliminarProductoComponent,{
       data: <number><unknown>idCliente
     });
-    
+
     this.dialog.afterAllClosed.subscribe(result=>{
       this.productObject=ProductoModule.productos;
       this.dataSource=new MatTableDataSource<Product>(this.productObject as Product[]);
@@ -110,5 +110,5 @@ export class ListarProductoComponent {
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
-  } 
+  }
 }

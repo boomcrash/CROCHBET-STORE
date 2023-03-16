@@ -14,7 +14,7 @@ export class ProductsService {
   getAllProducts(){
     return this.http.get<Product[]>('http://fakestoreapi.com/products');
   }
-
+ 
   getProducts(){
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.post(environment.url_base+environment.url_getProductos,{headers: this.headers});

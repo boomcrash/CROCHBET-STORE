@@ -1,7 +1,8 @@
 export interface Reseña {
-    id:number,
-    nombre:string,
-    apellido:string,
-    email:string,
-    mensaje:string
+    idResena: number,
+    nombre : string,
+    apellido : string,
+    email : string,
+    mensaje : string,
+   
 }

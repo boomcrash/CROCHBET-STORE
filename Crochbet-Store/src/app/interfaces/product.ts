@@ -5,5 +5,5 @@ export interface Product {
     imagen: string;
     descripcion: string;
     categoria: string;
-    proveedorId:number;
+    proveedorId:number; 
 }

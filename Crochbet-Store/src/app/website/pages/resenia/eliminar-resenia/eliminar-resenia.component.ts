@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReseñaModule } from 'src/app/modules/reseña/reseña.module';
 import Swal from 'sweetalert2';
+import { ResenasService } from 'src/app/services/resena/resenas.service';
 
 @Component({
   selector: 'app-eliminar-resenia',
@@ -12,22 +14,25 @@ export class EliminarReseniaComponent {
   id=0;
 
   constructor(public dialogRef: MatDialogRef<EliminarReseniaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number){
+    @Inject(MAT_DIALOG_DATA) public data: number,public http:HttpClient) {
       this.id=data;
       console.log(this.id);
     }
 
 
-  reseñasObject=ReseñaModule.reseñas;
+ // reseñasObject=ReseñaModule.reseñas;
 
   ngOnInit(): void {
-    
-  }
 
+  }
+//
+
+//
   eliminarResenia(){
-    for (let index = 0; index < this.reseñasObject.length; index++) {
-      if(this.reseñasObject[index].id==this.id){
-        this.reseñasObject.splice(index,1);
+    let reseñas=new ResenasService(this.http);
+  reseñas.deleteResena(this.id).subscribe(()=>{
+  console.log("Reseña eliminada");
+  });
         Swal.fire({
           title: 'ELIMINADO EXITOSAMENTE',
           text: 'Usted ha eliminado la reseña con id : '+this.id,
@@ -36,8 +41,7 @@ export class EliminarReseniaComponent {
         });
         this.dialogRef.close();
       }
-    }
-  }
+
 
   salir(){
     this.dialogRef.close();

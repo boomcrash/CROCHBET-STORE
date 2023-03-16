@@ -4,4 +4,9 @@ export const environment = {
     //-------------- Productos ----------------
     url_getProductos:"Producto/getProductos",
     url_getProductosCategories:"Producto/getProductosCategories",
+    //-------------- Resenas ----------------
+    url_getResenas:"Resena/getResenas",
+    url_addResenas: "Resena/addResenas",
+    url_deleteResenas: "Resena/deleteResenas",
+    
 };

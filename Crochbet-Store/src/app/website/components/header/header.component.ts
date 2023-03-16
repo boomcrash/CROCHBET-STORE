@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoModule } from 'src/app/modules/carrito/carrito.module';
 import { environment } from 'src/environments/environment.development';
 import Swal from 'sweetalert2';
+import { Usuario } from '../../../interfaces/usuario';
 
 @Component({
   selector: 'app-header',
@@ -40,13 +41,13 @@ export class HeaderComponent {
     this.roles=environment.roles;
 
     let usuario=sessionStorage.getItem('usuario');
-    
+
     console.log('usuario: '+usuario);
-    
+
     if(usuario != null){
       this.user = usuario;
     }
-    
+
     this.rol=sessionStorage.getItem('rol') ;
     console.log('rol: '+this.rol);
     if(this.rol==this.roles[0]){
@@ -84,8 +85,20 @@ export class HeaderComponent {
   }
 
   verResenas(){
+    let usuario=sessionStorage.getItem('usuario');
+    //console.log('usuario: '+usuario);
+    if(usuario == 'INVITADO'){
+      Swal.fire({
+        title: 'Error',
+        text: 'Debe iniciar sesion para insertar una reseña',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+    }else{
     this.router.navigate(['inicio/insertarResenia']);
+      }
   }
+
 
   verAdministracion(){
     // opcion deshabilitada por el momento

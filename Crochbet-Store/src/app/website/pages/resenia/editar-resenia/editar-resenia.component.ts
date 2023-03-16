@@ -4,6 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Reseña } from 'src/app/interfaces/reseña';
 import { ReseñaModule } from 'src/app/modules/reseña/reseña.module';
 import Swal from 'sweetalert2';
+import { ResenasService } from 'src/app/services/resena/resenas.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-resenia',
@@ -23,26 +25,50 @@ export class EditarReseniaComponent {
   mensaje:string="";
 
   id=0;
+  ResenasService: any;
   constructor(public dialogRef: MatDialogRef<EditarReseniaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Reseña){
-      this.id=data.id;
-      console.log(this.id);
-      this.nombre=data.nombre;
-      this.apellido=data.apellido;
-      this.email=data.email;
-      this.mensaje=data.mensaje;
+    /*@Inject(MAT_DIALOG_DATA) public data: Reseña,*/public http:HttpClient){
+
     }
 
     reseniasObject=ReseñaModule.reseñas;
 
   ngOnInit(): void {
-    
-  }
 
-  modificarResenia(){
+  }
+  /*
+  editarResenas(resena: Reseña) {
+    let reseñas=new ResenasService(this.http);
+    reseñas.editarResena(resena).subscribe(
+      respuesta => {
+        this.id=resena.idResena;
+        console.log(this.id);
+        this.nombre=resena.nombre;
+        this.apellido=resena.apellido;
+        this.email=resena.email;
+        this.mensaje=resena.mensaje;
+        console.log(respuesta);
+      },
+      error => {
+        // Aquí puedes manejar el error si lo deseas
+        console.error(error);
+      }
+
+    );
+    Swal.fire({
+      title: 'EDITADO EXITOSAMENTE',
+      text: 'Usted ha editado la reseña con id : '+this.id,
+      icon: 'warning',
+      confirmButtonText: 'OK'
+    });
+    this.dialogRef.close();
+  }
+  (ngSubmit)="editarResenas()"
+  */
+ /* modificarResenia(){
     if(this.formularioEditarResenia.valid){
     for (let index = 0; index < this.reseniasObject.length; index++) {
-      if(this.reseniasObject[index].id==this.id){
+       if(this.reseniasObject[index].idResena==this.id){
           this.reseniasObject[index].nombre=this.nombre;
           this.reseniasObject[index].apellido=this.apellido;
           this.reseniasObject[index].email=this.email;
@@ -59,6 +85,7 @@ export class EditarReseniaComponent {
   }
   }
 
+*/
   salir(){
     this.dialogRef.close();
   }
