@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteModule } from 'src/app/modules/cliente/cliente.module';
 import Swal from 'sweetalert2';
+import { ClientesService } from 'src/app/services/cliente/clientes.service';
+import { Cliente } from 'src/app/interfaces/cliente';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-insertar-cliente',
@@ -15,7 +18,7 @@ export class InsertarClienteComponent {
 
   formReactive:FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) {
+  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient,) {
     this.formReactive=this.formBuilder.group(
       {
         nombre:['',[Validators.required, Validators.maxLength(20), Validators.pattern(/^[a-z ,.'-]+$/i)]],//Validators.pattern("[A-Za-z]")
@@ -23,7 +26,8 @@ export class InsertarClienteComponent {
         ciudad:['',[Validators.required, Validators.pattern(/^[a-z ,.'-]+$/i)]],
         direccion:['',[Validators.required,Validators.maxLength(20)]],
         telefono:['',[Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(/^[0-9]{10}$/i)]],
-        correo: ['',[Validators.required,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)]]
+        correo: ['',[Validators.required,Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)]],
+        usuarioId: ['', [Validators.required, Validators.minLength(1), Validators.pattern(/^[1-9]{1}[0-9]{0,4}$/i)]]
       }
     )
   }
@@ -34,6 +38,8 @@ export class InsertarClienteComponent {
   direccion:string="";
   telefono: string='';
   correo: string='';
+  usuarioId: number = 0;
+  id: number =0;
 
   Actualstatus="agregar";
 
@@ -44,28 +50,39 @@ export class InsertarClienteComponent {
   clientesObject=ClienteModule.clientes;
 
   onSubmit(){
-    /* let nuevo={
-      id: this.clientesObject.length+1,
-      nombre: this.nombre,
-      apellido: this.apellido,
-      ciudad: this.ciudad,
-      direccion: this.direccion,
-      telefono: this.telefono,
-      correo: this.correo
-    }
-    ClienteModule.clientes.push(nuevo);
-    Swal.fire({
-      title: 'OPERACIÓN EXITOSA',
-      text: 'Usted ha insertado el cliente ',
-      icon: 'success',
-      confirmButtonText: 'OK'
+    let servicio = new ClientesService(this.http);
+    servicio.GetClienteByUserId(this.usuarioId).subscribe((data:any)=>{
+      console.log("Datos de usuario",data);
+      if(data== false){
+        let servicioGet = new ClientesService(this.http)
+        let miCliente: Cliente = {
+          idCliente: this.clientesObject.length+1,
+          nombre: this.nombre,
+          apellido: this.apellido,
+          ciudad: this.ciudad,
+          direccion: this.direccion,
+          telefono: this.telefono,
+          correo: this.correo,
+          usuarioId: this.usuarioId
+        }
+        console.log(miCliente)
+        servicioGet.agregarCliente(miCliente).subscribe((data:any)=>{
+          console.log("Insertado",data);
+          Swal.fire({
+            title: 'INSERTADO EXITOSAMENTE',
+            text: 'Usted ha insertado el usuario con id : '  + this.usuarioId,
+            icon: 'warning', confirmButtonText: 'OK'
+          });
+          window.location.reload();
+        });
+      }else{
+        Swal.fire({
+          title: 'ERROR',
+            text: 'El usuario con id : ' + this.usuarioId + ' ya tiene asociado un cliente',
+            icon: 'warning', confirmButtonText: 'OK'
+        });
+      }
     });
-    this.nombre="";
-    this.apellido="";
-    this.ciudad="";
-    this.direccion= "";
-    this.telefono= "";
-    this.correo=""; */
    }
 
    getValue(value:string){

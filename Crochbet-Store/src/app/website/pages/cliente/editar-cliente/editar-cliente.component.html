@@ -39,7 +39,7 @@
         
         <div>
           <label for="usuarioId">UsuarioId: </label>
-        <input formControlName="usuarioId" name="usuarioId" type="number" placeholder="usuarioId" [(ngModel)]="usuarioId">
+        <input formControlName="usuarioId" name="usuarioId" type="number" placeholder="usuarioId" [(ngModel)]="usuarioId" readonly>
         <p *ngIf="getValue('usuarioId')?.invalid && (getValue('usuarioId')?.touched || getValue('usuarioId')?.dirty)" (click)="abrirVentana('usuarioId')">Campo no cumple requisitos</p>
         </div>
 

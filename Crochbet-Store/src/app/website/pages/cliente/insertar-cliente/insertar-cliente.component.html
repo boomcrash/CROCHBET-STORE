@@ -33,6 +33,12 @@
                     placeholder="Correo">
                 <p *ngIf="getValue('correo')?.invalid && (getValue('correo')?.touched || getValue('correo')?.dirty)" (click)="abrirVentana('correo')">Campo no cumple requisitos</p>
 
+
+                <label for="">Usuario Id</label>
+                <input formControlName="usuarioId" type="number" [(ngModel)]="usuarioId"
+                    placeholder="usuarioId">
+                <p *ngIf="getValue('usuarioId')?.invalid && (getValue('usuarioId')?.touched || getValue('usuarioId')?.dirty)" (click)="abrirVentana('usuarioId')">Campo no cumple requisitos</p>
+
                 <button [disabled]="((!formReactive.valid))">Agregar</button>
             </form>
         </div>

@@ -37,6 +37,12 @@ export class ClientesService {
     return this.http.post<any>(urlGetById,body, {headers: this.headers}); // <--- This line
   }
 
+  agregarCliente(cliente:Cliente){
+    const urlGetById="https://localhost:7235/api/Cliente/addClientes"
+    let body = JSON.stringify(cliente);
+    return this.http.post<any>(urlGetById,body, {headers: this.headers}); // <--- This line
+  }
+
   SetCliente(idCliente:number,nombre:string, apellido:string,ciudad:string,direccion:string,telefono:string,correo:string){
     const urlsetById="https://localhost:7235/api/Cliente/editClientes"
     let body = JSON.stringify({idCliente:idCliente,nombre: nombre,apellido:apellido,ciudad:ciudad,direccion:direccion,telefono:telefono,correo:correo});
