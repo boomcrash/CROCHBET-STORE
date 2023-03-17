@@ -40,7 +40,7 @@ constructor( public http:HttpClient ) {
    * METODO PARA QUE OBTENGA LOS 3 PRIMEROS RESEÑAS DE LA BASE DE DATOS Y LAS MUESTRE EN EL FORMULARIO DE INSERTAR RESEÑA
   */
   ngOnInit() {
-  
+
     let reseñas=new ResenasService(this.http);
    reseñas.getResenaforDivs().subscribe(
       (data: any) => {
@@ -55,8 +55,9 @@ constructor( public http:HttpClient ) {
   onSubmit() {
     let servicio = new ResenasService(this.http);
     servicio.GetClienteByUserId(this.clienteId).subscribe((data:any)=>{
+
       console.log("Datos de cliente",data);
-      if(data== true){
+      if(data== false){
         let servicioGet = new ResenasService(this.http)
         let miResena: Reseña = {
           idResena: this.reseñasObject.length+1,
@@ -74,13 +75,13 @@ constructor( public http:HttpClient ) {
             text: 'Usted ha insertado una nueva Reseña ',// + this.clienteId,
             icon: 'warning', confirmButtonText: 'OK'
           });
-          window.location.reload();
+          //window.location.reload();
         });
       }
        });
    }
 
-    
+
 /*
     if (this.formularioResenia.valid) {
       const resena: Reseña = {

@@ -9,4 +9,5 @@ export const environment = {
     url_addResenas: "Resena/addResenas",
     url_deleteResenas: "Resena/deleteResenas",
     url_getClienteId: "Cliente/getClientesById",
+    url_putResenas: "Resena/editResenas",
 };

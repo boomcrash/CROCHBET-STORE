@@ -23,19 +23,54 @@ export class EditarReseniaComponent {
   apellido:string="";
   email:string="";
   mensaje:string="";
-
-  id=0;
-  ResenasService: any;
+  resenaId=0;
+  clienteId=0;
+  cResenasObject = ReseñaModule.reseñas;
   constructor(public dialogRef: MatDialogRef<EditarReseniaComponent>,
-    /*@Inject(MAT_DIALOG_DATA) public data: Reseña,*/public http:HttpClient){
+    @Inject(MAT_DIALOG_DATA) public data: Reseña,public http:HttpClient){
 
+    }
+    getValue(value: string) {
+      return this.formularioEditarResenia.get(value)
+    }
+    modificarResena() {
+      let service = new  ResenasService(this.http);
+      service.GetClienteByUserId(this.clienteId).subscribe((data: any) => {
+        console.log(data);
+        if (data.length > 0) {
+          let servicioPut = new ResenasService(this.http)
+          let miResena: Reseña = {
+            idResena: this.resenaId,
+            nombre: this.nombre,
+            apellido: this.apellido,
+           email: this.email,
+            mensaje: this.mensaje,
+            clienteId: this.clienteId
+          }
+          console.log(miResena)
+          servicioPut.putResena(miResena).subscribe((data: any) => {
+            console.log("Editado",data);
+            Swal.fire({
+              title: 'EDITADO EXITOSAMENTE',
+              text: 'Usted ha editado la reseña con id : ' + this.resenaId,
+              icon: 'warning', confirmButtonText: 'OK'
+            });
+            this.dialogRef.close();
+            window.location.reload();
+          });
+
+          } else {
+            Swal.fire({
+              title: 'ERROR',
+              text: 'La reseña con id : ' + this.resenaId + ' no existe',
+              icon: 'warning', confirmButtonText: 'OK'
+            });
+            this.dialogRef.close();
+          }
+      });
     }
 
    // reseniasObject=ReseñaModule.reseñas;
-
-  ngOnInit(): void {
-
-  }
   /*
   editarResenas(resena: Reseña) {
     let reseñas=new ResenasService(this.http);
@@ -89,5 +124,6 @@ export class EditarReseniaComponent {
   salir(){
     this.dialogRef.close();
   }
+
 
 }

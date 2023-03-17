@@ -20,7 +20,7 @@ export class InicioSesionComponent implements OnInit{
 
 
 
-  // Variables para determinar cambio de accion en formulario 
+  // Variables para determinar cambio de accion en formulario
   titulo='INICIO DE SESIÓN';
   accion='Iniciar Sesión';
   span='¿No tienes cuenta?';
@@ -49,7 +49,7 @@ export class InicioSesionComponent implements OnInit{
 
   formReactive:FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) { 
+  constructor(private formBuilder:FormBuilder,private router:Router,public http:HttpClient) {
     this.formReactive=this.formBuilder.group(
       {
         user:['',[Validators.required,Validators.minLength(4),Validators.pattern(/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/i)]],
@@ -93,7 +93,7 @@ export class InicioSesionComponent implements OnInit{
         "error"
       );
     }
-    
+
   }
 
   ngOnInit(): void {
@@ -102,7 +102,7 @@ export class InicioSesionComponent implements OnInit{
       usuarios.getUsarios().subscribe((data:any)=>{
         console.log(data);
       });*/
-      
+
       let productos=new ProductsService(this.http);
 
       productos.getProducts().subscribe((data:any)=>{
@@ -119,7 +119,7 @@ export class InicioSesionComponent implements OnInit{
   OnAfterViewInit() {}
 
   usuariosRegistrados:Usuario[]=UsuarioModule.usuarios;
-    
+
   myActualUser: string='';
   myActualPass: string='';
   existe=false;
@@ -149,7 +149,7 @@ export class InicioSesionComponent implements OnInit{
           let rolId=data[0]['rolId'];
           let userId=data[0]['idUsuario'];
           if(data!=false&&data!=null&&data!=undefined&&data.length>0){
-            existeUser=true; 
+            existeUser=true;
           }
 
           if(existeUser){
@@ -158,7 +158,7 @@ export class InicioSesionComponent implements OnInit{
               "Se te redireccionara a la pagina de principal.",
               "success"
             );
-            
+
             sessionStorage.setItem('usuario',data[0]['usuario']);
             sessionStorage.setItem('rol',rolId.toString());
             sessionStorage.setItem('idUsuario',userId.toString());
@@ -172,17 +172,17 @@ export class InicioSesionComponent implements OnInit{
                 "error"
               );
             }
-            
+
           }
 
         });
-        
+
 
 
       }else{
         this.duplicado=false;
         let usuariosBd=new UsuariosService(this.http);
-        
+
         usuariosBd.getUsuarios().subscribe((data:any)=>{
           console.log(data);
 
@@ -198,12 +198,12 @@ export class InicioSesionComponent implements OnInit{
               "Este usuario ya existe.<br>Prueba con otro nombre de usuario.",
               "error"
             );
-    
+
           }else{
-            
+
             this.myActualPass=this.formReactive.value.password;
             this.myActualUser=this.formReactive.value.user;
-            
+
             let usuariosInsert=new UsuariosService(this.http);
             usuariosInsert.insertarUsuario(this.myActualUser,this.myActualPass,2).subscribe((data:any)=>{
               console.log(data);
@@ -221,20 +221,20 @@ export class InicioSesionComponent implements OnInit{
                   "error"
                 );
               }
-              
+
             });
 
-            
-            
+
+
           }
         }
 
-        
+
         );
       }
     }
     }
-    
+
 
 }
 

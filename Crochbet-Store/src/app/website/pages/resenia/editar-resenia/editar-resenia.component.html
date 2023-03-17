@@ -1,6 +1,6 @@
 <div class="modificar-contenedor">
     <h1 class="titulo">EDITAR RESEÑA</h1>
-    <form id="form" #formulario="ngForm" [formGroup]="formularioEditarResenia" >
+    <form id="form" #formulario="ngForm" [formGroup]="formularioEditarResenia"  (ngSubmit)="modificarResena()">
 
         <label for="nombre">Nombre</label>
         <input name="nombre" type="text" placeholder="Nombre"  formControlName="nombre" [(ngModel)]="nombre" required pattern="[a-zA-Z ]{2,10}">

@@ -42,6 +42,7 @@ export class HeaderComponent {
 
     let usuario=sessionStorage.getItem('usuario');
 
+
     console.log('usuario: '+usuario);
 
     if(usuario != null){
@@ -86,6 +87,7 @@ export class HeaderComponent {
 
   verResenas(){
     let usuario=sessionStorage.getItem('usuario');
+   // let userId=sessionStorage.getItem('userId');
     //console.log('usuario: '+usuario);
     if(usuario == 'INVITADO'){
       Swal.fire({
@@ -96,6 +98,7 @@ export class HeaderComponent {
       })
     }else{
     this.router.navigate(['inicio/insertarResenia']);
+   // console.log( 'id: '+userId);
       }
   }
 
